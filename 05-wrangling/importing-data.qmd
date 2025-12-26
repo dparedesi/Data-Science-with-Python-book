@@ -1,0 +1,128 @@
+---
+jupyter: python3
+execute:
+  echo: true
+  warning: false
+---
+
+# Importing Data
+
+## Introduction
+
+In this chapter, we'll learn how to import data from various sources into Python.
+
+```{python}
+#| eval: true
+import pandas as pd
+import numpy as np
+import json
+import requests
+```
+
+## Reading CSV Files
+
+```{python}
+#| eval: true
+# From URL
+url = "https://dparedesi.github.io/Data-Science-with-Python-book/data/student-grades.csv"
+df = pd.read_csv(url)
+print(df.head())
+```
+
+### Common parameters
+
+```{python}
+#| eval: false
+# Various options for reading CSV files
+df = pd.read_csv(
+    "file.csv",
+    sep=",",           # Column separator
+    header=0,          # Row number for column names
+    names=["col1", "col2"],  # Custom column names
+    index_col=0,       # Column to use as index
+    usecols=["col1", "col2"],  # Columns to read
+    dtype={"col1": str},  # Column data types
+    na_values=["NA", ""],  # Values to treat as NA
+    parse_dates=["date_col"],  # Columns to parse as dates
+    encoding="utf-8"   # File encoding
+)
+```
+
+## Reading Excel Files
+
+```{python}
+#| eval: false
+# Reading Excel files (requires openpyxl)
+df = pd.read_excel(
+    "file.xlsx",
+    sheet_name="Sheet1",  # Or sheet index (0, 1, ...)
+    header=0,
+    usecols="A:D"  # Can specify column range
+)
+```
+
+## Reading JSON Data
+
+```{python}
+#| eval: true
+# JSON string
+json_string = '{"name": "John", "age": 30, "city": "New York"}'
+data = json.loads(json_string)
+print(data)
+
+# From URL
+url = "https://jsonplaceholder.typicode.com/users/1"
+response = requests.get(url)
+user_data = response.json()
+print(f"Name: {user_data['name']}, Email: {user_data['email']}")
+```
+
+## Reading from Databases
+
+```{python}
+#| eval: false
+import sqlite3
+
+# SQLite database
+conn = sqlite3.connect("database.db")
+df = pd.read_sql("SELECT * FROM table_name", conn)
+conn.close()
+```
+
+## Web Scraping Basics
+
+```{python}
+#| eval: false
+from bs4 import BeautifulSoup
+
+# Parse HTML
+html = requests.get("https://example.com").text
+soup = BeautifulSoup(html, "html.parser")
+
+# Find elements
+titles = soup.find_all("h1")
+links = soup.find_all("a")
+```
+
+## Working with Paths
+
+```{python}
+#| eval: true
+from pathlib import Path
+
+# Get current directory
+cwd = Path.cwd()
+print(f"Current directory: {cwd}")
+
+# Build paths
+data_path = cwd / "data" / "file.csv"
+print(f"Data path: {data_path}")
+```
+
+## Exercises
+
+1. Read a CSV file from a URL and display the first 10 rows.
+
+2. Read JSON data from an API endpoint using requests.
+
+3. Create a function that reads multiple CSV files from a directory and combines them.

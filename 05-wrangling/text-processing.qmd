@@ -1,0 +1,151 @@
+---
+jupyter: python3
+execute:
+  echo: true
+  warning: false
+---
+
+# Text Processing
+
+## Introduction
+
+Text processing is essential for working with unstructured data. Python has excellent support for string manipulation and NLP.
+
+```{python}
+#| eval: true
+import pandas as pd
+import numpy as np
+import re
+```
+
+## String Methods in pandas
+
+```{python}
+#| eval: true
+# Sample data
+df = pd.DataFrame({
+    'text': ['Hello World', 'python programming', 'DATA SCIENCE', 'NLP is Fun']
+})
+
+# Convert case
+print(df['text'].str.lower())
+print(df['text'].str.upper())
+print(df['text'].str.title())
+```
+
+### Finding patterns
+
+```{python}
+#| eval: true
+# Check if strings contain a pattern
+print(df['text'].str.contains('python', case=False))
+
+# Extract patterns
+emails = pd.Series(['john@email.com', 'jane.doe@company.org', 'invalid'])
+print(emails.str.extract(r'(\w+)@(\w+)\.(\w+)'))
+```
+
+### String manipulation
+
+```{python}
+#| eval: true
+# Split strings
+print(df['text'].str.split())
+
+# Replace patterns
+print(df['text'].str.replace('World', 'Python'))
+
+# Get string length
+print(df['text'].str.len())
+```
+
+## Regular Expressions
+
+```{python}
+#| eval: true
+text = "Contact us at support@example.com or sales@company.org"
+
+# Find all email addresses
+pattern = r'\b[\w.-]+@[\w.-]+\.\w+\b'
+emails = re.findall(pattern, text)
+print(emails)
+
+# Substitute patterns
+cleaned = re.sub(r'\d+', 'NUMBER', 'Order #12345 shipped on 2023-05-15')
+print(cleaned)
+```
+
+## Text Tokenization
+
+```{python}
+#| eval: true
+# Simple tokenization
+text = "Natural language processing is fascinating!"
+tokens = text.lower().split()
+print(tokens)
+
+# Remove punctuation
+import string
+text_clean = text.translate(str.maketrans('', '', string.punctuation))
+tokens_clean = text_clean.lower().split()
+print(tokens_clean)
+```
+
+## Working with NLTK
+
+```{python}
+#| eval: false
+import nltk
+from nltk.tokenize import word_tokenize, sent_tokenize
+from nltk.corpus import stopwords
+from nltk.stem import PorterStemmer, WordNetLemmatizer
+
+# Download required data
+nltk.download('punkt')
+nltk.download('stopwords')
+nltk.download('wordnet')
+
+# Tokenization
+text = "Natural language processing is fascinating. It helps us understand text."
+words = word_tokenize(text)
+sentences = sent_tokenize(text)
+
+# Remove stopwords
+stop_words = set(stopwords.words('english'))
+filtered_words = [w for w in words if w.lower() not in stop_words]
+
+# Stemming and Lemmatization
+stemmer = PorterStemmer()
+lemmatizer = WordNetLemmatizer()
+
+stems = [stemmer.stem(w) for w in words]
+lemmas = [lemmatizer.lemmatize(w) for w in words]
+```
+
+## Date and Time Parsing
+
+```{python}
+#| eval: true
+# Parse dates
+dates = pd.Series(['2023-01-15', '2023-02-20', '2023-03-25'])
+parsed_dates = pd.to_datetime(dates)
+print(parsed_dates)
+
+# Extract components
+df_dates = pd.DataFrame({
+    'date': parsed_dates,
+    'year': parsed_dates.dt.year,
+    'month': parsed_dates.dt.month,
+    'day': parsed_dates.dt.day,
+    'weekday': parsed_dates.dt.day_name()
+})
+print(df_dates)
+```
+
+## Exercises
+
+1. Clean a text column by converting to lowercase and removing punctuation.
+
+2. Extract all phone numbers from a text using regular expressions.
+
+3. Tokenize a document and calculate word frequencies.

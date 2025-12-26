@@ -1,0 +1,80 @@
+---
+jupyter: python3
+execute:
+  echo: true
+  warning: false
+---
+
+# Introduction to Machine Learning
+
+## What is Machine Learning?
+
+Machine learning is a subset of artificial intelligence that enables computers to learn from data without being explicitly programmed.
+
+## Types of Machine Learning
+
+### Supervised Learning
+Learning from labeled data to make predictions:
+- **Classification**: Predicting categorical outcomes
+- **Regression**: Predicting continuous values
+
+### Unsupervised Learning
+Finding patterns in unlabeled data:
+- **Clustering**: Grouping similar observations
+- **Dimensionality Reduction**: Reducing features while preserving information
+
+### Reinforcement Learning
+Learning through interaction with an environment.
+
+## The Machine Learning Workflow
+
+1. **Data Collection**: Gathering relevant data
+2. **Data Preprocessing**: Cleaning and preparing data
+3. **Feature Engineering**: Creating meaningful features
+4. **Model Selection**: Choosing appropriate algorithms
+5. **Training**: Fitting the model to data
+6. **Evaluation**: Assessing model performance
+7. **Deployment**: Putting the model into production
+
+## scikit-learn: The ML Toolkit
+
+```{python}
+#| eval: true
+import numpy as np
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+
+# Load example dataset
+iris = load_iris()
+X, y = iris.data, iris.target
+
+# Split data
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.3, random_state=42
+)
+
+print(f"Training samples: {len(X_train)}")
+print(f"Test samples: {len(X_test)}")
+```
+
+## Key Concepts
+
+### Training and Test Sets
+- **Training set**: Data used to train the model
+- **Test set**: Data used to evaluate model performance
+
+### Overfitting and Underfitting
+- **Overfitting**: Model learns noise, poor generalization
+- **Underfitting**: Model too simple, misses patterns
+
+### Cross-Validation
+Technique to assess model generalization by splitting data into multiple folds.
+
+## What's Next
+
+In the following chapters, we'll dive deep into:
+- Supervised learning algorithms
+- Model evaluation metrics
+- Unsupervised learning techniques
+- Feature engineering
+- Model optimization

@@ -1,0 +1,1938 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>3&nbsp; Data Structures with pandas – Data Science with Python</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../02-fundamentals/04-advanced-techniques.html" rel="next">
+<link href="../02-fundamentals/02-functions.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b758ccaa5987ceb1b75504551e579abf.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5ea8f22911a6df30576a2a25a24cdd7a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-04217e8441264b33581845d082f8f104.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-5ea8f22911a6df30576a2a25a24cdd7a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles/custom.scss">
+</head>
+
+<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01-introduction/introduction.html">Fundamentals and Key Tools</a></li><li class="breadcrumb-item"><a href="../02-fundamentals/03-data-structures.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data Structures with pandas</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Data Science with Python</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/dparedesi/Data-Science-with-Python-book" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Fundamentals and Key Tools</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01-introduction/introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02-fundamentals/01-objects.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Objects</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02-fundamentals/02-functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Functions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02-fundamentals/03-data-structures.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data Structures with pandas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02-fundamentals/04-advanced-techniques.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Advanced Techniques</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Data Visualization and Summarization</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../03-visualization/matplotlib-seaborn.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Data Visualization with matplotlib and seaborn</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../03-visualization/gapminder.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Gapminder Case Study</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Statistics with Python</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04-statistics/discrete.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Discrete Probability</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04-statistics/continuous.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Continuous Probability</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04-statistics/inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Statistical Inference</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Data Wrangling</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../05-wrangling/importing-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Importing Data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../05-wrangling/text-processing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Text Processing</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Machine Learning</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../06-machine-learning/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Introduction to Machine Learning</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../06-machine-learning/supervised.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Supervised Learning</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../06-machine-learning/unsupervised.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Unsupervised Learning</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Real Cases</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../07-real-cases/introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Real-World Case Studies Introduction</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../07-real-cases/real-estate-analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Real Estate Analysis</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../07-real-cases/google-analytics-case.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Google Analytics Case Study</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">Generative AI</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../08-genai/intro-llm.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Introduction to Large Language Models</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../08-genai/llm-api.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Working with LLM APIs</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../08-genai/embeddings.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Embeddings and Vector Search</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendix</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../09-appendix/ethics-checklist.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Ethics Checklist for Data Science</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../09-appendix/oop-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Object-Oriented Programming in Python</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction-to-dataframes" id="toc-introduction-to-dataframes" class="nav-link active" data-scroll-target="#introduction-to-dataframes"><span class="header-section-number">3.1</span> Introduction to DataFrames</a>
+  <ul class="collapse">
+  <li><a href="#what-are-dataframes" id="toc-what-are-dataframes" class="nav-link" data-scroll-target="#what-are-dataframes"><span class="header-section-number">3.1.1</span> What are DataFrames?</a></li>
+  <li><a href="#why-dataframes" id="toc-why-dataframes" class="nav-link" data-scroll-target="#why-dataframes"><span class="header-section-number">3.1.2</span> Why DataFrames?</a></li>
+  </ul></li>
+  <li><a href="#creating-dataframes" id="toc-creating-dataframes" class="nav-link" data-scroll-target="#creating-dataframes"><span class="header-section-number">3.2</span> Creating DataFrames</a>
+  <ul class="collapse">
+  <li><a href="#installing-and-importing-pandas" id="toc-installing-and-importing-pandas" class="nav-link" data-scroll-target="#installing-and-importing-pandas"><span class="header-section-number">3.2.1</span> Installing and importing pandas</a></li>
+  <li><a href="#importing-data-from-files-csv-excel" id="toc-importing-data-from-files-csv-excel" class="nav-link" data-scroll-target="#importing-data-from-files-csv-excel"><span class="header-section-number">3.2.2</span> Importing data from files: CSV, Excel</a></li>
+  <li><a href="#creating-dataframes-manually" id="toc-creating-dataframes-manually" class="nav-link" data-scroll-target="#creating-dataframes-manually"><span class="header-section-number">3.2.3</span> Creating DataFrames manually</a></li>
+  </ul></li>
+  <li><a href="#exploring-dataframes" id="toc-exploring-dataframes" class="nav-link" data-scroll-target="#exploring-dataframes"><span class="header-section-number">3.3</span> Exploring DataFrames</a>
+  <ul class="collapse">
+  <li><a href="#basic-exploration-functions" id="toc-basic-exploration-functions" class="nav-link" data-scroll-target="#basic-exploration-functions"><span class="header-section-number">3.3.1</span> Basic exploration functions</a></li>
+  <li><a href="#accessing-rows-columns-and-cells" id="toc-accessing-rows-columns-and-cells" class="nav-link" data-scroll-target="#accessing-rows-columns-and-cells"><span class="header-section-number">3.3.2</span> Accessing rows, columns, and cells</a></li>
+  </ul></li>
+  <li><a href="#manipulating-dataframes" id="toc-manipulating-dataframes" class="nav-link" data-scroll-target="#manipulating-dataframes"><span class="header-section-number">3.4</span> Manipulating DataFrames</a>
+  <ul class="collapse">
+  <li><a href="#method-chaining-the-pandas-way" id="toc-method-chaining-the-pandas-way" class="nav-link" data-scroll-target="#method-chaining-the-pandas-way"><span class="header-section-number">3.4.1</span> Method chaining: the pandas way</a></li>
+  <li><a href="#creating-new-columns-with-assign" id="toc-creating-new-columns-with-assign" class="nav-link" data-scroll-target="#creating-new-columns-with-assign"><span class="header-section-number">3.4.2</span> Creating new columns with <code>assign()</code></a></li>
+  <li><a href="#filtering-data-with-query" id="toc-filtering-data-with-query" class="nav-link" data-scroll-target="#filtering-data-with-query"><span class="header-section-number">3.4.3</span> Filtering data with <code>query()</code></a></li>
+  <li><a href="#sorting-data-with-sort_values" id="toc-sorting-data-with-sort_values" class="nav-link" data-scroll-target="#sorting-data-with-sort_values"><span class="header-section-number">3.4.4</span> Sorting data with <code>sort_values()</code></a></li>
+  <li><a href="#aggregating-with-groupby" id="toc-aggregating-with-groupby" class="nav-link" data-scroll-target="#aggregating-with-groupby"><span class="header-section-number">3.4.5</span> Aggregating with <code>groupby()</code></a></li>
+  <li><a href="#joining-dataframes-with-merge" id="toc-joining-dataframes-with-merge" class="nav-link" data-scroll-target="#joining-dataframes-with-merge"><span class="header-section-number">3.4.6</span> Joining DataFrames with <code>merge()</code></a></li>
+  </ul></li>
+  <li><a href="#data-visualization-with-dataframes" id="toc-data-visualization-with-dataframes" class="nav-link" data-scroll-target="#data-visualization-with-dataframes"><span class="header-section-number">3.5</span> Data Visualization with DataFrames</a>
+  <ul class="collapse">
+  <li><a href="#scatter-plots" id="toc-scatter-plots" class="nav-link" data-scroll-target="#scatter-plots"><span class="header-section-number">3.5.1</span> Scatter plots</a></li>
+  <li><a href="#histograms" id="toc-histograms" class="nav-link" data-scroll-target="#histograms"><span class="header-section-number">3.5.2</span> Histograms</a></li>
+  <li><a href="#box-plots" id="toc-box-plots" class="nav-link" data-scroll-target="#box-plots"><span class="header-section-number">3.5.3</span> Box plots</a></li>
+  </ul></li>
+  <li><a href="#data-interpretation" id="toc-data-interpretation" class="nav-link" data-scroll-target="#data-interpretation"><span class="header-section-number">3.6</span> Data Interpretation</a>
+  <ul class="collapse">
+  <li><a href="#understanding-describe" id="toc-understanding-describe" class="nav-link" data-scroll-target="#understanding-describe"><span class="header-section-number">3.6.1</span> Understanding <code>describe()</code></a></li>
+  <li><a href="#quartiles-and-percentiles" id="toc-quartiles-and-percentiles" class="nav-link" data-scroll-target="#quartiles-and-percentiles"><span class="header-section-number">3.6.2</span> Quartiles and percentiles</a></li>
+  </ul></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">3.7</span> Exercises</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/dparedesi/Data-Science-with-Python-book/edit/main/02-fundamentals/03-data-structures.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dparedesi/Data-Science-with-Python-book/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01-introduction/introduction.html">Fundamentals and Key Tools</a></li><li class="breadcrumb-item"><a href="../02-fundamentals/03-data-structures.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data Structures with pandas</span></a></li></ol></nav>
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data Structures with pandas</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introduction-to-dataframes" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="introduction-to-dataframes"><span class="header-section-number">3.1</span> Introduction to DataFrames</h2>
+<p>In previous chapters, we explored different types of objects in Python, such as variables, lists, dictionaries, and NumPy arrays. These objects allow us to store information in more efficient ways. Now, in this chapter, we will delve into the world of <strong>DataFrames</strong>, an essential tool for organizing and analyzing information using the pandas library.</p>
+<section id="what-are-dataframes" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="what-are-dataframes"><span class="header-section-number">3.1.1</span> What are DataFrames?</h3>
+<p>Imagine a spreadsheet, with rows and columns organizing information in a tabular way. In Python, a DataFrame (from the pandas library) is precisely that: a data structure that stores information in a tabular format, with rows representing <strong>observations</strong> (for example, every US city) and columns representing <strong>variables</strong> (such as population, cost of living, crime rate).</p>
+<p>Each column of a DataFrame can contain a different data type: numeric, string, boolean, datetime, etc. This makes DataFrames very versatile for storing diverse information.</p>
+</section>
+<section id="why-dataframes" class="level3" data-number="3.1.2">
+<h3 data-number="3.1.2" class="anchored" data-anchor-id="why-dataframes"><span class="header-section-number">3.1.2</span> Why DataFrames?</h3>
+<p>DataFrames are uniquely suited for data analysis because of their specific features. Their <strong>tabular structure</strong> organizes data into rows and columns, similar to a spreadsheet, making it intuitive to visualize. They offer <strong>flexibility</strong> by allowing each column to hold a different data type. This structure also ensures <strong>efficiency</strong>, as most Python analysis packages are optimized to work directly with DataFrames.</p>
+</section>
+</section>
+<section id="creating-dataframes" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="creating-dataframes"><span class="header-section-number">3.2</span> Creating DataFrames</h2>
+<section id="installing-and-importing-pandas" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="installing-and-importing-pandas"><span class="header-section-number">3.2.1</span> Installing and importing pandas</h3>
+<p>First, let’s import pandas:</p>
+<div id="f7628840" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="importing-data-from-files-csv-excel" class="level3" data-number="3.2.2">
+<h3 data-number="3.2.2" class="anchored" data-anchor-id="importing-data-from-files-csv-excel"><span class="header-section-number">3.2.2</span> Importing data from files: CSV, Excel</h3>
+<p>A common way to create DataFrames is by importing data from external files:</p>
+<div id="053a2e47" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import data from a CSV file</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://dparedesi.github.io/Data-Science-with-Python-book/data/student-grades.csv"</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>grades <span class="op">=</span> pd.read_csv(url)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(grades.head())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   start_date  gender               type  P1  P2  P3  P4  P5  P6
+0  03/05/2020  female  Individual Work 1   5   5   5   5   5   5
+1  03/05/2020    male  Individual Work 1   5   5   5   5   4   5
+2  03/05/2020  female  Individual Work 1   5   5   4   5   5   5
+3  03/05/2020    male  Individual Work 1   5   5   5   5   5   5
+4  03/05/2020    male  Individual Work 1   2   5   5   5   5   5</code></pre>
+</div>
+</div>
+<p>For Excel files, use <code>pd.read_excel()</code> (requires <code>openpyxl</code> package):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import data from an Excel file</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_excel(<span class="st">"states.xlsx"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="creating-dataframes-manually" class="level3" data-number="3.2.3">
+<h3 data-number="3.2.3" class="anchored" data-anchor-id="creating-dataframes-manually"><span class="header-section-number">3.2.3</span> Creating DataFrames manually</h3>
+<p>We can also create DataFrames manually from dictionaries:</p>
+<div id="bfeb7213" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a DataFrame with city information</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df_cities <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"city"</span>: [<span class="st">"New York"</span>, <span class="st">"Los Angeles"</span>, <span class="st">"Chicago"</span>, <span class="st">"Houston"</span>],</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"state"</span>: [<span class="st">"New York"</span>, <span class="st">"California"</span>, <span class="st">"Illinois"</span>, <span class="st">"Texas"</span>],</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"cost_of_living"</span>: [<span class="fl">3.5</span>, <span class="fl">2.8</span>, <span class="fl">2.5</span>, <span class="fl">2.0</span>],</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"crime_rate"</span>: [<span class="dv">400</span>, <span class="dv">350</span>, <span class="dv">500</span>, <span class="dv">450</span>],</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"climate"</span>: [<span class="st">"Temperate"</span>, <span class="st">"Mediterranean"</span>, <span class="st">"Continental"</span>, <span class="st">"Subtropical"</span>]</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_cities)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          city       state  cost_of_living  crime_rate        climate
+0     New York    New York             3.5         400      Temperate
+1  Los Angeles  California             2.8         350  Mediterranean
+2      Chicago    Illinois             2.5         500    Continental
+3      Houston       Texas             2.0         450    Subtropical</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="exploring-dataframes" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="exploring-dataframes"><span class="header-section-number">3.3</span> Exploring DataFrames</h2>
+<section id="basic-exploration-functions" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="basic-exploration-functions"><span class="header-section-number">3.3.1</span> Basic exploration functions</h3>
+<div id="51da6ba1" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First rows</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_cities.head())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          city       state  cost_of_living  crime_rate        climate
+0     New York    New York             3.5         400      Temperate
+1  Los Angeles  California             2.8         350  Mediterranean
+2      Chicago    Illinois             2.5         500    Continental
+3      Houston       Texas             2.0         450    Subtropical</code></pre>
+</div>
+</div>
+<div id="fad42b30" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Data types and structure</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_cities.info())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 4 entries, 0 to 3
+Data columns (total 5 columns):
+ #   Column          Non-Null Count  Dtype  
+---  ------          --------------  -----  
+ 0   city            4 non-null      object 
+ 1   state           4 non-null      object 
+ 2   cost_of_living  4 non-null      float64
+ 3   crime_rate      4 non-null      int64  
+ 4   climate         4 non-null      object 
+dtypes: float64(1), int64(1), object(3)
+memory usage: 288.0+ bytes
+None</code></pre>
+</div>
+</div>
+<div id="26c355ce" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Statistical summary</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_cities.describe())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       cost_of_living  crime_rate
+count        4.000000    4.000000
+mean         2.700000  425.000000
+std          0.627163   64.549722
+min          2.000000  350.000000
+25%          2.375000  387.500000
+50%          2.650000  425.000000
+75%          2.975000  462.500000
+max          3.500000  500.000000</code></pre>
+</div>
+</div>
+</section>
+<section id="accessing-rows-columns-and-cells" class="level3" data-number="3.3.2">
+<h3 data-number="3.3.2" class="anchored" data-anchor-id="accessing-rows-columns-and-cells"><span class="header-section-number">3.3.2</span> Accessing rows, columns, and cells</h3>
+<div id="4ded2b40" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access a column</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_cities[<span class="st">"state"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0      New York
+1    California
+2      Illinois
+3         Texas
+Name: state, dtype: object</code></pre>
+</div>
+</div>
+<div id="dcf15984" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access multiple columns</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_cities[[<span class="st">"city"</span>, <span class="st">"state"</span>]])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          city       state
+0     New York    New York
+1  Los Angeles  California
+2      Chicago    Illinois
+3      Houston       Texas</code></pre>
+</div>
+</div>
+<div id="56c86485" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access by row index with .iloc</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_cities.iloc[<span class="dv">0</span>])  <span class="co"># First row</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>city               New York
+state              New York
+cost_of_living          3.5
+crime_rate              400
+climate           Temperate
+Name: 0, dtype: object</code></pre>
+</div>
+</div>
+<div id="1a81cbed" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access specific cell</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_cities.iloc[<span class="dv">1</span>, <span class="dv">2</span>])  <span class="co"># Row 1, Column 2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>2.8</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="manipulating-dataframes" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="manipulating-dataframes"><span class="header-section-number">3.4</span> Manipulating DataFrames</h2>
+<section id="method-chaining-the-pandas-way" class="level3" data-number="3.4.1">
+<h3 data-number="3.4.1" class="anchored" data-anchor-id="method-chaining-the-pandas-way"><span class="header-section-number">3.4.1</span> Method chaining: the pandas way</h3>
+<p>pandas encourages <strong>method chaining</strong>, where operations are strung together in sequence. This is similar to the pipe operator in R:</p>
+<div id="53634d67" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Method chaining example</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> (df_cities</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    .query(<span class="st">"cost_of_living &lt; 3"</span>)</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    [[<span class="st">"city"</span>, <span class="st">"cost_of_living"</span>]]</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    .sort_values(<span class="st">"cost_of_living"</span>))</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(result)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          city  cost_of_living
+3      Houston             2.0
+2      Chicago             2.5
+1  Los Angeles             2.8</code></pre>
+</div>
+</div>
+</section>
+<section id="creating-new-columns-with-assign" class="level3" data-number="3.4.2">
+<h3 data-number="3.4.2" class="anchored" data-anchor-id="creating-new-columns-with-assign"><span class="header-section-number">3.4.2</span> Creating new columns with <code>assign()</code></h3>
+<div id="fd14d4ca" class="cell" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load murders dataset (simulating the R dslabs dataset)</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>murders <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"state"</span>: [<span class="st">"Alabama"</span>, <span class="st">"Alaska"</span>, <span class="st">"Arizona"</span>, <span class="st">"Arkansas"</span>, <span class="st">"California"</span>,</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>              <span class="st">"Colorado"</span>, <span class="st">"Connecticut"</span>, <span class="st">"Delaware"</span>, <span class="st">"Florida"</span>, <span class="st">"Georgia"</span>],</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"abb"</span>: [<span class="st">"AL"</span>, <span class="st">"AK"</span>, <span class="st">"AZ"</span>, <span class="st">"AR"</span>, <span class="st">"CA"</span>, <span class="st">"CO"</span>, <span class="st">"CT"</span>, <span class="st">"DE"</span>, <span class="st">"FL"</span>, <span class="st">"GA"</span>],</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"region"</span>: [<span class="st">"South"</span>, <span class="st">"West"</span>, <span class="st">"West"</span>, <span class="st">"South"</span>, <span class="st">"West"</span>, </span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>               <span class="st">"West"</span>, <span class="st">"Northeast"</span>, <span class="st">"South"</span>, <span class="st">"South"</span>, <span class="st">"South"</span>],</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"population"</span>: [<span class="dv">4779736</span>, <span class="dv">710231</span>, <span class="dv">6392017</span>, <span class="dv">2915918</span>, <span class="dv">37253956</span>,</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>                   <span class="dv">5029196</span>, <span class="dv">3574097</span>, <span class="dv">897934</span>, <span class="dv">18801310</span>, <span class="dv">9687653</span>],</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"total"</span>: [<span class="dv">135</span>, <span class="dv">19</span>, <span class="dv">232</span>, <span class="dv">93</span>, <span class="dv">1257</span>, <span class="dv">65</span>, <span class="dv">97</span>, <span class="dv">38</span>, <span class="dv">669</span>, <span class="dv">376</span>]</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Add ratio column</span></span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>murders <span class="op">=</span> murders.assign(</span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>    ratio<span class="op">=</span><span class="kw">lambda</span> df: df[<span class="st">"total"</span>] <span class="op">/</span> df[<span class="st">"population"</span>] <span class="op">*</span> <span class="dv">100000</span></span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(murders.head())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        state abb region  population  total     ratio
+0     Alabama  AL  South     4779736    135  2.824424
+1      Alaska  AK   West      710231     19  2.675186
+2     Arizona  AZ   West     6392017    232  3.629527
+3    Arkansas  AR  South     2915918     93  3.189390
+4  California  CA   West    37253956   1257  3.374138</code></pre>
+</div>
+</div>
+</section>
+<section id="filtering-data-with-query" class="level3" data-number="3.4.3">
+<h3 data-number="3.4.3" class="anchored" data-anchor-id="filtering-data-with-query"><span class="header-section-number">3.4.3</span> Filtering data with <code>query()</code></h3>
+<div id="c8036c9f" class="cell" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter states with ratio &lt; 1</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(murders.query(<span class="st">"ratio &lt; 1"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Empty DataFrame
+Columns: [state, abb, region, population, total, ratio]
+Index: []</code></pre>
+</div>
+</div>
+<div id="8076a187" class="cell" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter with multiple conditions</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(murders.query(<span class="st">"ratio &lt; 3 and region == 'West'"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      state abb region  population  total     ratio
+1    Alaska  AK   West      710231     19  2.675186
+5  Colorado  CO   West     5029196     65  1.292453</code></pre>
+</div>
+</div>
+</section>
+<section id="sorting-data-with-sort_values" class="level3" data-number="3.4.4">
+<h3 data-number="3.4.4" class="anchored" data-anchor-id="sorting-data-with-sort_values"><span class="header-section-number">3.4.4</span> Sorting data with <code>sort_values()</code></h3>
+<div id="fe7ded05" class="cell" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort by ratio (ascending)</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(murders.sort_values(<span class="st">"ratio"</span>).head())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>         state abb     region  population  total     ratio
+5     Colorado  CO       West     5029196     65  1.292453
+1       Alaska  AK       West      710231     19  2.675186
+6  Connecticut  CT  Northeast     3574097     97  2.713972
+0      Alabama  AL      South     4779736    135  2.824424
+3     Arkansas  AR      South     2915918     93  3.189390</code></pre>
+</div>
+</div>
+<div id="5c331334" class="cell" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort by ratio (descending)</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(murders.sort_values(<span class="st">"ratio"</span>, ascending<span class="op">=</span><span class="va">False</span>).head())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        state abb region  population  total     ratio
+7    Delaware  DE  South      897934     38  4.231937
+9     Georgia  GA  South     9687653    376  3.881229
+2     Arizona  AZ   West     6392017    232  3.629527
+8     Florida  FL  South    18801310    669  3.558263
+4  California  CA   West    37253956   1257  3.374138</code></pre>
+</div>
+</div>
+</section>
+<section id="aggregating-with-groupby" class="level3" data-number="3.4.5">
+<h3 data-number="3.4.5" class="anchored" data-anchor-id="aggregating-with-groupby"><span class="header-section-number">3.4.5</span> Aggregating with <code>groupby()</code></h3>
+<div id="bbd7120f" class="cell" data-execution_count="17">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Group by region and calculate mean population</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(murders.groupby(<span class="st">"region"</span>)[<span class="st">"population"</span>].mean())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>region
+Northeast     3574097.0
+South         7416510.2
+West         12346350.0
+Name: population, dtype: float64</code></pre>
+</div>
+</div>
+<div id="17e7f05d" class="cell" data-execution_count="18">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Multiple aggregations</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(murders.groupby(<span class="st">"region"</span>).agg({</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"population"</span>: <span class="st">"mean"</span>,</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"total"</span>: <span class="st">"sum"</span>,</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ratio"</span>: <span class="st">"mean"</span></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>}))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           population  total     ratio
+region                                
+Northeast   3574097.0     97  2.713972
+South       7416510.2   1311  3.537048
+West       12346350.0   1573  2.742826</code></pre>
+</div>
+</div>
+</section>
+<section id="joining-dataframes-with-merge" class="level3" data-number="3.4.6">
+<h3 data-number="3.4.6" class="anchored" data-anchor-id="joining-dataframes-with-merge"><span class="header-section-number">3.4.6</span> Joining DataFrames with <code>merge()</code></h3>
+<div id="851780e8" class="cell" data-execution_count="19">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create sample DataFrames</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>df_cities <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"city"</span>: [<span class="st">"New York"</span>, <span class="st">"Los Angeles"</span>, <span class="st">"Chicago"</span>, <span class="st">"Houston"</span>],</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"state"</span>: [<span class="st">"New York"</span>, <span class="st">"California"</span>, <span class="st">"Illinois"</span>, <span class="st">"Texas"</span>]</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>df_states <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"state"</span>: [<span class="st">"California"</span>, <span class="st">"Texas"</span>, <span class="st">"Florida"</span>],</span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"governor"</span>: [<span class="st">"Gavin Newsom"</span>, <span class="st">"Greg Abbott"</span>, <span class="st">"Ron DeSantis"</span>]</span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Left join</span></span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a>df_merged <span class="op">=</span> pd.merge(df_cities, df_states, on<span class="op">=</span><span class="st">"state"</span>, how<span class="op">=</span><span class="st">"left"</span>)</span>
+<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_merged)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          city       state      governor
+0     New York    New York           NaN
+1  Los Angeles  California  Gavin Newsom
+2      Chicago    Illinois           NaN
+3      Houston       Texas   Greg Abbott</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="data-visualization-with-dataframes" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="data-visualization-with-dataframes"><span class="header-section-number">3.5</span> Data Visualization with DataFrames</h2>
+<section id="scatter-plots" class="level3" data-number="3.5.1">
+<h3 data-number="3.5.1" class="anchored" data-anchor-id="scatter-plots"><span class="header-section-number">3.5.1</span> Scatter plots</h3>
+<div id="628f58cc" class="cell" data-execution_count="20">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>x_axis <span class="op">=</span> murders[<span class="st">"population"</span>] <span class="op">/</span> <span class="fl">1e6</span>  <span class="co"># Population in millions</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>y_axis <span class="op">=</span> murders[<span class="st">"total"</span>]</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">5</span>, <span class="fl">3.5</span>))</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>plt.scatter(x_axis, y_axis)</span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Population (millions)"</span>)</span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Total Murders"</span>)</span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Population vs Total Murders"</span>)</span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="03-data-structures_files/figure-html/cell-21-output-1.png" width="453" height="339" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="histograms" class="level3" data-number="3.5.2">
+<h3 data-number="3.5.2" class="anchored" data-anchor-id="histograms"><span class="header-section-number">3.5.2</span> Histograms</h3>
+<div id="f1c62514" class="cell" data-execution_count="21">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">5</span>, <span class="fl">3.5</span>))</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>plt.hist(murders[<span class="st">"ratio"</span>], bins<span class="op">=</span><span class="dv">10</span>, edgecolor<span class="op">=</span><span class="st">"black"</span>)</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Murder Rate (per 100,000)"</span>)</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Frequency"</span>)</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Distribution of Murder Rates"</span>)</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="03-data-structures_files/figure-html/cell-22-output-1.png" width="440" height="339" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="box-plots" class="level3" data-number="3.5.3">
+<h3 data-number="3.5.3" class="anchored" data-anchor-id="box-plots"><span class="header-section-number">3.5.3</span> Box plots</h3>
+<div id="720e95d8" class="cell" data-execution_count="22">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">5</span>, <span class="fl">3.5</span>))</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>plt.boxplot(murders[<span class="st">"ratio"</span>])</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Murder Rate (per 100,000)"</span>)</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Box Plot of Murder Rates"</span>)</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="03-data-structures_files/figure-html/cell-23-output-1.png" width="440" height="320" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="data-interpretation" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="data-interpretation"><span class="header-section-number">3.6</span> Data Interpretation</h2>
+<section id="understanding-describe" class="level3" data-number="3.6.1">
+<h3 data-number="3.6.1" class="anchored" data-anchor-id="understanding-describe"><span class="header-section-number">3.6.1</span> Understanding <code>describe()</code></h3>
+<div id="7a06b133" class="cell" data-execution_count="23">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(murders[<span class="st">"total"</span>].describe())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>count      10.000000
+mean      298.100000
+std       391.079262
+min        19.000000
+25%        72.000000
+50%       116.000000
+75%       340.000000
+max      1257.000000
+Name: total, dtype: float64</code></pre>
+</div>
+</div>
+<p>The summary provides key insights: - <strong>count</strong>: number of non-null values - <strong>mean</strong>: arithmetic average - <strong>std</strong>: standard deviation - <strong>min/max</strong>: range of data - <strong>25%/50%/75%</strong>: quartiles (50% is the median)</p>
+</section>
+<section id="quartiles-and-percentiles" class="level3" data-number="3.6.2">
+<h3 data-number="3.6.2" class="anchored" data-anchor-id="quartiles-and-percentiles"><span class="header-section-number">3.6.2</span> Quartiles and percentiles</h3>
+<div id="41880fec" class="cell" data-execution_count="24">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate specific percentiles</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(murders[<span class="st">"total"</span>].quantile([<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.25     72.0
+0.50    116.0
+0.75    340.0
+Name: total, dtype: float64</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="exercises" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="exercises"><span class="header-section-number">3.7</span> Exercises</h2>
+<ol type="1">
+<li>Create a DataFrame called <code>my_expenses</code> with columns for category (Housing, Transport, Food, Entertainment) and expenses for January, February, and March.</li>
+</ol>
+<details>
+<summary>
+Solution
+</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>my_expenses <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"category"</span>: [<span class="st">"Housing"</span>, <span class="st">"Transport"</span>, <span class="st">"Food"</span>, <span class="st">"Entertainment"</span>],</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"january"</span>: [<span class="dv">1500</span>, <span class="dv">300</span>, <span class="dv">500</span>, <span class="dv">200</span>],</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"february"</span>: [<span class="dv">1500</span>, <span class="dv">250</span>, <span class="dv">400</span>, <span class="dv">150</span>],</span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"march"</span>: [<span class="dv">1500</span>, <span class="dv">350</span>, <span class="dv">550</span>, <span class="dv">250</span>]</span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<ol start="2" type="1">
+<li>Use <code>head()</code>, <code>tail()</code>, <code>info()</code> and <code>describe()</code> to explore the <code>my_expenses</code> DataFrame.</li>
+</ol>
+<details>
+<summary>
+Solution
+</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(my_expenses.head())</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(my_expenses.tail())</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(my_expenses.info())</span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(my_expenses.describe())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<ol start="3" type="1">
+<li>Filter <code>my_expenses</code> to get only rows where expenses in January are greater than 400.</li>
+</ol>
+<details>
+<summary>
+Solution
+</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>my_expenses.query(<span class="st">"january &gt; 400"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<ol start="4" type="1">
+<li>Add a column called <code>total</code> containing the sum of January, February, and March expenses.</li>
+</ol>
+<details>
+<summary>
+Solution
+</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>my_expenses <span class="op">=</span> my_expenses.assign(</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>    total<span class="op">=</span><span class="kw">lambda</span> df: df[<span class="st">"january"</span>] <span class="op">+</span> df[<span class="st">"february"</span>] <span class="op">+</span> df[<span class="st">"march"</span>]</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<ol start="5" type="1">
+<li>Sort the DataFrame by total expenses in descending order.</li>
+</ol>
+<details>
+<summary>
+Solution
+</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>my_expenses.sort_values(<span class="st">"total"</span>, ascending<span class="op">=</span><span class="va">False</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+
+
+<!-- -->
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../02-fundamentals/02-functions.html" class="pagination-link" aria-label="Functions">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Functions</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../02-fundamentals/04-advanced-techniques.html" class="pagination-link" aria-label="Advanced Techniques">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Advanced Techniques</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb51" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="an">jupyter:</span><span class="co"> python3</span></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="co">  echo: true</span></span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: false</span></span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a><span class="fu"># Data Structures with pandas</span></span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a><span class="fu">## Introduction to DataFrames</span></span>
+<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a>In previous chapters, we explored different types of objects in Python, such as variables, lists, dictionaries, and NumPy arrays. These objects allow us to store information in more efficient ways. Now, in this chapter, we will delve into the world of **DataFrames**, an essential tool for organizing and analyzing information using the pandas library.</span>
+<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a><span class="fu">### What are DataFrames?</span></span>
+<span id="cb51-15"><a href="#cb51-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-16"><a href="#cb51-16" aria-hidden="true" tabindex="-1"></a>Imagine a spreadsheet, with rows and columns organizing information in a tabular way. In Python, a DataFrame (from the pandas library) is precisely that: a data structure that stores information in a tabular format, with rows representing **observations** (for example, every US city) and columns representing **variables** (such as population, cost of living, crime rate).</span>
+<span id="cb51-17"><a href="#cb51-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-18"><a href="#cb51-18" aria-hidden="true" tabindex="-1"></a>Each column of a DataFrame can contain a different data type: numeric, string, boolean, datetime, etc. This makes DataFrames very versatile for storing diverse information.</span>
+<span id="cb51-19"><a href="#cb51-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-20"><a href="#cb51-20" aria-hidden="true" tabindex="-1"></a><span class="fu">### Why DataFrames?</span></span>
+<span id="cb51-21"><a href="#cb51-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-22"><a href="#cb51-22" aria-hidden="true" tabindex="-1"></a>DataFrames are uniquely suited for data analysis because of their specific features. Their **tabular structure** organizes data into rows and columns, similar to a spreadsheet, making it intuitive to visualize. They offer **flexibility** by allowing each column to hold a different data type. This structure also ensures **efficiency**, as most Python analysis packages are optimized to work directly with DataFrames.</span>
+<span id="cb51-23"><a href="#cb51-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-24"><a href="#cb51-24" aria-hidden="true" tabindex="-1"></a><span class="fu">## Creating DataFrames</span></span>
+<span id="cb51-25"><a href="#cb51-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-26"><a href="#cb51-26" aria-hidden="true" tabindex="-1"></a><span class="fu">### Installing and importing pandas</span></span>
+<span id="cb51-27"><a href="#cb51-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-28"><a href="#cb51-28" aria-hidden="true" tabindex="-1"></a>First, let's import pandas:</span>
+<span id="cb51-29"><a href="#cb51-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-32"><a href="#cb51-32" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb51-33"><a href="#cb51-33" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb51-34"><a href="#cb51-34" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb51-35"><a href="#cb51-35" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb51-36"><a href="#cb51-36" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-37"><a href="#cb51-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-38"><a href="#cb51-38" aria-hidden="true" tabindex="-1"></a><span class="fu">### Importing data from files: CSV, Excel</span></span>
+<span id="cb51-39"><a href="#cb51-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-40"><a href="#cb51-40" aria-hidden="true" tabindex="-1"></a>A common way to create DataFrames is by importing data from external files:</span>
+<span id="cb51-41"><a href="#cb51-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-44"><a href="#cb51-44" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb51-45"><a href="#cb51-45" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb51-46"><a href="#cb51-46" aria-hidden="true" tabindex="-1"></a><span class="co"># Import data from a CSV file</span></span>
+<span id="cb51-47"><a href="#cb51-47" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://dparedesi.github.io/Data-Science-with-Python-book/data/student-grades.csv"</span></span>
+<span id="cb51-48"><a href="#cb51-48" aria-hidden="true" tabindex="-1"></a>grades <span class="op">=</span> pd.read_csv(url)</span>
+<span id="cb51-49"><a href="#cb51-49" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(grades.head())</span>
+<span id="cb51-50"><a href="#cb51-50" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-51"><a href="#cb51-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-52"><a href="#cb51-52" aria-hidden="true" tabindex="-1"></a>For Excel files, use <span class="in">`pd.read_excel()`</span> (requires <span class="in">`openpyxl`</span> package):</span>
+<span id="cb51-53"><a href="#cb51-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-54"><a href="#cb51-54" aria-hidden="true" tabindex="-1"></a><span class="in">```python</span></span>
+<span id="cb51-55"><a href="#cb51-55" aria-hidden="true" tabindex="-1"></a><span class="co"># Import data from an Excel file</span></span>
+<span id="cb51-56"><a href="#cb51-56" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_excel(<span class="st">"states.xlsx"</span>)</span>
+<span id="cb51-57"><a href="#cb51-57" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-58"><a href="#cb51-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-59"><a href="#cb51-59" aria-hidden="true" tabindex="-1"></a><span class="fu">### Creating DataFrames manually</span></span>
+<span id="cb51-60"><a href="#cb51-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-61"><a href="#cb51-61" aria-hidden="true" tabindex="-1"></a>We can also create DataFrames manually from dictionaries:</span>
+<span id="cb51-62"><a href="#cb51-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-65"><a href="#cb51-65" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb51-66"><a href="#cb51-66" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb51-67"><a href="#cb51-67" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a DataFrame with city information</span></span>
+<span id="cb51-68"><a href="#cb51-68" aria-hidden="true" tabindex="-1"></a>df_cities <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb51-69"><a href="#cb51-69" aria-hidden="true" tabindex="-1"></a>    <span class="st">"city"</span>: [<span class="st">"New York"</span>, <span class="st">"Los Angeles"</span>, <span class="st">"Chicago"</span>, <span class="st">"Houston"</span>],</span>
+<span id="cb51-70"><a href="#cb51-70" aria-hidden="true" tabindex="-1"></a>    <span class="st">"state"</span>: [<span class="st">"New York"</span>, <span class="st">"California"</span>, <span class="st">"Illinois"</span>, <span class="st">"Texas"</span>],</span>
+<span id="cb51-71"><a href="#cb51-71" aria-hidden="true" tabindex="-1"></a>    <span class="st">"cost_of_living"</span>: [<span class="fl">3.5</span>, <span class="fl">2.8</span>, <span class="fl">2.5</span>, <span class="fl">2.0</span>],</span>
+<span id="cb51-72"><a href="#cb51-72" aria-hidden="true" tabindex="-1"></a>    <span class="st">"crime_rate"</span>: [<span class="dv">400</span>, <span class="dv">350</span>, <span class="dv">500</span>, <span class="dv">450</span>],</span>
+<span id="cb51-73"><a href="#cb51-73" aria-hidden="true" tabindex="-1"></a>    <span class="st">"climate"</span>: [<span class="st">"Temperate"</span>, <span class="st">"Mediterranean"</span>, <span class="st">"Continental"</span>, <span class="st">"Subtropical"</span>]</span>
+<span id="cb51-74"><a href="#cb51-74" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb51-75"><a href="#cb51-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-76"><a href="#cb51-76" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_cities)</span>
+<span id="cb51-77"><a href="#cb51-77" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-78"><a href="#cb51-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-79"><a href="#cb51-79" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exploring DataFrames</span></span>
+<span id="cb51-80"><a href="#cb51-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-81"><a href="#cb51-81" aria-hidden="true" tabindex="-1"></a><span class="fu">### Basic exploration functions</span></span>
+<span id="cb51-82"><a href="#cb51-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-85"><a href="#cb51-85" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb51-86"><a href="#cb51-86" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb51-87"><a href="#cb51-87" aria-hidden="true" tabindex="-1"></a><span class="co"># First rows</span></span>
+<span id="cb51-88"><a href="#cb51-88" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_cities.head())</span>
+<span id="cb51-89"><a href="#cb51-89" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-90"><a href="#cb51-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-93"><a href="#cb51-93" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb51-94"><a href="#cb51-94" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb51-95"><a href="#cb51-95" aria-hidden="true" tabindex="-1"></a><span class="co"># Data types and structure</span></span>
+<span id="cb51-96"><a href="#cb51-96" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_cities.info())</span>
+<span id="cb51-97"><a href="#cb51-97" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-98"><a href="#cb51-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-101"><a href="#cb51-101" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb51-102"><a href="#cb51-102" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb51-103"><a href="#cb51-103" aria-hidden="true" tabindex="-1"></a><span class="co"># Statistical summary</span></span>
+<span id="cb51-104"><a href="#cb51-104" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_cities.describe())</span>
+<span id="cb51-105"><a href="#cb51-105" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-106"><a href="#cb51-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-107"><a href="#cb51-107" aria-hidden="true" tabindex="-1"></a><span class="fu">### Accessing rows, columns, and cells</span></span>
+<span id="cb51-108"><a href="#cb51-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-111"><a href="#cb51-111" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb51-112"><a href="#cb51-112" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb51-113"><a href="#cb51-113" aria-hidden="true" tabindex="-1"></a><span class="co"># Access a column</span></span>
+<span id="cb51-114"><a href="#cb51-114" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_cities[<span class="st">"state"</span>])</span>
+<span id="cb51-115"><a href="#cb51-115" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-116"><a href="#cb51-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-119"><a href="#cb51-119" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb51-120"><a href="#cb51-120" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb51-121"><a href="#cb51-121" aria-hidden="true" tabindex="-1"></a><span class="co"># Access multiple columns</span></span>
+<span id="cb51-122"><a href="#cb51-122" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_cities[[<span class="st">"city"</span>, <span class="st">"state"</span>]])</span>
+<span id="cb51-123"><a href="#cb51-123" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-124"><a href="#cb51-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-127"><a href="#cb51-127" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb51-128"><a href="#cb51-128" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb51-129"><a href="#cb51-129" aria-hidden="true" tabindex="-1"></a><span class="co"># Access by row index with .iloc</span></span>
+<span id="cb51-130"><a href="#cb51-130" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_cities.iloc[<span class="dv">0</span>])  <span class="co"># First row</span></span>
+<span id="cb51-131"><a href="#cb51-131" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-132"><a href="#cb51-132" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-135"><a href="#cb51-135" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb51-136"><a href="#cb51-136" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb51-137"><a href="#cb51-137" aria-hidden="true" tabindex="-1"></a><span class="co"># Access specific cell</span></span>
+<span id="cb51-138"><a href="#cb51-138" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_cities.iloc[<span class="dv">1</span>, <span class="dv">2</span>])  <span class="co"># Row 1, Column 2</span></span>
+<span id="cb51-139"><a href="#cb51-139" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-140"><a href="#cb51-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-141"><a href="#cb51-141" aria-hidden="true" tabindex="-1"></a><span class="fu">## Manipulating DataFrames</span></span>
+<span id="cb51-142"><a href="#cb51-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-143"><a href="#cb51-143" aria-hidden="true" tabindex="-1"></a><span class="fu">### Method chaining: the pandas way</span></span>
+<span id="cb51-144"><a href="#cb51-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-145"><a href="#cb51-145" aria-hidden="true" tabindex="-1"></a>pandas encourages **method chaining**, where operations are strung together in sequence. This is similar to the pipe operator in R:</span>
+<span id="cb51-146"><a href="#cb51-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-149"><a href="#cb51-149" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb51-150"><a href="#cb51-150" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb51-151"><a href="#cb51-151" aria-hidden="true" tabindex="-1"></a><span class="co"># Method chaining example</span></span>
+<span id="cb51-152"><a href="#cb51-152" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> (df_cities</span>
+<span id="cb51-153"><a href="#cb51-153" aria-hidden="true" tabindex="-1"></a>    .query(<span class="st">"cost_of_living &lt; 3"</span>)</span>
+<span id="cb51-154"><a href="#cb51-154" aria-hidden="true" tabindex="-1"></a>    [[<span class="st">"city"</span>, <span class="st">"cost_of_living"</span>]]</span>
+<span id="cb51-155"><a href="#cb51-155" aria-hidden="true" tabindex="-1"></a>    .sort_values(<span class="st">"cost_of_living"</span>))</span>
+<span id="cb51-156"><a href="#cb51-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-157"><a href="#cb51-157" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(result)</span>
+<span id="cb51-158"><a href="#cb51-158" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-159"><a href="#cb51-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-160"><a href="#cb51-160" aria-hidden="true" tabindex="-1"></a><span class="fu">### Creating new columns with `assign()`</span></span>
+<span id="cb51-161"><a href="#cb51-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-164"><a href="#cb51-164" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb51-165"><a href="#cb51-165" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb51-166"><a href="#cb51-166" aria-hidden="true" tabindex="-1"></a><span class="co"># Load murders dataset (simulating the R dslabs dataset)</span></span>
+<span id="cb51-167"><a href="#cb51-167" aria-hidden="true" tabindex="-1"></a>murders <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb51-168"><a href="#cb51-168" aria-hidden="true" tabindex="-1"></a>    <span class="st">"state"</span>: [<span class="st">"Alabama"</span>, <span class="st">"Alaska"</span>, <span class="st">"Arizona"</span>, <span class="st">"Arkansas"</span>, <span class="st">"California"</span>,</span>
+<span id="cb51-169"><a href="#cb51-169" aria-hidden="true" tabindex="-1"></a>              <span class="st">"Colorado"</span>, <span class="st">"Connecticut"</span>, <span class="st">"Delaware"</span>, <span class="st">"Florida"</span>, <span class="st">"Georgia"</span>],</span>
+<span id="cb51-170"><a href="#cb51-170" aria-hidden="true" tabindex="-1"></a>    <span class="st">"abb"</span>: [<span class="st">"AL"</span>, <span class="st">"AK"</span>, <span class="st">"AZ"</span>, <span class="st">"AR"</span>, <span class="st">"CA"</span>, <span class="st">"CO"</span>, <span class="st">"CT"</span>, <span class="st">"DE"</span>, <span class="st">"FL"</span>, <span class="st">"GA"</span>],</span>
+<span id="cb51-171"><a href="#cb51-171" aria-hidden="true" tabindex="-1"></a>    <span class="st">"region"</span>: [<span class="st">"South"</span>, <span class="st">"West"</span>, <span class="st">"West"</span>, <span class="st">"South"</span>, <span class="st">"West"</span>, </span>
+<span id="cb51-172"><a href="#cb51-172" aria-hidden="true" tabindex="-1"></a>               <span class="st">"West"</span>, <span class="st">"Northeast"</span>, <span class="st">"South"</span>, <span class="st">"South"</span>, <span class="st">"South"</span>],</span>
+<span id="cb51-173"><a href="#cb51-173" aria-hidden="true" tabindex="-1"></a>    <span class="st">"population"</span>: [<span class="dv">4779736</span>, <span class="dv">710231</span>, <span class="dv">6392017</span>, <span class="dv">2915918</span>, <span class="dv">37253956</span>,</span>
+<span id="cb51-174"><a href="#cb51-174" aria-hidden="true" tabindex="-1"></a>                   <span class="dv">5029196</span>, <span class="dv">3574097</span>, <span class="dv">897934</span>, <span class="dv">18801310</span>, <span class="dv">9687653</span>],</span>
+<span id="cb51-175"><a href="#cb51-175" aria-hidden="true" tabindex="-1"></a>    <span class="st">"total"</span>: [<span class="dv">135</span>, <span class="dv">19</span>, <span class="dv">232</span>, <span class="dv">93</span>, <span class="dv">1257</span>, <span class="dv">65</span>, <span class="dv">97</span>, <span class="dv">38</span>, <span class="dv">669</span>, <span class="dv">376</span>]</span>
+<span id="cb51-176"><a href="#cb51-176" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb51-177"><a href="#cb51-177" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-178"><a href="#cb51-178" aria-hidden="true" tabindex="-1"></a><span class="co"># Add ratio column</span></span>
+<span id="cb51-179"><a href="#cb51-179" aria-hidden="true" tabindex="-1"></a>murders <span class="op">=</span> murders.assign(</span>
+<span id="cb51-180"><a href="#cb51-180" aria-hidden="true" tabindex="-1"></a>    ratio<span class="op">=</span><span class="kw">lambda</span> df: df[<span class="st">"total"</span>] <span class="op">/</span> df[<span class="st">"population"</span>] <span class="op">*</span> <span class="dv">100000</span></span>
+<span id="cb51-181"><a href="#cb51-181" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb51-182"><a href="#cb51-182" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-183"><a href="#cb51-183" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(murders.head())</span>
+<span id="cb51-184"><a href="#cb51-184" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-185"><a href="#cb51-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-186"><a href="#cb51-186" aria-hidden="true" tabindex="-1"></a><span class="fu">### Filtering data with `query()`</span></span>
+<span id="cb51-187"><a href="#cb51-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-190"><a href="#cb51-190" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb51-191"><a href="#cb51-191" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb51-192"><a href="#cb51-192" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter states with ratio &lt; 1</span></span>
+<span id="cb51-193"><a href="#cb51-193" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(murders.query(<span class="st">"ratio &lt; 1"</span>))</span>
+<span id="cb51-194"><a href="#cb51-194" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-195"><a href="#cb51-195" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-198"><a href="#cb51-198" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb51-199"><a href="#cb51-199" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb51-200"><a href="#cb51-200" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter with multiple conditions</span></span>
+<span id="cb51-201"><a href="#cb51-201" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(murders.query(<span class="st">"ratio &lt; 3 and region == 'West'"</span>))</span>
+<span id="cb51-202"><a href="#cb51-202" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-203"><a href="#cb51-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-204"><a href="#cb51-204" aria-hidden="true" tabindex="-1"></a><span class="fu">### Sorting data with `sort_values()`</span></span>
+<span id="cb51-205"><a href="#cb51-205" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-208"><a href="#cb51-208" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb51-209"><a href="#cb51-209" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb51-210"><a href="#cb51-210" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort by ratio (ascending)</span></span>
+<span id="cb51-211"><a href="#cb51-211" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(murders.sort_values(<span class="st">"ratio"</span>).head())</span>
+<span id="cb51-212"><a href="#cb51-212" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-213"><a href="#cb51-213" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-216"><a href="#cb51-216" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb51-217"><a href="#cb51-217" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb51-218"><a href="#cb51-218" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort by ratio (descending)</span></span>
+<span id="cb51-219"><a href="#cb51-219" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(murders.sort_values(<span class="st">"ratio"</span>, ascending<span class="op">=</span><span class="va">False</span>).head())</span>
+<span id="cb51-220"><a href="#cb51-220" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-221"><a href="#cb51-221" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-222"><a href="#cb51-222" aria-hidden="true" tabindex="-1"></a><span class="fu">### Aggregating with `groupby()`</span></span>
+<span id="cb51-223"><a href="#cb51-223" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-226"><a href="#cb51-226" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb51-227"><a href="#cb51-227" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb51-228"><a href="#cb51-228" aria-hidden="true" tabindex="-1"></a><span class="co"># Group by region and calculate mean population</span></span>
+<span id="cb51-229"><a href="#cb51-229" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(murders.groupby(<span class="st">"region"</span>)[<span class="st">"population"</span>].mean())</span>
+<span id="cb51-230"><a href="#cb51-230" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-231"><a href="#cb51-231" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-234"><a href="#cb51-234" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb51-235"><a href="#cb51-235" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb51-236"><a href="#cb51-236" aria-hidden="true" tabindex="-1"></a><span class="co"># Multiple aggregations</span></span>
+<span id="cb51-237"><a href="#cb51-237" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(murders.groupby(<span class="st">"region"</span>).agg({</span>
+<span id="cb51-238"><a href="#cb51-238" aria-hidden="true" tabindex="-1"></a>    <span class="st">"population"</span>: <span class="st">"mean"</span>,</span>
+<span id="cb51-239"><a href="#cb51-239" aria-hidden="true" tabindex="-1"></a>    <span class="st">"total"</span>: <span class="st">"sum"</span>,</span>
+<span id="cb51-240"><a href="#cb51-240" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ratio"</span>: <span class="st">"mean"</span></span>
+<span id="cb51-241"><a href="#cb51-241" aria-hidden="true" tabindex="-1"></a>}))</span>
+<span id="cb51-242"><a href="#cb51-242" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-243"><a href="#cb51-243" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-244"><a href="#cb51-244" aria-hidden="true" tabindex="-1"></a><span class="fu">### Joining DataFrames with `merge()`</span></span>
+<span id="cb51-245"><a href="#cb51-245" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-248"><a href="#cb51-248" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb51-249"><a href="#cb51-249" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb51-250"><a href="#cb51-250" aria-hidden="true" tabindex="-1"></a><span class="co"># Create sample DataFrames</span></span>
+<span id="cb51-251"><a href="#cb51-251" aria-hidden="true" tabindex="-1"></a>df_cities <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb51-252"><a href="#cb51-252" aria-hidden="true" tabindex="-1"></a>    <span class="st">"city"</span>: [<span class="st">"New York"</span>, <span class="st">"Los Angeles"</span>, <span class="st">"Chicago"</span>, <span class="st">"Houston"</span>],</span>
+<span id="cb51-253"><a href="#cb51-253" aria-hidden="true" tabindex="-1"></a>    <span class="st">"state"</span>: [<span class="st">"New York"</span>, <span class="st">"California"</span>, <span class="st">"Illinois"</span>, <span class="st">"Texas"</span>]</span>
+<span id="cb51-254"><a href="#cb51-254" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb51-255"><a href="#cb51-255" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-256"><a href="#cb51-256" aria-hidden="true" tabindex="-1"></a>df_states <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb51-257"><a href="#cb51-257" aria-hidden="true" tabindex="-1"></a>    <span class="st">"state"</span>: [<span class="st">"California"</span>, <span class="st">"Texas"</span>, <span class="st">"Florida"</span>],</span>
+<span id="cb51-258"><a href="#cb51-258" aria-hidden="true" tabindex="-1"></a>    <span class="st">"governor"</span>: [<span class="st">"Gavin Newsom"</span>, <span class="st">"Greg Abbott"</span>, <span class="st">"Ron DeSantis"</span>]</span>
+<span id="cb51-259"><a href="#cb51-259" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb51-260"><a href="#cb51-260" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-261"><a href="#cb51-261" aria-hidden="true" tabindex="-1"></a><span class="co"># Left join</span></span>
+<span id="cb51-262"><a href="#cb51-262" aria-hidden="true" tabindex="-1"></a>df_merged <span class="op">=</span> pd.merge(df_cities, df_states, on<span class="op">=</span><span class="st">"state"</span>, how<span class="op">=</span><span class="st">"left"</span>)</span>
+<span id="cb51-263"><a href="#cb51-263" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_merged)</span>
+<span id="cb51-264"><a href="#cb51-264" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-265"><a href="#cb51-265" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-266"><a href="#cb51-266" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data Visualization with DataFrames</span></span>
+<span id="cb51-267"><a href="#cb51-267" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-268"><a href="#cb51-268" aria-hidden="true" tabindex="-1"></a><span class="fu">### Scatter plots</span></span>
+<span id="cb51-269"><a href="#cb51-269" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-272"><a href="#cb51-272" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb51-273"><a href="#cb51-273" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb51-274"><a href="#cb51-274" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb51-275"><a href="#cb51-275" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-276"><a href="#cb51-276" aria-hidden="true" tabindex="-1"></a>x_axis <span class="op">=</span> murders[<span class="st">"population"</span>] <span class="op">/</span> <span class="fl">1e6</span>  <span class="co"># Population in millions</span></span>
+<span id="cb51-277"><a href="#cb51-277" aria-hidden="true" tabindex="-1"></a>y_axis <span class="op">=</span> murders[<span class="st">"total"</span>]</span>
+<span id="cb51-278"><a href="#cb51-278" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-279"><a href="#cb51-279" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">5</span>, <span class="fl">3.5</span>))</span>
+<span id="cb51-280"><a href="#cb51-280" aria-hidden="true" tabindex="-1"></a>plt.scatter(x_axis, y_axis)</span>
+<span id="cb51-281"><a href="#cb51-281" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Population (millions)"</span>)</span>
+<span id="cb51-282"><a href="#cb51-282" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Total Murders"</span>)</span>
+<span id="cb51-283"><a href="#cb51-283" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Population vs Total Murders"</span>)</span>
+<span id="cb51-284"><a href="#cb51-284" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb51-285"><a href="#cb51-285" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-286"><a href="#cb51-286" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-287"><a href="#cb51-287" aria-hidden="true" tabindex="-1"></a><span class="fu">### Histograms</span></span>
+<span id="cb51-288"><a href="#cb51-288" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-291"><a href="#cb51-291" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb51-292"><a href="#cb51-292" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb51-293"><a href="#cb51-293" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">5</span>, <span class="fl">3.5</span>))</span>
+<span id="cb51-294"><a href="#cb51-294" aria-hidden="true" tabindex="-1"></a>plt.hist(murders[<span class="st">"ratio"</span>], bins<span class="op">=</span><span class="dv">10</span>, edgecolor<span class="op">=</span><span class="st">"black"</span>)</span>
+<span id="cb51-295"><a href="#cb51-295" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Murder Rate (per 100,000)"</span>)</span>
+<span id="cb51-296"><a href="#cb51-296" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Frequency"</span>)</span>
+<span id="cb51-297"><a href="#cb51-297" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Distribution of Murder Rates"</span>)</span>
+<span id="cb51-298"><a href="#cb51-298" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb51-299"><a href="#cb51-299" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-300"><a href="#cb51-300" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-301"><a href="#cb51-301" aria-hidden="true" tabindex="-1"></a><span class="fu">### Box plots</span></span>
+<span id="cb51-302"><a href="#cb51-302" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-305"><a href="#cb51-305" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb51-306"><a href="#cb51-306" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb51-307"><a href="#cb51-307" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">5</span>, <span class="fl">3.5</span>))</span>
+<span id="cb51-308"><a href="#cb51-308" aria-hidden="true" tabindex="-1"></a>plt.boxplot(murders[<span class="st">"ratio"</span>])</span>
+<span id="cb51-309"><a href="#cb51-309" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Murder Rate (per 100,000)"</span>)</span>
+<span id="cb51-310"><a href="#cb51-310" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Box Plot of Murder Rates"</span>)</span>
+<span id="cb51-311"><a href="#cb51-311" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb51-312"><a href="#cb51-312" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-313"><a href="#cb51-313" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-314"><a href="#cb51-314" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data Interpretation</span></span>
+<span id="cb51-315"><a href="#cb51-315" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-316"><a href="#cb51-316" aria-hidden="true" tabindex="-1"></a><span class="fu">### Understanding `describe()`</span></span>
+<span id="cb51-317"><a href="#cb51-317" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-320"><a href="#cb51-320" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb51-321"><a href="#cb51-321" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb51-322"><a href="#cb51-322" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(murders[<span class="st">"total"</span>].describe())</span>
+<span id="cb51-323"><a href="#cb51-323" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-324"><a href="#cb51-324" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-325"><a href="#cb51-325" aria-hidden="true" tabindex="-1"></a>The summary provides key insights:</span>
+<span id="cb51-326"><a href="#cb51-326" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**count**: number of non-null values</span>
+<span id="cb51-327"><a href="#cb51-327" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**mean**: arithmetic average</span>
+<span id="cb51-328"><a href="#cb51-328" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**std**: standard deviation</span>
+<span id="cb51-329"><a href="#cb51-329" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**min/max**: range of data</span>
+<span id="cb51-330"><a href="#cb51-330" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**25%/50%/75%**: quartiles (50% is the median)</span>
+<span id="cb51-331"><a href="#cb51-331" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-332"><a href="#cb51-332" aria-hidden="true" tabindex="-1"></a><span class="fu">### Quartiles and percentiles</span></span>
+<span id="cb51-333"><a href="#cb51-333" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-336"><a href="#cb51-336" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb51-337"><a href="#cb51-337" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb51-338"><a href="#cb51-338" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate specific percentiles</span></span>
+<span id="cb51-339"><a href="#cb51-339" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(murders[<span class="st">"total"</span>].quantile([<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>]))</span>
+<span id="cb51-340"><a href="#cb51-340" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-341"><a href="#cb51-341" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-342"><a href="#cb51-342" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercises</span></span>
+<span id="cb51-343"><a href="#cb51-343" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-344"><a href="#cb51-344" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Create a DataFrame called <span class="in">`my_expenses`</span> with columns for category (Housing, Transport, Food, Entertainment) and expenses for January, February, and March.</span>
+<span id="cb51-345"><a href="#cb51-345" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-346"><a href="#cb51-346" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">details</span><span class="dt">&gt;</span></span>
+<span id="cb51-347"><a href="#cb51-347" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">summary</span><span class="dt">&gt;</span>Solution<span class="dt">&lt;/</span><span class="kw">summary</span><span class="dt">&gt;</span></span>
+<span id="cb51-348"><a href="#cb51-348" aria-hidden="true" tabindex="-1"></a><span class="in">```python</span></span>
+<span id="cb51-349"><a href="#cb51-349" aria-hidden="true" tabindex="-1"></a>my_expenses <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb51-350"><a href="#cb51-350" aria-hidden="true" tabindex="-1"></a>    <span class="st">"category"</span>: [<span class="st">"Housing"</span>, <span class="st">"Transport"</span>, <span class="st">"Food"</span>, <span class="st">"Entertainment"</span>],</span>
+<span id="cb51-351"><a href="#cb51-351" aria-hidden="true" tabindex="-1"></a>    <span class="st">"january"</span>: [<span class="dv">1500</span>, <span class="dv">300</span>, <span class="dv">500</span>, <span class="dv">200</span>],</span>
+<span id="cb51-352"><a href="#cb51-352" aria-hidden="true" tabindex="-1"></a>    <span class="st">"february"</span>: [<span class="dv">1500</span>, <span class="dv">250</span>, <span class="dv">400</span>, <span class="dv">150</span>],</span>
+<span id="cb51-353"><a href="#cb51-353" aria-hidden="true" tabindex="-1"></a>    <span class="st">"march"</span>: [<span class="dv">1500</span>, <span class="dv">350</span>, <span class="dv">550</span>, <span class="dv">250</span>]</span>
+<span id="cb51-354"><a href="#cb51-354" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb51-355"><a href="#cb51-355" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-356"><a href="#cb51-356" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">details</span><span class="dt">&gt;</span></span>
+<span id="cb51-357"><a href="#cb51-357" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-358"><a href="#cb51-358" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Use <span class="in">`head()`</span>, <span class="in">`tail()`</span>, <span class="in">`info()`</span> and <span class="in">`describe()`</span> to explore the <span class="in">`my_expenses`</span> DataFrame.</span>
+<span id="cb51-359"><a href="#cb51-359" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-360"><a href="#cb51-360" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">details</span><span class="dt">&gt;</span></span>
+<span id="cb51-361"><a href="#cb51-361" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">summary</span><span class="dt">&gt;</span>Solution<span class="dt">&lt;/</span><span class="kw">summary</span><span class="dt">&gt;</span></span>
+<span id="cb51-362"><a href="#cb51-362" aria-hidden="true" tabindex="-1"></a><span class="in">```python</span></span>
+<span id="cb51-363"><a href="#cb51-363" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(my_expenses.head())</span>
+<span id="cb51-364"><a href="#cb51-364" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(my_expenses.tail())</span>
+<span id="cb51-365"><a href="#cb51-365" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(my_expenses.info())</span>
+<span id="cb51-366"><a href="#cb51-366" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(my_expenses.describe())</span>
+<span id="cb51-367"><a href="#cb51-367" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-368"><a href="#cb51-368" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">details</span><span class="dt">&gt;</span></span>
+<span id="cb51-369"><a href="#cb51-369" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-370"><a href="#cb51-370" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Filter <span class="in">`my_expenses`</span> to get only rows where expenses in January are greater than 400.</span>
+<span id="cb51-371"><a href="#cb51-371" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-372"><a href="#cb51-372" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">details</span><span class="dt">&gt;</span></span>
+<span id="cb51-373"><a href="#cb51-373" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">summary</span><span class="dt">&gt;</span>Solution<span class="dt">&lt;/</span><span class="kw">summary</span><span class="dt">&gt;</span></span>
+<span id="cb51-374"><a href="#cb51-374" aria-hidden="true" tabindex="-1"></a><span class="in">```python</span></span>
+<span id="cb51-375"><a href="#cb51-375" aria-hidden="true" tabindex="-1"></a>my_expenses.query(<span class="st">"january &gt; 400"</span>)</span>
+<span id="cb51-376"><a href="#cb51-376" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-377"><a href="#cb51-377" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">details</span><span class="dt">&gt;</span></span>
+<span id="cb51-378"><a href="#cb51-378" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-379"><a href="#cb51-379" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Add a column called <span class="in">`total`</span> containing the sum of January, February, and March expenses.</span>
+<span id="cb51-380"><a href="#cb51-380" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-381"><a href="#cb51-381" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">details</span><span class="dt">&gt;</span></span>
+<span id="cb51-382"><a href="#cb51-382" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">summary</span><span class="dt">&gt;</span>Solution<span class="dt">&lt;/</span><span class="kw">summary</span><span class="dt">&gt;</span></span>
+<span id="cb51-383"><a href="#cb51-383" aria-hidden="true" tabindex="-1"></a><span class="in">```python</span></span>
+<span id="cb51-384"><a href="#cb51-384" aria-hidden="true" tabindex="-1"></a>my_expenses <span class="op">=</span> my_expenses.assign(</span>
+<span id="cb51-385"><a href="#cb51-385" aria-hidden="true" tabindex="-1"></a>    total<span class="op">=</span><span class="kw">lambda</span> df: df[<span class="st">"january"</span>] <span class="op">+</span> df[<span class="st">"february"</span>] <span class="op">+</span> df[<span class="st">"march"</span>]</span>
+<span id="cb51-386"><a href="#cb51-386" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb51-387"><a href="#cb51-387" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-388"><a href="#cb51-388" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">details</span><span class="dt">&gt;</span></span>
+<span id="cb51-389"><a href="#cb51-389" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-390"><a href="#cb51-390" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>Sort the DataFrame by total expenses in descending order.</span>
+<span id="cb51-391"><a href="#cb51-391" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-392"><a href="#cb51-392" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">details</span><span class="dt">&gt;</span></span>
+<span id="cb51-393"><a href="#cb51-393" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">summary</span><span class="dt">&gt;</span>Solution<span class="dt">&lt;/</span><span class="kw">summary</span><span class="dt">&gt;</span></span>
+<span id="cb51-394"><a href="#cb51-394" aria-hidden="true" tabindex="-1"></a><span class="in">```python</span></span>
+<span id="cb51-395"><a href="#cb51-395" aria-hidden="true" tabindex="-1"></a>my_expenses.sort_values(<span class="st">"total"</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb51-396"><a href="#cb51-396" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-397"><a href="#cb51-397" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">details</span><span class="dt">&gt;</span></span>
+</code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dparedesi/Data-Science-with-Python-book/edit/main/02-fundamentals/03-data-structures.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dparedesi/Data-Science-with-Python-book/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

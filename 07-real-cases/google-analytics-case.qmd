@@ -1,0 +1,127 @@
+---
+jupyter: python3
+execute:
+  echo: true
+  warning: false
+---
+
+# Google Analytics Case Study
+
+## Introduction
+
+In this case study, we analyze web analytics data to understand user behavior and optimize website performance.
+
+```{python}
+#| eval: true
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+```
+
+## Working with GA4 Data
+
+### Sample Analytics Data
+
+```{python}
+#| eval: true
+np.random.seed(42)
+n_days = 90
+
+# Simulated GA data
+dates = pd.date_range(start='2023-01-01', periods=n_days)
+
+ga_data = pd.DataFrame({
+    'date': dates,
+    'sessions': np.random.poisson(1000, n_days) + np.sin(np.arange(n_days) * 2 * np.pi / 7) * 200,
+    'users': np.random.poisson(800, n_days),
+    'pageviews': np.random.poisson(3000, n_days),
+    'bounce_rate': np.random.uniform(0.3, 0.6, n_days),
+    'avg_session_duration': np.random.uniform(60, 180, n_days)
+})
+
+ga_data['sessions'] = ga_data['sessions'].astype(int)
+
+print(ga_data.head())
+```
+
+## Traffic Analysis
+
+```{python}
+#| eval: true
+# Sessions over time
+plt.figure(figsize=(12, 6))
+plt.plot(ga_data['date'], ga_data['sessions'])
+plt.xlabel('Date')
+plt.ylabel('Sessions')
+plt.title('Daily Sessions Over Time')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+```
+
+```{python}
+#| eval: true
+# Weekly patterns
+ga_data['day_of_week'] = ga_data['date'].dt.day_name()
+weekly_avg = ga_data.groupby('day_of_week')['sessions'].mean()
+
+# Reorder days
+day_order = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+weekly_avg = weekly_avg.reindex(day_order)
+
+plt.figure(figsize=(10, 6))
+weekly_avg.plot(kind='bar')
+plt.ylabel('Average Sessions')
+plt.title('Average Sessions by Day of Week')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+```
+
+## Traffic Source Analysis
+
+```{python}
+#| eval: true
+# Simulated traffic sources
+sources = pd.DataFrame({
+    'source': ['Organic Search', 'Direct', 'Social', 'Referral', 'Email', 'Paid Search'],
+    'sessions': [4500, 3200, 2100, 1500, 800, 900],
+    'conversion_rate': [0.032, 0.028, 0.018, 0.025, 0.055, 0.042]
+})
+
+fig, axes = plt.subplots(1, 2, figsize=(14, 5))
+
+# Sessions by source
+axes[0].pie(sources['sessions'], labels=sources['source'], autopct='%1.1f%%')
+axes[0].set_title('Sessions by Traffic Source')
+
+# Conversion rate by source
+sns.barplot(data=sources, x='source', y='conversion_rate', ax=axes[1])
+axes[1].set_ylabel('Conversion Rate')
+axes[1].set_title('Conversion Rate by Source')
+axes[1].tick_params(axis='x', rotation=45)
+
+plt.tight_layout()
+plt.show()
+```
+
+## Key Metrics Dashboard
+
+```{python}
+#| eval: true
+# Summary metrics
+print("=== Key Metrics Summary ===")
+print(f"Total Sessions: {ga_data['sessions'].sum():,}")
+print(f"Total Users: {ga_data['users'].sum():,}")
+print(f"Total Pageviews: {ga_data['pageviews'].sum():,}")
+print(f"Avg Bounce Rate: {ga_data['bounce_rate'].mean():.1%}")
+print(f"Avg Session Duration: {ga_data['avg_session_duration'].mean():.0f} seconds")
+```
+
+## Conclusions
+
+- Website traffic shows weekly seasonality with higher traffic on weekdays
+- Email marketing has the highest conversion rate despite lower volume
+- Organic search drives the most traffic
+- There's opportunity to improve engagement on weekends

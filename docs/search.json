@@ -1,0 +1,1777 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Data Science with Python",
+    "section": "",
+    "text": "Preface\nWelcome to Data Science with Python!\nIn an era where data-driven decisions shape industries from healthcare to finance, mastering Python gives you the power to extract insights, build predictive models, and communicate findings effectively. This book has evolved from personal learning notes into a comprehensive resource that takes you from fundamentals to advanced data science techniques using practical, hands-on exercises.\nThis book is designed for beginners with no prior Python experience who want a structured path into data science, as well as analysts looking to upgrade from spreadsheets to reproducible Python workflows. It also serves students, professionals, and practitioners seeking to modernize their machine learning skills with scikit-learn. Basic familiarity with statistics concepts is helpful but not required, as all code examples are self-contained and explained step-by-step.\nThis book reflects the latest developments in the Python ecosystem. We use Python 3.11+ along with modern tools like VS Code and Jupyter notebooks. The book covers modern pandas patterns including method chaining, comprehensive data visualization with matplotlib and seaborn, and machine learning with scikit-learn. We have also included entirely new topics such as Generative AI and LLM integration with Python, AI-assisted coding workflows, ethics in data science, and enhanced text processing with NLTK and spaCy.\nEach chapter builds on previous concepts, but you can also jump to topics of interest. If you are learning Python from scratch, start with the Fundamentals in the first two chapters. Chapter 3 covers visualization with matplotlib and seaborn, while Chapter 12 dives into building machine learning models. For those interested in working with Large Language Models, Chapter 14 covers Generative AI. Throughout the book, you will find hands-on exercises to test your understanding. Solutions are provided, but we encourage you to try them yourself first.\nMany exercises are inspired by practical classroom experiences and activities from the Professional Certificate in Data Science1 by HarvardX. The code used to generate this book is available on GitHub, encouraging transparency and reproducibility.",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "index.html#support-this-work",
+    "href": "index.html#support-this-work",
+    "title": "Data Science with Python",
+    "section": "Support This Work",
+    "text": "Support This Work\nOver 700 hours went into creating this resource. If you find it valuable, consider purchasing the PDF on Leanpub2. Your purchase includes:\n\nFuture updates at no extra cost\nThree months of direct Q&A access with the author\nSupport for keeping the web version free for everyone\n\nThe web version available at GitHub Pages3 seeks to democratize data science knowledge. Share it and let’s contribute together to freeing knowledge.",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "index.html#stay-connected",
+    "href": "index.html#stay-connected",
+    "title": "Data Science with Python",
+    "section": "Stay Connected",
+    "text": "Stay Connected\nThis book has reached readers worldwide. I deeply thank readers for their comments and suggestions, which have been fundamental to improving this version.\nIf you have questions or suggestions, write to me at dparedesi@uni.pe. I usually respond within 48 hours.\nThis work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "index.html#family",
+    "href": "index.html#family",
+    "title": "Data Science with Python",
+    "section": "Family",
+    "text": "Family\nFirst and foremost, I want to express my profound gratitude to my wife, Desislava, for her invaluable emotional support during the countless hours I dedicated to this project.",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "index.html#mentors-and-inspirations",
+    "href": "index.html#mentors-and-inspirations",
+    "title": "Data Science with Python",
+    "section": "Mentors and Inspirations",
+    "text": "Mentors and Inspirations\nA special thanks to Rafael Irizarry4, a true benchmark in the data science world, whose didactic approach to teaching advanced techniques significantly advanced my learning. I also extend my gratitude to the Python community and developers who continue to create and maintain this wonderful language and its ecosystem.\nMy gratitude also goes to Briguit Reinaldo, CEO of Cedhinfo, whose tireless work brings the teaching of computer technologies to more people in Peru, inspiring many to explore new opportunities.",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "index.html#contributors",
+    "href": "index.html#contributors",
+    "title": "Data Science with Python",
+    "section": "Contributors",
+    "text": "Contributors\nFinally, I want to acknowledge the valuable contribution of students who participated in grammatical review, paraphrasing, exercise creation, and topic proposals. Special thanks to Josep Agama5 and Andrés Espinoza6 for their fundamental contributions.",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "index.html#footnotes",
+    "href": "index.html#footnotes",
+    "title": "Data Science with Python",
+    "section": "",
+    "text": "https://online-learning.harvard.edu/series/professional-certificate-data-science↩︎\nhttps://leanpub.com/data-science-with-python↩︎\nhttps://dparedesi.github.io/Data-Science-with-Python-book/↩︎\nhttps://hsph.harvard.edu/profile/rafael-a-irizarry/↩︎\nhttps://www.linkedin.com/in/josep-agama-749a61190/↩︎\nhttps://www.linkedin.com/in/aespinozacontreras/↩︎",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "01-introduction/introduction.html",
+    "href": "01-introduction/introduction.html",
+    "title": "Introduction",
+    "section": "",
+    "text": "Why Python?\nData science requires a multidisciplinary approach that combines statistics, programming, data mining, and domain expertise. This book is designed to help you develop those skills through practical, hands-on examples in Python.\nPython is a versatile, beginner-friendly language that has become the industry standard for data science. It is free and open-source, meaning there are no licensing costs and you can inspect how any function works under the hood. Its rich ecosystem includes thousands of packages on PyPI covering virtually any analytical task, from machine learning to natural language processing.\nOne of Python’s strongest features is reproducibility, allowing you to write scripts once and share them with colleagues to obtain consistent results anywhere. It also offers excellent visualization through libraries like matplotlib, seaborn, and plotly for publication-quality graphics and interactive dashboards. Furthermore, you will find an active community with extensive documentation, tutorials, and a welcoming presence on social media.\nPython excels particularly in machine learning and AI, with frameworks like scikit-learn, TensorFlow, and PyTorch being the industry standard. These are the core skills we will develop throughout this book, leveraging the pandas ecosystem to make data manipulation intuitive and readable.",
+    "crumbs": [
+      "Fundamentals and Key Tools",
+      "Introduction"
+    ]
+  },
+  {
+    "objectID": "01-introduction/introduction.html#installing-python",
+    "href": "01-introduction/introduction.html#installing-python",
+    "title": "Introduction",
+    "section": "Installing Python",
+    "text": "Installing Python\nYou can download Python from the official website or use a package manager.\n\nOption 1: Official Python Installer\n\nVisit python.org\nDownload the latest stable version (3.11 or higher recommended)\nRun the installer\n\n\n\n\n\n\n\nTip\n\n\n\nInstallation Tip (Windows): Make sure to check “Add Python to PATH” during installation. This allows you to run Python from any command prompt.\n\n\n\n\nOption 2: Using Anaconda (Recommended for Data Science)\nAnaconda is a Python distribution that includes many data science packages pre-installed:\n\nVisit anaconda.com\nDownload and install Anaconda for your operating system\nAnaconda includes Python, Jupyter, pandas, numpy, and many other packages",
+    "crumbs": [
+      "Fundamentals and Key Tools",
+      "Introduction"
+    ]
+  },
+  {
+    "objectID": "01-introduction/introduction.html#installing-vs-code",
+    "href": "01-introduction/introduction.html#installing-vs-code",
+    "title": "Introduction",
+    "section": "Installing VS Code",
+    "text": "Installing VS Code\nWhile you can use Python with many editors, we recommend Visual Studio Code (VS Code)—a free, powerful editor that makes working with Python significantly more productive.\n\nVisit code.visualstudio.com\nDownload and install VS Code for your operating system\nOpen VS Code and install the Python extension:\n\nClick the Extensions icon in the left sidebar (or press Ctrl+Shift+X)\nSearch for “Python”\nInstall the official Python extension by Microsoft",
+    "crumbs": [
+      "Fundamentals and Key Tools",
+      "Introduction"
+    ]
+  },
+  {
+    "objectID": "01-introduction/introduction.html#vs-code-sections",
+    "href": "01-introduction/introduction.html#vs-code-sections",
+    "title": "Introduction",
+    "section": "VS Code Sections",
+    "text": "VS Code Sections\nWhen you open VS Code with the Python extension, you’ll see several important areas:\n\nExplorer (left sidebar): Browse your project files\nEditor (center): Write and edit your Python code\nTerminal (bottom): Run Python commands and scripts\nExtensions (left sidebar): Manage additional features\n\nOne of the great advantages of Python over point-and-click analysis software is that we can save our work as Scripts—text files containing Python code that can be shared, version-controlled, and re-run at any time.\n\nEssential Keyboard Shortcuts\nMastering keyboard shortcuts will significantly speed up your workflow:\n\n\n\n\n\n\n\n\nAction\nWindows/Linux\nMac\n\n\n\n\nRun selection/line\nShift + Enter\nShift + Enter\n\n\nRun entire file\nCtrl + Shift + P → “Run Python File”\nCmd + Shift + P → “Run Python File”\n\n\nNew file\nCtrl + N\nCmd + N\n\n\nSave file\nCtrl + S\nCmd + S\n\n\nComment/uncomment\nCtrl + /\nCmd + /\n\n\nOpen terminal\nCtrl + `\nCmd + `\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nPro Tip: Press Ctrl + Shift + P (Windows/Linux) or Cmd + Shift + P (Mac) to open the Command Palette, which gives you access to all VS Code commands.",
+    "crumbs": [
+      "Fundamentals and Key Tools",
+      "Introduction"
+    ]
+  },
+  {
+    "objectID": "01-introduction/introduction.html#jupyter-notebooks",
+    "href": "01-introduction/introduction.html#jupyter-notebooks",
+    "title": "Introduction",
+    "section": "Jupyter Notebooks",
+    "text": "Jupyter Notebooks\nJupyter notebooks are an interactive way to write and run Python code. They combine code, outputs, and explanatory text in a single document—perfect for data science exploration.\nTo start Jupyter:\n# If using Anaconda\njupyter notebook\n\n# Or in VS Code\n# Open a .ipynb file or create one with Ctrl+Shift+P → \"Create: New Jupyter Notebook\"\nJupyter notebooks consist of cells that can contain either code or text (Markdown). You can run each cell independently and see results immediately.",
+    "crumbs": [
+      "Fundamentals and Key Tools",
+      "Introduction"
+    ]
+  },
+  {
+    "objectID": "01-introduction/introduction.html#testing-your-installation",
+    "href": "01-introduction/introduction.html#testing-your-installation",
+    "title": "Introduction",
+    "section": "Testing Your Installation",
+    "text": "Testing Your Installation\nLet’s verify everything is working correctly. Open a Python terminal or Jupyter notebook and try:\n\n13 * 265\n\n3445\n\n\nYou should see 3445 as the result.\nNow let’s try something more interesting. Python isn’t just a calculator—it’s a powerful tool for working with data:\n\n# Create a list of values\nvalues = [10, 20, 30, 40, 50]\n\n# Calculate the mean\nimport statistics\nstatistics.mean(values)\n\n30\n\n\n\n# How many elements are there?\nlen(values)\n\n5\n\n\nYou’ve just created your first data structure (a list) and applied functions to it—fundamental concepts we’ll explore in depth in the next chapter.\n\nWriting Scripts\nWhile notebooks are great for exploration, scripts are essential for reproducible work. Create a new file called my_first_script.py:\n\n# My First Python Script\n# Calculating basic statistics\n\n# Create some data\ntemperatures = [22, 25, 23, 28, 30, 27, 24]\n\n# Calculate statistics\nimport statistics\nprint(f\"Mean: {statistics.mean(temperatures)}\")      # Average temperature\nprint(f\"Max: {max(temperatures)}\")                   # Highest temperature\nprint(f\"Min: {min(temperatures)}\")                   # Lowest temperature\n\nTo execute code in VS Code:\n\nRun a single line: Select the line and press Shift + Enter\nRun selected lines: Highlight the lines you want to run and press Shift + Enter\nRun the entire script: Right-click and select “Run Python File in Terminal”\n\nNotice that lines starting with # are comments—Python ignores them, but they’re invaluable for explaining your code to others (and to your future self!).\n\n\n\n\n\n\nCaution\n\n\n\nChallenge: Test Your Setup\nTry these exercises to confirm everything works:\n\nCalculate 144 ** 0.5 in Python (the square root of 144)\nCreate a new script with three different calculations and save it as my_first_script.py\nUse assignment to store a value: my_number = 42\nPrint your stored value with print(my_number)",
+    "crumbs": [
+      "Fundamentals and Key Tools",
+      "Introduction"
+    ]
+  },
+  {
+    "objectID": "01-introduction/introduction.html#virtual-environments",
+    "href": "01-introduction/introduction.html#virtual-environments",
+    "title": "Introduction",
+    "section": "Virtual Environments",
+    "text": "Virtual Environments\nA virtual environment is an isolated Python installation where you can install packages without affecting other projects. This is a best practice for Python development.\n# Create a virtual environment\npython -m venv .venv\n\n# Activate it (Windows)\n.venv\\Scripts\\activate\n\n# Activate it (Mac/Linux)\nsource .venv/bin/activate\n\n# Install packages\npip install pandas numpy matplotlib\nWhen the environment is active, you’ll see (.venv) in your terminal prompt.",
+    "crumbs": [
+      "Fundamentals and Key Tools",
+      "Introduction"
+    ]
+  },
+  {
+    "objectID": "01-introduction/introduction.html#whats-next",
+    "href": "01-introduction/introduction.html#whats-next",
+    "title": "Introduction",
+    "section": "What’s Next?",
+    "text": "What’s Next?\nCongratulations! You have successfully set up your Python environment and written your first Python code. You now understand why Python is a powerful choice for data science and how to navigate VS Code and Jupyter notebooks. You have also learned to write scripts and apply essential keyboard shortcuts.\nIn the next chapter, we will dive into Python Fundamentals, learning about objects, data types, lists, and functions that form the foundation of all Python programming. You will discover how Python stores and manipulates data, setting the stage for the data analysis and visualization techniques to come.\nLet’s continue the journey!",
+    "crumbs": [
+      "Fundamentals and Key Tools",
+      "Introduction"
+    ]
+  },
+  {
+    "objectID": "02-fundamentals/01-objects.html",
+    "href": "02-fundamentals/01-objects.html",
+    "title": "1  Objects",
+    "section": "",
+    "text": "1.1 What are objects in Python?\nIn the world of programming, an object is like a container that holds information. This information can be of different types: numbers, text, complex data, and even code. The important thing is that an object groups everything necessary to represent an entity or concept.\nIn Python, practically everything is an object. The variables we will use to store data, the functions we will use to process that data, and even the data itself, are objects.\nImagine you are organizing your move to the United States. Each item you pack in a box (clothes, books, appliances) can be considered an object. Each object has characteristics that define it: a name, a type, a size, a weight, etc.\nIn Python, objects also have characteristics that define them. These characteristics are called attributes. For instance, every object has a Name so we can refer to it, and a Type that indicates what kind of data it contains (int, float, str, bool, etc.). Objects also have a Class defining their structure and behavior (such as list, dict, or DataFrame) and methods that define what operations can be performed on them.",
+    "crumbs": [
+      "Fundamentals and Key Tools",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Objects</span>"
+    ]
+  },
+  {
+    "objectID": "02-fundamentals/01-objects.html#what-are-objects-in-python",
+    "href": "02-fundamentals/01-objects.html#what-are-objects-in-python",
+    "title": "1  Objects",
+    "section": "",
+    "text": "1.1.1 Python as an object-oriented language\nPython is an object-oriented programming language, meaning it relies on the concept of objects to organize and process information. This approach offers several advantages, such as Modularity, allowing us to divide a program into smaller, manageable parts. It also promotes Reusability, as objects can be used in different parts of the program or even in other projects. Furthermore, objects provide Encapsulation, hiding implementation details to facilitate their use and maintenance.\n\n\n1.1.2 The power of abstraction\nThe concept of an object allows us to abstract the complexity of the real world. Instead of thinking about the details of how data is stored and processed in computer memory, we can think in terms of objects representing real-world entities.\nFor example, instead of thinking of a series of numbers representing the temperatures of different cities, we can think of a “temperatures” object containing all that information.\nThis abstraction facilitates understanding and handling information, allowing us to focus on the logic of the problem we want to solve.",
+    "crumbs": [
+      "Fundamentals and Key Tools",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Objects</span>"
+    ]
+  },
+  {
+    "objectID": "02-fundamentals/01-objects.html#variables-the-first-objects-on-your-journey",
+    "href": "02-fundamentals/01-objects.html#variables-the-first-objects-on-your-journey",
+    "title": "1  Objects",
+    "section": "1.2 Variables: The first objects on your journey",
+    "text": "1.2 Variables: The first objects on your journey\nBefore we start packing for our move to the United States, we need to know what things we will take. Each object we decide to take is represented in Python as a variable.\nThink of variables as labels we put on each object. For example, we could use the variable state to save the name of the state we are moving to, or the variable num_suitcases to save the number of suitcases we will take.\n\n1.2.1 Creating variables in Python\nIn Python, we simply assign a value to a variable using the = symbol.\n\n# Assign the value \"California\" to the variable \"state\"\nstate = \"California\"\n\n# Assign the value 5 to the variable \"num_suitcases\"\nnum_suitcases = 5\n\n# Display the value\nprint(state)\n\nCalifornia\n\n\nWhen executing this code, you will see the value California appear in the output.\n\n\n1.2.2 Operations with variables\nWe can also use variables to perform operations. For example, if we want to calculate the total cost of our plane trip, we could use the variables ticket_price and num_people.\n\nticket_price = 300\nnum_people = 4\n\ntotal_cost = ticket_price * num_people\n\nprint(total_cost)\n\n1200\n\n\nIn this example, we first assign values to the variables ticket_price and num_people. Then, we multiply these variables to calculate the total_cost and display its value.\n\n\n1.2.3 Best practices for naming variables\nWatch out for capitalization!\nPython is case-sensitive. If you create a variable called state and then try to access it as State, Python will not find it.\nDescriptive names\nIt is important to use descriptive names for variables, clearly indicating what information they contain. Instead of using variables like x or y, it is better to use names like ticket_price or num_suitcases.\nRules for naming variables (PEP 8 style guide)\nWhen naming your variables, remember that they can contain letters, numbers, and underscores (_), but they cannot start with a number or contain spaces. Python convention is to use snake_case (lowercase with underscores) for variable names.\n\n\n1.2.4 Data types\nVariables in Python can contain different types of data:\n\nint (integers): Whole numbers like 5, -3, 1000\nfloat (floating-point): Decimal numbers like 3.14, -0.5, 2.0\nstr (strings): Text like “California” or ‘Los Angeles’\nbool (boolean): Truth values True or False\n\n\n# Check types using type()\nprint(type(42))\nprint(type(3.14))\nprint(type(\"Hello\"))\nprint(type(True))\n\n&lt;class 'int'&gt;\n&lt;class 'float'&gt;\n&lt;class 'str'&gt;\n&lt;class 'bool'&gt;",
+    "crumbs": [
+      "Fundamentals and Key Tools",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Objects</span>"
+    ]
+  },
+  {
+    "objectID": "02-fundamentals/01-objects.html#object-types-for-complex-data",
+    "href": "02-fundamentals/01-objects.html#object-types-for-complex-data",
+    "title": "1  Objects",
+    "section": "1.3 Object types for complex data",
+    "text": "1.3 Object types for complex data\nThe variables we have seen so far are very useful for storing individual information, such as the name of a city or the number of suitcases we will carry on our move. However, in the real world, we often need to work with more complex datasets.\nImagine you want to save the names of all the cities you plan to visit on your trip to the United States. Would you have to create a variable for each city? That would be very tedious!\nFortunately, Python offers other types of objects that allow us to organize and manipulate information more efficiently. Let’s look at some of them:\n\n1.3.1 Lists: organizing information\nLists are ordered collections that can hold items of different types. They are defined using square brackets [].\n\n# Create a list with the names of some states\nstates = [\"California\", \"Texas\", \"Florida\", \"New York\"]\n\n# Create a list with the population of each state (in millions)\npopulation = [39.2, 29.0, 21.4, 19.4]\n\nprint(states)\nprint(population)\n\n['California', 'Texas', 'Florida', 'New York']\n[39.2, 29.0, 21.4, 19.4]\n\n\nGetting information about lists:\n\nprint(len(population))  # Length of the list\nprint(type(states))     # Type of the object\n\n4\n&lt;class 'list'&gt;\n\n\nAccessing list elements: Python uses 0-based indexing, meaning the first element is at position 0.\n\n# Show the first element of the \"states\" list\nprint(states[0])  # Output: \"California\"\n\n# Show the third element of the \"population\" list  \nprint(population[2])  # Output: 21.4\n\nCalifornia\n21.4\n\n\n\n\n\n\n\n\nWarning\n\n\n\nImportant: 0-based indexing!\nUnlike some other languages, Python starts counting from 0. The first element is at index [0], the second at [1], and so on. This is one of the most common sources of confusion for beginners.\n\n\nWe can also access multiple elements using slicing:\n\n# Access elements from index 1 to 3 (exclusive of 4)\nprint(states[1:4])\n\n['Texas', 'Florida', 'New York']\n\n\nList operations:\n\n# Sum all elements\nprint(sum(population))\n\n# Calculate mean\nprint(sum(population) / len(population))\n\n109.0\n27.25\n\n\nFor numerical operations, we often use NumPy arrays instead of lists:\n\nimport numpy as np\n\npopulation_array = np.array([39.2, 29.0, 21.4, 19.4])\n\n# Calculate square root of each element\nprint(np.sqrt(population_array))\n\n[6.26099034 5.38516481 4.6260134  4.40454311]\n\n\nSorting lists:\n\ndistricts = [\"Comas\", \"Lince\", \"Miraflores\", \"Lurigancho\", \"Chorrillos\"]\nprint(sorted(districts))  # Returns a new sorted list\n\n['Chorrillos', 'Comas', 'Lince', 'Lurigancho', 'Miraflores']\n\n\nHandling missing values with NumPy:\n\nexample_na = np.array([28, 3, 19, np.nan, 89, 45, np.nan, 86, 5, 18, 28, np.nan])\n# Filter out NaN values and calculate mean\nprint(np.nanmean(example_na))\n\n35.666666666666664\n\n\n\n\n1.3.2 Dictionaries: grouping objects with keys\nDictionaries are like containers that map keys to values. They are defined using curly braces {}.\n\n# Create a dictionary with information about a city\ncity_info = {\n    \"name\": \"San Francisco\",\n    \"population\": 880000,\n    \"cost_of_living\": 3.8,\n    \"climate\": \"Temperate\"\n}\n\nprint(city_info)\n\n{'name': 'San Francisco', 'population': 880000, 'cost_of_living': 3.8, 'climate': 'Temperate'}\n\n\nAccessing dictionary elements:\n\n# Access by key\nprint(city_info[\"name\"])  # Output: \"San Francisco\"\n\n# Access using get() method (safer, returns None if key doesn't exist)\nprint(city_info.get(\"population\"))  # Output: 880000\n\nSan Francisco\n880000\n\n\n\n\n1.3.3 Tuples: immutable sequences\nTuples are like lists, but they cannot be modified after creation. They are defined using parentheses ().\n\ncoordinates = (37.7749, -122.4194)  # San Francisco coordinates\nprint(coordinates)\nprint(coordinates[0])  # Latitude\n\n(37.7749, -122.4194)\n37.7749\n\n\n\n\n1.3.4 NumPy arrays: efficient numerical computing\nFor numerical work, NumPy arrays are much more efficient than Python lists:\n\nimport numpy as np\n\n# Create a 2D array (matrix) with distances between cities (in miles)\ncity_distances = np.array([\n    [0, 2600, 2100, 950],\n    [2600, 0, 1100, 2700],\n    [2100, 1100, 0, 2100],\n    [950, 2700, 2100, 0]\n])\n\nprint(city_distances)\n\n[[   0 2600 2100  950]\n [2600    0 1100 2700]\n [2100 1100    0 2100]\n [ 950 2700 2100    0]]\n\n\nAccessing array elements:\n\n# Access the element in row 0, column 2\nprint(city_distances[0, 2])\n\n2100\n\n\n\n\n1.3.5 Comparison with other languages\nWhile many modern programming languages use the object-oriented paradigm, Python has a particularly elegant approach. In Python, creating and using objects is intuitive and the language provides powerful built-in data structures. Unlike some languages where you must explicitly define classes for everything, Python allows you to work productively with its built-in types while still supporting full object-oriented programming when needed.",
+    "crumbs": [
+      "Fundamentals and Key Tools",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Objects</span>"
+    ]
+  },
+  {
+    "objectID": "02-fundamentals/01-objects.html#exercises",
+    "href": "02-fundamentals/01-objects.html#exercises",
+    "title": "1  Objects",
+    "section": "1.4 Exercises",
+    "text": "1.4 Exercises\nNow that you know the different types of objects in Python, it’s time to put your knowledge to the test.\n\nCreate four variables to plan your move. Define city_name with the city you would like to move to, population with its number of inhabitants, and distance with the kilometers from your current location. Also, create a boolean variable want_to_live_there indicating if you truly want to live there.\n\n\n\nSolution\n\ncity_name = \"Seattle\"\npopulation = 724745 \ndistance = 8340  # Approximate distance from Lima, Peru\nwant_to_live_there = True\n\n\nCreate a list called nearby_cities containing the names of three cities near the city you chose in the previous exercise.\n\n\n\nSolution\n\nnearby_cities = [\"Tacoma\", \"Bellevue\", \"Everett\"]\n\n\nConstruct a dictionary called my_info that groups different types of information about yourself. It should include your name, your age, a list with your three favorite colors, and a boolean value indicating if you like chocolate.\n\n\n\nSolution\n\nmy_info = {\n    \"name\": \"Ana\",\n    \"age\": 30,\n    \"favorite_colors\": [\"blue\", \"green\", \"red\"],\n    \"likes_chocolate\": True\n}\n\n\nCreate a NumPy array called monthly_expenses containing your estimated monthly expenses for Housing, Transport, Food, and Entertainment for January, February, and March.\n\n\n\nSolution\n\nimport numpy as np\n\nmonthly_expenses = np.array([\n    [1500, 1500, 1500],  # Housing\n    [300, 250, 350],     # Transport\n    [500, 400, 550],     # Food\n    [200, 150, 250]      # Entertainment\n])\n\n\nCreate a list called cities_to_visit with the names of 5 cities you would like to visit in the United States. Then, create another list called days_per_city with the number of days you would like to spend in each city. Finally, create a third list called daily_cost with the estimated daily cost in each city (in dollars).\n\n\n\nSolution\n\ncities_to_visit = [\"New York\", \"Los Angeles\", \"Chicago\", \"San Francisco\", \"Miami\"]\ndays_per_city = [5, 4, 3, 6, 2]\ndaily_cost = [200, 180, 150, 220, 170]",
+    "crumbs": [
+      "Fundamentals and Key Tools",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Objects</span>"
+    ]
+  },
+  {
+    "objectID": "02-fundamentals/02-functions.html",
+    "href": "02-fundamentals/02-functions.html",
+    "title": "2  Functions",
+    "section": "",
+    "text": "2.1 Introduction to the world of functions\nIn the previous chapter, we explored the different types of objects we can use to store and organize information in Python. We learned to create variables, lists, dictionaries, tuples, and NumPy arrays, and saw how to access their elements and perform operations with them.\nNow, in this chapter, we will go a step further and delve into the world of functions. Functions are one of the fundamental pillars of programming in Python, allowing us to perform more complex tasks and automate our work.",
+    "crumbs": [
+      "Fundamentals and Key Tools",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Functions</span>"
+    ]
+  },
+  {
+    "objectID": "02-fundamentals/02-functions.html#introduction-to-the-world-of-functions",
+    "href": "02-fundamentals/02-functions.html#introduction-to-the-world-of-functions",
+    "title": "2  Functions",
+    "section": "",
+    "text": "2.1.1 What are functions?\nImagine a coffee machine. You provide the ingredients (water, coffee, sugar), and the machine performs a series of steps to produce a cup of coffee. Similarly, a function in Python is a set of instructions that receives input data (the arguments or parameters) and performs a series of operations to produce a result (the return value).\nFunctions allow us to encapsulate a set of instructions into a single block of code, facilitating reuse and code organization. Instead of writing the same instructions over and over again, we can create a function that performs them for us.\n\n\n2.1.2 Why use functions?\nFunctions offer several advantages, starting with Reusability, which allows us to use the same logic in different parts of our code or across projects. They also improve Organization by breaking code into logical blocks, and enhance Readability by keeping scripts concise. Finally, functions provide Abstraction, hiding complex implementation details so we can focus on the problem logic.\n\n\n2.1.3 First functions: exploring basic Python functions\nPython includes a large number of built-in functions. For instance, sum() calculates the total of a list’s elements, while len() tells us how many elements are in a collection.\n\nnumbers = [1, 2, 3, 4, 5]\nprint(sum(numbers))  # Output: 15\n\ntemperatures = [25, 28, 26, 29, 27]\nprint(sum(temperatures) / len(temperatures))  # Mean: 27.0\n\n15\n27.0\n\n\nOther common functions include round(), which limits the number of decimal places, and len(), which tells us how many elements a collection contains.\n\nimport math\nprint(math.pi)  # Output: 3.141592653589793\nprint(round(math.pi, 2))  # Output: 3.14\n\ncities = [\"New York\", \"Los Angeles\", \"Chicago\"]\nprint(len(cities))  # Output: 3\n\n3.141592653589793\n3.14\n3\n\n\nThese are just a few of the many built-in functions that Python offers. As we progress through the book, we will explore more functions and learn how to use them to perform more complex data analysis.",
+    "crumbs": [
+      "Fundamentals and Key Tools",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Functions</span>"
+    ]
+  },
+  {
+    "objectID": "02-fundamentals/02-functions.html#anatomy-of-a-function",
+    "href": "02-fundamentals/02-functions.html#anatomy-of-a-function",
+    "title": "2  Functions",
+    "section": "2.2 Anatomy of a function",
+    "text": "2.2 Anatomy of a function\nIn the previous section, we saw what functions are and why they are so useful in programming. Now, we are going to delve into the structure of a function, so you can create your own functions and automate tasks in your data analysis.\n\n2.2.1 Arguments: the ingredients of the function\nTo make a cup of coffee, you need ingredients: water, coffee, and maybe sugar or milk. Similarly, functions in Python need arguments (also called parameters) to do their job. Arguments are the input data that the function uses to perform its operations.\nA function’s arguments are specified in parentheses after the function name. If a function requires multiple arguments, they are separated by commas.\n\n\n2.2.2 Body: the instructions of the function\nThe body of a function is the set of instructions that are executed when the function is called. The body is defined using indentation (typically 4 spaces).\n\ndef calculate_vacation_cost(ticket_price, num_people, discount=0):\n    \"\"\"Calculate the total cost of a vacation.\"\"\"\n    total_cost = ticket_price * num_people * (1 - discount)\n    return total_cost\n\nNote that in the function definition, the argument discount has a default value of 0. This means that if we do not specify a value for discount when calling the function, the value 0 will be used.\n\n# Call the function without specifying the discount\nprint(calculate_vacation_cost(ticket_price=300, num_people=2))\n\n600\n\n\n\n# Call with a 10% discount\nprint(calculate_vacation_cost(ticket_price=300, num_people=2, discount=0.1))\n\n540.0\n\n\n\n\n2.2.3 Return value: the result of the function\nThe return value is the result the function produces after executing its instructions. In Python, the return value is specified with the return statement. If return is not used, the function returns None.\n\n\n2.2.4 Examples: creating simple functions step by step\nLet’s see an example of how to create a simple function that converts degrees Celsius to Fahrenheit:\n\ndef celsius_to_fahrenheit(celsius):\n    \"\"\"Convert Celsius to Fahrenheit.\"\"\"\n    fahrenheit = (celsius * 9 / 5) + 32\n    return fahrenheit\n\nNow we can use our function to convert temperatures:\n\nprint(celsius_to_fahrenheit(0))    # Output: 32.0\nprint(celsius_to_fahrenheit(100))  # Output: 212.0\n\n32.0\n212.0\n\n\nCongratulations! You just created your first function in Python.",
+    "crumbs": [
+      "Fundamentals and Key Tools",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Functions</span>"
+    ]
+  },
+  {
+    "objectID": "02-fundamentals/02-functions.html#mastering-the-use-of-functions",
+    "href": "02-fundamentals/02-functions.html#mastering-the-use-of-functions",
+    "title": "2  Functions",
+    "section": "2.3 Mastering the use of functions",
+    "text": "2.3 Mastering the use of functions\n\n2.3.1 Functions with a variable number of arguments (*args, **kwargs)\nSometimes, we don’t know beforehand how many arguments a function will receive. Python offers *args for variable positional arguments and **kwargs for variable keyword arguments.\n\ndef calculate_average(*args):\n    \"\"\"Calculate the average of any number of values.\"\"\"\n    if len(args) == 0:\n        return 0\n    return sum(args) / len(args)\n\nprint(calculate_average(1, 2, 3))\nprint(calculate_average(1, 2, 3, 4, 5))\n\n2.0\n3.0\n\n\n\n\n2.3.2 Variable scope: local and global variables\nThe scope of a variable refers to the part of the code where the variable is accessible. Variables defined inside a function have a local scope, meaning they are only accessible within the function. Variables defined outside any function have a global scope.\nBest Practice: Always pass all necessary values as arguments to the function. This makes functions self-contained, testable, and easier to understand.\n\ndef kilometers_to_miles(kilometers, conversion_rate=0.621371):\n    \"\"\"Convert kilometers to miles.\n    \n    Args:\n        kilometers: Distance in kilometers\n        conversion_rate: Conversion factor (default: 0.621371)\n    \"\"\"\n    miles = kilometers * conversion_rate\n    return miles\n\nprint(kilometers_to_miles(100))\n\n62.137100000000004\n\n\n\n\n\n\n\n\nTip\n\n\n\nTip: By using a default argument value, we get the convenience of not having to specify common values while keeping the function self-contained and testable.\n\n\n\n\n2.3.3 Examples: functions to calculate taxes, discounts, etc.\nCalculating shipping cost for a package:\n\ndef calculate_shipping_cost(weight, destination):\n    \"\"\"Calculate shipping cost based on weight and destination.\"\"\"\n    if destination == \"local\":\n        cost = 5 + 0.1 * weight\n    elif destination == \"national\":\n        cost = 10 + 0.2 * weight\n    else:  # international\n        cost = 20 + 0.5 * weight\n    return cost\n\n# Usage example\npackage_weight = 2.5  # Weight in kilograms\ndestination = \"national\"\nshipping_cost = calculate_shipping_cost(package_weight, destination)\nprint(shipping_cost)\n\n10.5\n\n\nCalculating income tax with brackets:\n\ndef calculate_income_tax(income):\n    \"\"\"Calculate income tax based on income brackets.\"\"\"\n    if income &lt;= 10000:\n        rate = 0.10\n    elif income &lt;= 20000:\n        rate = 0.15\n    else:\n        rate = 0.20\n    tax = income * rate\n    return tax\n\n# Usage example\nprint(calculate_income_tax(15000))\n\n2250.0",
+    "crumbs": [
+      "Fundamentals and Key Tools",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Functions</span>"
+    ]
+  },
+  {
+    "objectID": "02-fundamentals/02-functions.html#lambda-functions",
+    "href": "02-fundamentals/02-functions.html#lambda-functions",
+    "title": "2  Functions",
+    "section": "2.4 Lambda functions",
+    "text": "2.4 Lambda functions\nPython supports lambda functions—small anonymous functions defined in a single line:\n\n# Regular function\ndef square(x):\n    return x ** 2\n\n# Equivalent lambda function\nsquare_lambda = lambda x: x ** 2\n\nprint(square(5))\nprint(square_lambda(5))\n\n25\n25\n\n\nLambda functions are particularly useful with higher-order functions like map(), filter(), and sorted().",
+    "crumbs": [
+      "Fundamentals and Key Tools",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Functions</span>"
+    ]
+  },
+  {
+    "objectID": "02-fundamentals/02-functions.html#higher-order-functions",
+    "href": "02-fundamentals/02-functions.html#higher-order-functions",
+    "title": "2  Functions",
+    "section": "2.5 Higher-order functions",
+    "text": "2.5 Higher-order functions\nHigher-order functions are those that can receive other functions as arguments or return a function as a result.\n\n2.5.1 map(): applying a function to each element\n\nnumbers = [1, 2, 3, 4, 5]\n\n# Square each number\nsquares = list(map(lambda x: x ** 2, numbers))\nprint(squares)\n\n[1, 4, 9, 16, 25]\n\n\n\n\n2.5.2 List comprehensions: the Pythonic way\nWhile map() is useful, Python has an even more elegant solution—list comprehensions:\n\nnumbers = [1, 2, 3, 4, 5]\n\n# Square each number\nsquares = [x ** 2 for x in numbers]\nprint(squares)\n\n[1, 4, 9, 16, 25]\n\n\n\n# Filter even numbers and square them\neven_squares = [x ** 2 for x in numbers if x % 2 == 0]\nprint(even_squares)\n\n[4, 16]\n\n\n\n\n2.5.3 filter(): selecting elements\n\nnumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\n\n# Filter even numbers\nevens = list(filter(lambda x: x % 2 == 0, numbers))\nprint(evens)\n\n[2, 4, 6, 8, 10]",
+    "crumbs": [
+      "Fundamentals and Key Tools",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Functions</span>"
+    ]
+  },
+  {
+    "objectID": "02-fundamentals/02-functions.html#error-handling-tryexcept",
+    "href": "02-fundamentals/02-functions.html#error-handling-tryexcept",
+    "title": "2  Functions",
+    "section": "2.6 Error handling: try/except",
+    "text": "2.6 Error handling: try/except\nSometimes, we want our code to continue executing even if an error occurs. Python uses try/except blocks:\n\ndef calculate_growth_rate(initial_population, final_population, years):\n    \"\"\"Calculate annual population growth rate.\"\"\"\n    try:\n        rate = ((final_population / initial_population) ** (1 / years) - 1) * 100\n        return rate\n    except ZeroDivisionError:\n        print(\"Error: Initial population cannot be zero.\")\n        return None\n\nprint(calculate_growth_rate(10000, 12000, 5))\nprint(calculate_growth_rate(0, 12000, 5))\n\n3.713728933664817\nError: Initial population cannot be zero.\nNone",
+    "crumbs": [
+      "Fundamentals and Key Tools",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Functions</span>"
+    ]
+  },
+  {
+    "objectID": "02-fundamentals/02-functions.html#exercises",
+    "href": "02-fundamentals/02-functions.html#exercises",
+    "title": "2  Functions",
+    "section": "2.7 Exercises",
+    "text": "2.7 Exercises\n\nCreate a function called miles_to_kilometers() converting miles to kilometers. The function should receive a miles argument and return the equivalent in kilometers. (Remember that 1 mile equals 1.60934 kilometers).\n\n\n\nSolution\n\ndef miles_to_kilometers(miles):\n    kilometers = miles * 1.60934\n    return kilometers\n\n\nCreate a function called triangle_area() calculating the area of a triangle. The function should receive two arguments: base and height, and return the triangle’s area.\n\n\n\nSolution\n\ndef triangle_area(base, height):\n    area = (base * height) / 2\n    return area\n\n\nCreate a function called price_with_vat() calculating the price of a product including VAT. The function should receive two arguments: price_without_vat and vat_rate (default, 0.16), and return the price with VAT.\n\n\n\nSolution\n\ndef price_with_vat(price_without_vat, vat_rate=0.16):\n    return price_without_vat * (1 + vat_rate)\n\n\nCreate a function called is_even() determining if a number is even. The function should receive a number argument and return True if the number is even and False if not.\n\n\n\nSolution\n\ndef is_even(number):\n    return number % 2 == 0\n\n\nCreate a function called my_factorial() calculating the factorial of a number using recursion.\n\n\n\nSolution\n\ndef my_factorial(n):\n    if n &lt; 0:\n        print(\"Factorial is not defined for negative numbers\")\n        return None\n    if n == 0:\n        return 1\n    else:\n        return n * my_factorial(n - 1)\n\n\nCreate a function called fibonacci() generating a Fibonacci sequence of a given length.\n\n\n\nSolution\n\ndef fibonacci(n):\n    if n &lt;= 0:\n        return []\n    elif n == 1:\n        return [0]\n    elif n == 2:\n        return [0, 1]\n    else:\n        fib_seq = [0, 1]\n        for i in range(2, n):\n            fib_seq.append(fib_seq[i-1] + fib_seq[i-2])\n        return fib_seq",
+    "crumbs": [
+      "Fundamentals and Key Tools",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Functions</span>"
+    ]
+  },
+  {
+    "objectID": "02-fundamentals/03-data-structures.html",
+    "href": "02-fundamentals/03-data-structures.html",
+    "title": "3  Data Structures with pandas",
+    "section": "",
+    "text": "3.1 Introduction to DataFrames\nIn previous chapters, we explored different types of objects in Python, such as variables, lists, dictionaries, and NumPy arrays. These objects allow us to store information in more efficient ways. Now, in this chapter, we will delve into the world of DataFrames, an essential tool for organizing and analyzing information using the pandas library.",
+    "crumbs": [
+      "Fundamentals and Key Tools",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Data Structures with pandas</span>"
+    ]
+  },
+  {
+    "objectID": "02-fundamentals/03-data-structures.html#introduction-to-dataframes",
+    "href": "02-fundamentals/03-data-structures.html#introduction-to-dataframes",
+    "title": "3  Data Structures with pandas",
+    "section": "",
+    "text": "3.1.1 What are DataFrames?\nImagine a spreadsheet, with rows and columns organizing information in a tabular way. In Python, a DataFrame (from the pandas library) is precisely that: a data structure that stores information in a tabular format, with rows representing observations (for example, every US city) and columns representing variables (such as population, cost of living, crime rate).\nEach column of a DataFrame can contain a different data type: numeric, string, boolean, datetime, etc. This makes DataFrames very versatile for storing diverse information.\n\n\n3.1.2 Why DataFrames?\nDataFrames are uniquely suited for data analysis because of their specific features. Their tabular structure organizes data into rows and columns, similar to a spreadsheet, making it intuitive to visualize. They offer flexibility by allowing each column to hold a different data type. This structure also ensures efficiency, as most Python analysis packages are optimized to work directly with DataFrames.",
+    "crumbs": [
+      "Fundamentals and Key Tools",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Data Structures with pandas</span>"
+    ]
+  },
+  {
+    "objectID": "02-fundamentals/03-data-structures.html#creating-dataframes",
+    "href": "02-fundamentals/03-data-structures.html#creating-dataframes",
+    "title": "3  Data Structures with pandas",
+    "section": "3.2 Creating DataFrames",
+    "text": "3.2 Creating DataFrames\n\n3.2.1 Installing and importing pandas\nFirst, let’s import pandas:\n\nimport pandas as pd\nimport numpy as np\n\n\n\n3.2.2 Importing data from files: CSV, Excel\nA common way to create DataFrames is by importing data from external files:\n\n# Import data from a CSV file\nurl = \"https://dparedesi.github.io/Data-Science-with-Python-book/data/student-grades.csv\"\ngrades = pd.read_csv(url)\nprint(grades.head())\n\n   start_date  gender               type  P1  P2  P3  P4  P5  P6\n0  03/05/2020  female  Individual Work 1   5   5   5   5   5   5\n1  03/05/2020    male  Individual Work 1   5   5   5   5   4   5\n2  03/05/2020  female  Individual Work 1   5   5   4   5   5   5\n3  03/05/2020    male  Individual Work 1   5   5   5   5   5   5\n4  03/05/2020    male  Individual Work 1   2   5   5   5   5   5\n\n\nFor Excel files, use pd.read_excel() (requires openpyxl package):\n# Import data from an Excel file\ndf = pd.read_excel(\"states.xlsx\")\n\n\n3.2.3 Creating DataFrames manually\nWe can also create DataFrames manually from dictionaries:\n\n# Create a DataFrame with city information\ndf_cities = pd.DataFrame({\n    \"city\": [\"New York\", \"Los Angeles\", \"Chicago\", \"Houston\"],\n    \"state\": [\"New York\", \"California\", \"Illinois\", \"Texas\"],\n    \"cost_of_living\": [3.5, 2.8, 2.5, 2.0],\n    \"crime_rate\": [400, 350, 500, 450],\n    \"climate\": [\"Temperate\", \"Mediterranean\", \"Continental\", \"Subtropical\"]\n})\n\nprint(df_cities)\n\n          city       state  cost_of_living  crime_rate        climate\n0     New York    New York             3.5         400      Temperate\n1  Los Angeles  California             2.8         350  Mediterranean\n2      Chicago    Illinois             2.5         500    Continental\n3      Houston       Texas             2.0         450    Subtropical",
+    "crumbs": [
+      "Fundamentals and Key Tools",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Data Structures with pandas</span>"
+    ]
+  },
+  {
+    "objectID": "02-fundamentals/03-data-structures.html#exploring-dataframes",
+    "href": "02-fundamentals/03-data-structures.html#exploring-dataframes",
+    "title": "3  Data Structures with pandas",
+    "section": "3.3 Exploring DataFrames",
+    "text": "3.3 Exploring DataFrames\n\n3.3.1 Basic exploration functions\n\n# First rows\nprint(df_cities.head())\n\n          city       state  cost_of_living  crime_rate        climate\n0     New York    New York             3.5         400      Temperate\n1  Los Angeles  California             2.8         350  Mediterranean\n2      Chicago    Illinois             2.5         500    Continental\n3      Houston       Texas             2.0         450    Subtropical\n\n\n\n# Data types and structure\nprint(df_cities.info())\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 4 entries, 0 to 3\nData columns (total 5 columns):\n #   Column          Non-Null Count  Dtype  \n---  ------          --------------  -----  \n 0   city            4 non-null      object \n 1   state           4 non-null      object \n 2   cost_of_living  4 non-null      float64\n 3   crime_rate      4 non-null      int64  \n 4   climate         4 non-null      object \ndtypes: float64(1), int64(1), object(3)\nmemory usage: 288.0+ bytes\nNone\n\n\n\n# Statistical summary\nprint(df_cities.describe())\n\n       cost_of_living  crime_rate\ncount        4.000000    4.000000\nmean         2.700000  425.000000\nstd          0.627163   64.549722\nmin          2.000000  350.000000\n25%          2.375000  387.500000\n50%          2.650000  425.000000\n75%          2.975000  462.500000\nmax          3.500000  500.000000\n\n\n\n\n3.3.2 Accessing rows, columns, and cells\n\n# Access a column\nprint(df_cities[\"state\"])\n\n0      New York\n1    California\n2      Illinois\n3         Texas\nName: state, dtype: object\n\n\n\n# Access multiple columns\nprint(df_cities[[\"city\", \"state\"]])\n\n          city       state\n0     New York    New York\n1  Los Angeles  California\n2      Chicago    Illinois\n3      Houston       Texas\n\n\n\n# Access by row index with .iloc\nprint(df_cities.iloc[0])  # First row\n\ncity               New York\nstate              New York\ncost_of_living          3.5\ncrime_rate              400\nclimate           Temperate\nName: 0, dtype: object\n\n\n\n# Access specific cell\nprint(df_cities.iloc[1, 2])  # Row 1, Column 2\n\n2.8",
+    "crumbs": [
+      "Fundamentals and Key Tools",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Data Structures with pandas</span>"
+    ]
+  },
+  {
+    "objectID": "02-fundamentals/03-data-structures.html#manipulating-dataframes",
+    "href": "02-fundamentals/03-data-structures.html#manipulating-dataframes",
+    "title": "3  Data Structures with pandas",
+    "section": "3.4 Manipulating DataFrames",
+    "text": "3.4 Manipulating DataFrames\n\n3.4.1 Method chaining: the pandas way\npandas encourages method chaining, where operations are strung together in sequence. This is similar to the pipe operator in R:\n\n# Method chaining example\nresult = (df_cities\n    .query(\"cost_of_living &lt; 3\")\n    [[\"city\", \"cost_of_living\"]]\n    .sort_values(\"cost_of_living\"))\n\nprint(result)\n\n          city  cost_of_living\n3      Houston             2.0\n2      Chicago             2.5\n1  Los Angeles             2.8\n\n\n\n\n3.4.2 Creating new columns with assign()\n\n# Load murders dataset (simulating the R dslabs dataset)\nmurders = pd.DataFrame({\n    \"state\": [\"Alabama\", \"Alaska\", \"Arizona\", \"Arkansas\", \"California\",\n              \"Colorado\", \"Connecticut\", \"Delaware\", \"Florida\", \"Georgia\"],\n    \"abb\": [\"AL\", \"AK\", \"AZ\", \"AR\", \"CA\", \"CO\", \"CT\", \"DE\", \"FL\", \"GA\"],\n    \"region\": [\"South\", \"West\", \"West\", \"South\", \"West\", \n               \"West\", \"Northeast\", \"South\", \"South\", \"South\"],\n    \"population\": [4779736, 710231, 6392017, 2915918, 37253956,\n                   5029196, 3574097, 897934, 18801310, 9687653],\n    \"total\": [135, 19, 232, 93, 1257, 65, 97, 38, 669, 376]\n})\n\n# Add ratio column\nmurders = murders.assign(\n    ratio=lambda df: df[\"total\"] / df[\"population\"] * 100000\n)\n\nprint(murders.head())\n\n        state abb region  population  total     ratio\n0     Alabama  AL  South     4779736    135  2.824424\n1      Alaska  AK   West      710231     19  2.675186\n2     Arizona  AZ   West     6392017    232  3.629527\n3    Arkansas  AR  South     2915918     93  3.189390\n4  California  CA   West    37253956   1257  3.374138\n\n\n\n\n3.4.3 Filtering data with query()\n\n# Filter states with ratio &lt; 1\nprint(murders.query(\"ratio &lt; 1\"))\n\nEmpty DataFrame\nColumns: [state, abb, region, population, total, ratio]\nIndex: []\n\n\n\n# Filter with multiple conditions\nprint(murders.query(\"ratio &lt; 3 and region == 'West'\"))\n\n      state abb region  population  total     ratio\n1    Alaska  AK   West      710231     19  2.675186\n5  Colorado  CO   West     5029196     65  1.292453\n\n\n\n\n3.4.4 Sorting data with sort_values()\n\n# Sort by ratio (ascending)\nprint(murders.sort_values(\"ratio\").head())\n\n         state abb     region  population  total     ratio\n5     Colorado  CO       West     5029196     65  1.292453\n1       Alaska  AK       West      710231     19  2.675186\n6  Connecticut  CT  Northeast     3574097     97  2.713972\n0      Alabama  AL      South     4779736    135  2.824424\n3     Arkansas  AR      South     2915918     93  3.189390\n\n\n\n# Sort by ratio (descending)\nprint(murders.sort_values(\"ratio\", ascending=False).head())\n\n        state abb region  population  total     ratio\n7    Delaware  DE  South      897934     38  4.231937\n9     Georgia  GA  South     9687653    376  3.881229\n2     Arizona  AZ   West     6392017    232  3.629527\n8     Florida  FL  South    18801310    669  3.558263\n4  California  CA   West    37253956   1257  3.374138\n\n\n\n\n3.4.5 Aggregating with groupby()\n\n# Group by region and calculate mean population\nprint(murders.groupby(\"region\")[\"population\"].mean())\n\nregion\nNortheast     3574097.0\nSouth         7416510.2\nWest         12346350.0\nName: population, dtype: float64\n\n\n\n# Multiple aggregations\nprint(murders.groupby(\"region\").agg({\n    \"population\": \"mean\",\n    \"total\": \"sum\",\n    \"ratio\": \"mean\"\n}))\n\n           population  total     ratio\nregion                                \nNortheast   3574097.0     97  2.713972\nSouth       7416510.2   1311  3.537048\nWest       12346350.0   1573  2.742826\n\n\n\n\n3.4.6 Joining DataFrames with merge()\n\n# Create sample DataFrames\ndf_cities = pd.DataFrame({\n    \"city\": [\"New York\", \"Los Angeles\", \"Chicago\", \"Houston\"],\n    \"state\": [\"New York\", \"California\", \"Illinois\", \"Texas\"]\n})\n\ndf_states = pd.DataFrame({\n    \"state\": [\"California\", \"Texas\", \"Florida\"],\n    \"governor\": [\"Gavin Newsom\", \"Greg Abbott\", \"Ron DeSantis\"]\n})\n\n# Left join\ndf_merged = pd.merge(df_cities, df_states, on=\"state\", how=\"left\")\nprint(df_merged)\n\n          city       state      governor\n0     New York    New York           NaN\n1  Los Angeles  California  Gavin Newsom\n2      Chicago    Illinois           NaN\n3      Houston       Texas   Greg Abbott",
+    "crumbs": [
+      "Fundamentals and Key Tools",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Data Structures with pandas</span>"
+    ]
+  },
+  {
+    "objectID": "02-fundamentals/03-data-structures.html#data-visualization-with-dataframes",
+    "href": "02-fundamentals/03-data-structures.html#data-visualization-with-dataframes",
+    "title": "3  Data Structures with pandas",
+    "section": "3.5 Data Visualization with DataFrames",
+    "text": "3.5 Data Visualization with DataFrames\n\n3.5.1 Scatter plots\n\nimport matplotlib.pyplot as plt\n\nx_axis = murders[\"population\"] / 1e6  # Population in millions\ny_axis = murders[\"total\"]\n\nplt.figure(figsize=(5, 3.5))\nplt.scatter(x_axis, y_axis)\nplt.xlabel(\"Population (millions)\")\nplt.ylabel(\"Total Murders\")\nplt.title(\"Population vs Total Murders\")\nplt.show()\n\n\n\n\n\n\n\n\n\n\n3.5.2 Histograms\n\nplt.figure(figsize=(5, 3.5))\nplt.hist(murders[\"ratio\"], bins=10, edgecolor=\"black\")\nplt.xlabel(\"Murder Rate (per 100,000)\")\nplt.ylabel(\"Frequency\")\nplt.title(\"Distribution of Murder Rates\")\nplt.show()\n\n\n\n\n\n\n\n\n\n\n3.5.3 Box plots\n\nplt.figure(figsize=(5, 3.5))\nplt.boxplot(murders[\"ratio\"])\nplt.ylabel(\"Murder Rate (per 100,000)\")\nplt.title(\"Box Plot of Murder Rates\")\nplt.show()",
+    "crumbs": [
+      "Fundamentals and Key Tools",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Data Structures with pandas</span>"
+    ]
+  },
+  {
+    "objectID": "02-fundamentals/03-data-structures.html#data-interpretation",
+    "href": "02-fundamentals/03-data-structures.html#data-interpretation",
+    "title": "3  Data Structures with pandas",
+    "section": "3.6 Data Interpretation",
+    "text": "3.6 Data Interpretation\n\n3.6.1 Understanding describe()\n\nprint(murders[\"total\"].describe())\n\ncount      10.000000\nmean      298.100000\nstd       391.079262\nmin        19.000000\n25%        72.000000\n50%       116.000000\n75%       340.000000\nmax      1257.000000\nName: total, dtype: float64\n\n\nThe summary provides key insights: - count: number of non-null values - mean: arithmetic average - std: standard deviation - min/max: range of data - 25%/50%/75%: quartiles (50% is the median)\n\n\n3.6.2 Quartiles and percentiles\n\n# Calculate specific percentiles\nprint(murders[\"total\"].quantile([0.25, 0.5, 0.75]))\n\n0.25     72.0\n0.50    116.0\n0.75    340.0\nName: total, dtype: float64",
+    "crumbs": [
+      "Fundamentals and Key Tools",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Data Structures with pandas</span>"
+    ]
+  },
+  {
+    "objectID": "02-fundamentals/03-data-structures.html#exercises",
+    "href": "02-fundamentals/03-data-structures.html#exercises",
+    "title": "3  Data Structures with pandas",
+    "section": "3.7 Exercises",
+    "text": "3.7 Exercises\n\nCreate a DataFrame called my_expenses with columns for category (Housing, Transport, Food, Entertainment) and expenses for January, February, and March.\n\n\n\nSolution\n\nmy_expenses = pd.DataFrame({\n    \"category\": [\"Housing\", \"Transport\", \"Food\", \"Entertainment\"],\n    \"january\": [1500, 300, 500, 200],\n    \"february\": [1500, 250, 400, 150],\n    \"march\": [1500, 350, 550, 250]\n})\n\n\nUse head(), tail(), info() and describe() to explore the my_expenses DataFrame.\n\n\n\nSolution\n\nprint(my_expenses.head())\nprint(my_expenses.tail())\nprint(my_expenses.info())\nprint(my_expenses.describe())\n\n\nFilter my_expenses to get only rows where expenses in January are greater than 400.\n\n\n\nSolution\n\nmy_expenses.query(\"january &gt; 400\")\n\n\nAdd a column called total containing the sum of January, February, and March expenses.\n\n\n\nSolution\n\nmy_expenses = my_expenses.assign(\n    total=lambda df: df[\"january\"] + df[\"february\"] + df[\"march\"]\n)\n\n\nSort the DataFrame by total expenses in descending order.\n\n\n\nSolution\n\nmy_expenses.sort_values(\"total\", ascending=False)",
+    "crumbs": [
+      "Fundamentals and Key Tools",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Data Structures with pandas</span>"
+    ]
+  },
+  {
+    "objectID": "02-fundamentals/04-advanced-techniques.html",
+    "href": "02-fundamentals/04-advanced-techniques.html",
+    "title": "4  Advanced Techniques",
+    "section": "",
+    "text": "4.1 Metaprogramming: dynamic code generation\nIn previous chapters, we explored different object types in Python and how to use functions to manipulate them. Now, we are going to delve into a more advanced concept that Python excels at: metaprogramming and dynamic code generation.\nMetaprogramming is a technique that allows us to write code that generates or manipulates other code. In Python, this is facilitated through its dynamic nature and powerful introspection capabilities.",
+    "crumbs": [
+      "Fundamentals and Key Tools",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Advanced Techniques</span>"
+    ]
+  },
+  {
+    "objectID": "02-fundamentals/04-advanced-techniques.html#metaprogramming-dynamic-code-generation",
+    "href": "02-fundamentals/04-advanced-techniques.html#metaprogramming-dynamic-code-generation",
+    "title": "4  Advanced Techniques",
+    "section": "",
+    "text": "4.1.1 Dynamic attribute access\nPython allows us to access and modify attributes dynamically using getattr(), setattr(), and hasattr():\n\nclass City:\n    def __init__(self, name, population):\n        self.name = name\n        self.population = population\n\ncity = City(\"Seattle\", 724745)\n\n# Dynamic attribute access\nattr_name = \"population\"\nprint(getattr(city, attr_name))  # Output: 724745\n\n# Dynamic attribute setting\nsetattr(city, \"area\", 217)\nprint(city.area)  # Output: 217\n\n724745\n217\n\n\n\n\n4.1.2 Creating functions dynamically\nPython’s lambda expressions and closures enable dynamic function creation:\n\ndef create_multiplier(n):\n    \"\"\"Create a function that multiplies by n.\"\"\"\n    return lambda x: x * n\n\nmultiply_by_5 = create_multiplier(5)\nmultiply_by_10 = create_multiplier(10)\n\nprint(multiply_by_5(10))   # Output: 50\nprint(multiply_by_10(10))  # Output: 100\n\n50\n100\n\n\n\n\n4.1.3 Decorators: modifying function behavior\nDecorators are a powerful Python feature for modifying or enhancing functions:\n\nimport time\n\ndef timer(func):\n    \"\"\"Decorator that measures execution time.\"\"\"\n    def wrapper(*args, **kwargs):\n        start = time.time()\n        result = func(*args, **kwargs)\n        end = time.time()\n        print(f\"{func.__name__} took {end - start:.4f} seconds\")\n        return result\n    return wrapper\n\n@timer\ndef slow_function():\n    time.sleep(0.1)\n    return \"Done\"\n\nresult = slow_function()\n\nslow_function took 0.1008 seconds",
+    "crumbs": [
+      "Fundamentals and Key Tools",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Advanced Techniques</span>"
+    ]
+  },
+  {
+    "objectID": "02-fundamentals/04-advanced-techniques.html#functional-programming",
+    "href": "02-fundamentals/04-advanced-techniques.html#functional-programming",
+    "title": "4  Advanced Techniques",
+    "section": "4.2 Functional programming",
+    "text": "4.2 Functional programming\nFunctional programming is a programming style based on the use of pure functions and data immutability.\n\n4.2.1 Pure functions\nA pure function always produces the same output for the same input and has no side effects:\n\n# Pure function - always returns same result for same input\ndef add(a, b):\n    return a + b\n\nprint(add(2, 3))  # Always returns 5\nprint(add(2, 3))  # Always returns 5\n\n5\n5\n\n\n\n\n4.2.2 Immutability\nInstead of modifying data, we create new objects:\n\n# Instead of modifying a list, create a new one\noriginal = [1, 2, 3]\nnew_list = original + [4]  # Creates new list\n\nprint(f\"Original: {original}\")\nprint(f\"New: {new_list}\")\n\nOriginal: [1, 2, 3]\nNew: [1, 2, 3, 4]\n\n\n\n\n4.2.3 Higher-order functions with functools\nThe functools module provides tools for functional programming:\n\nfrom functools import reduce\n\nnumbers = [1, 2, 3, 4, 5]\n\n# map: apply function to each element\nsquares = list(map(lambda x: x**2, numbers))\nprint(f\"Squares: {squares}\")\n\n# filter: keep elements that satisfy condition\nevens = list(filter(lambda x: x % 2 == 0, numbers))\nprint(f\"Evens: {evens}\")\n\n# reduce: accumulate values\ntotal = reduce(lambda a, b: a + b, numbers)\nprint(f\"Sum: {total}\")\n\nSquares: [1, 4, 9, 16, 25]\nEvens: [2, 4]\nSum: 15\n\n\n\n\n4.2.4 Combining functional operations\n\nnumbers = [1, 2, 3, 4, 5]\n\n# Sum of squares of even numbers\nresult = reduce(\n    lambda a, b: a + b,\n    map(lambda x: x**2, filter(lambda x: x % 2 == 0, numbers))\n)\nprint(result)  # 4 + 16 = 20\n\n20\n\n\nOr more Pythonically with comprehensions:\n\nresult = sum(x**2 for x in numbers if x % 2 == 0)\nprint(result)  # 20\n\n20",
+    "crumbs": [
+      "Fundamentals and Key Tools",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Advanced Techniques</span>"
+    ]
+  },
+  {
+    "objectID": "02-fundamentals/04-advanced-techniques.html#object-oriented-programming-in-python",
+    "href": "02-fundamentals/04-advanced-techniques.html#object-oriented-programming-in-python",
+    "title": "4  Advanced Techniques",
+    "section": "4.3 Object-Oriented Programming in Python",
+    "text": "4.3 Object-Oriented Programming in Python\nPython has excellent support for Object-Oriented Programming (OOP). For a detailed introduction to Python’s class system, please refer to Appendix B: OOP Introduction.\nHere’s a quick preview:\n\nclass DataAnalyzer:\n    \"\"\"A simple data analyzer class.\"\"\"\n    \n    def __init__(self, data):\n        self.data = data\n    \n    def mean(self):\n        return sum(self.data) / len(self.data)\n    \n    def summary(self):\n        return {\n            \"mean\": self.mean(),\n            \"min\": min(self.data),\n            \"max\": max(self.data),\n            \"count\": len(self.data)\n        }\n\nanalyzer = DataAnalyzer([1, 2, 3, 4, 5])\nprint(analyzer.summary())\n\n{'mean': 3.0, 'min': 1, 'max': 5, 'count': 5}",
+    "crumbs": [
+      "Fundamentals and Key Tools",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Advanced Techniques</span>"
+    ]
+  },
+  {
+    "objectID": "02-fundamentals/04-advanced-techniques.html#exercises",
+    "href": "02-fundamentals/04-advanced-techniques.html#exercises",
+    "title": "4  Advanced Techniques",
+    "section": "4.4 Exercises",
+    "text": "4.4 Exercises\n\nCreate an expression that calculates the sum of two variables a and b, then evaluate it.\n\n\n\nSolution\n\na = 5\nb = 10\nresult = a + b\nprint(result)  # 15\n\n\nCreate a function create_power_function(n) that returns a new function capable of raising its input to the power of n.\n\n\n\nSolution\n\ndef create_power_function(n):\n    return lambda x: x ** n\n\nsquare = create_power_function(2)\ncube = create_power_function(3)\n\nprint(square(4))  # 16\nprint(cube(4))    # 64\n\n\nUse map(), filter(), and reduce() to calculate the product of all even numbers in a list.\n\n\n\nSolution\n\nfrom functools import reduce\n\nnumbers = [1, 2, 3, 4, 5, 6]\nresult = reduce(lambda a, b: a * b, filter(lambda x: x % 2 == 0, numbers))\nprint(result)  # 2 * 4 * 6 = 48\n\n\nCreate a decorator called debug that prints the function name and arguments before each call.\n\n\n\nSolution\n\ndef debug(func):\n    def wrapper(*args, **kwargs):\n        print(f\"Calling {func.__name__} with args={args}, kwargs={kwargs}\")\n        return func(*args, **kwargs)\n    return wrapper\n\n@debug\ndef add(a, b):\n    return a + b\n\nresult = add(2, 3)",
+    "crumbs": [
+      "Fundamentals and Key Tools",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Advanced Techniques</span>"
+    ]
+  },
+  {
+    "objectID": "03-visualization/matplotlib-seaborn.html",
+    "href": "03-visualization/matplotlib-seaborn.html",
+    "title": "5  Data Visualization with matplotlib and seaborn",
+    "section": "",
+    "text": "5.1 Introduction to Data Visualization in Python\nData visualization is a crucial skill in data science. In Python, we have several powerful libraries for creating visualizations:\nIn this chapter, we’ll focus on matplotlib and seaborn, which together provide everything you need for publication-quality static visualizations.\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nimport pandas as pd\nimport numpy as np\n\n# Set the style\nsns.set_theme(style=\"whitegrid\")",
+    "crumbs": [
+      "Data Visualization and Summarization",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Data Visualization with matplotlib and seaborn</span>"
+    ]
+  },
+  {
+    "objectID": "03-visualization/matplotlib-seaborn.html#introduction-to-data-visualization-in-python",
+    "href": "03-visualization/matplotlib-seaborn.html#introduction-to-data-visualization-in-python",
+    "title": "5  Data Visualization with matplotlib and seaborn",
+    "section": "",
+    "text": "matplotlib: The foundational plotting library\nseaborn: Built on matplotlib, provides statistical visualizations\nplotly: For interactive visualizations",
+    "crumbs": [
+      "Data Visualization and Summarization",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Data Visualization with matplotlib and seaborn</span>"
+    ]
+  },
+  {
+    "objectID": "03-visualization/matplotlib-seaborn.html#the-grammar-of-graphics",
+    "href": "03-visualization/matplotlib-seaborn.html#the-grammar-of-graphics",
+    "title": "5  Data Visualization with matplotlib and seaborn",
+    "section": "5.2 The Grammar of Graphics",
+    "text": "5.2 The Grammar of Graphics\nWhile R’s ggplot2 follows an explicit “grammar of graphics” approach, matplotlib and seaborn take a more imperative approach. However, seaborn provides a high-level interface that’s conceptually similar to ggplot2.\n\n5.2.1 Creating a basic plot\n\n# Create sample data\nnp.random.seed(42)\ndata = pd.DataFrame({\n    'x': np.random.randn(100),\n    'y': np.random.randn(100),\n    'category': np.random.choice(['A', 'B', 'C'], 100)\n})\n\n# Basic scatter plot with matplotlib\nplt.figure(figsize=(5, 3.5))\nplt.scatter(data['x'], data['y'])\nplt.xlabel('X Variable')\nplt.ylabel('Y Variable')\nplt.title('Simple Scatter Plot')\nplt.show()\n\n\n\n\n\n\n\n\n\n\n5.2.2 Using seaborn for enhanced plots\n\n# Seaborn scatter plot with color by category\nplt.figure(figsize=(5, 3.5))\nsns.scatterplot(data=data, x='x', y='y', hue='category')\nplt.title('Scatter Plot by Category')\nplt.show()",
+    "crumbs": [
+      "Data Visualization and Summarization",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Data Visualization with matplotlib and seaborn</span>"
+    ]
+  },
+  {
+    "objectID": "03-visualization/matplotlib-seaborn.html#common-plot-types",
+    "href": "03-visualization/matplotlib-seaborn.html#common-plot-types",
+    "title": "5  Data Visualization with matplotlib and seaborn",
+    "section": "5.3 Common Plot Types",
+    "text": "5.3 Common Plot Types\n\n5.3.1 Line plots\n\n# Time series data\ndates = pd.date_range('2023-01-01', periods=100)\nvalues = np.cumsum(np.random.randn(100))\n\nplt.figure(figsize=(10, 6))\nplt.plot(dates, values)\nplt.xlabel('Date')\nplt.ylabel('Value')\nplt.title('Time Series')\nplt.xticks(rotation=45)\nplt.tight_layout()\nplt.show()\n\n\n\n\n\n\n\n\n\n\n5.3.2 Bar charts\n\n# Category data\ncategories = ['A', 'B', 'C', 'D', 'E']\nvalues = [25, 40, 30, 55, 45]\n\nplt.figure(figsize=(5, 3.5))\nsns.barplot(x=categories, y=values)\nplt.xlabel('Category')\nplt.ylabel('Value')\nplt.title('Bar Chart')\nplt.show()\n\n\n\n\n\n\n\n\n\n\n5.3.3 Histograms\n\n# Distribution of data\ndata_sample = np.random.normal(loc=50, scale=10, size=1000)\n\nplt.figure(figsize=(5, 3.5))\nsns.histplot(data_sample, bins=30, kde=True)\nplt.xlabel('Value')\nplt.ylabel('Frequency')\nplt.title('Histogram with KDE')\nplt.show()\n\n\n\n\n\n\n\n\n\n\n5.3.4 Box plots\n\n# Create data for multiple groups\ndf = pd.DataFrame({\n    'group': np.repeat(['A', 'B', 'C', 'D'], 50),\n    'value': np.concatenate([\n        np.random.normal(50, 5, 50),\n        np.random.normal(60, 8, 50),\n        np.random.normal(55, 6, 50),\n        np.random.normal(65, 7, 50)\n    ])\n})\n\nplt.figure(figsize=(5, 3.5))\nsns.boxplot(data=df, x='group', y='value')\nplt.xlabel('Group')\nplt.ylabel('Value')\nplt.title('Box Plot by Group')\nplt.show()\n\n\n\n\n\n\n\n\n\n\n5.3.5 Violin plots\n\nplt.figure(figsize=(5, 3.5))\nsns.violinplot(data=df, x='group', y='value')\nplt.xlabel('Group')\nplt.ylabel('Value')\nplt.title('Violin Plot by Group')\nplt.show()",
+    "crumbs": [
+      "Data Visualization and Summarization",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Data Visualization with matplotlib and seaborn</span>"
+    ]
+  },
+  {
+    "objectID": "03-visualization/matplotlib-seaborn.html#customizing-visualizations",
+    "href": "03-visualization/matplotlib-seaborn.html#customizing-visualizations",
+    "title": "5  Data Visualization with matplotlib and seaborn",
+    "section": "5.4 Customizing Visualizations",
+    "text": "5.4 Customizing Visualizations\n\n5.4.1 Colors and palettes\n\n# Using color palettes\nplt.figure(figsize=(5, 3.5))\nsns.barplot(x=categories, y=values, palette='viridis')\nplt.title('Bar Chart with Viridis Palette')\nplt.show()\n\n\n\n\n\n\n\n\n\n\n5.4.2 Multiple subplots\n\nfig, axes = plt.subplots(2, 2, figsize=(12, 10))\n\n# Plot 1: Scatter\nsns.scatterplot(data=data, x='x', y='y', ax=axes[0, 0])\naxes[0, 0].set_title('Scatter Plot')\n\n# Plot 2: Histogram\nsns.histplot(data['x'], ax=axes[0, 1])\naxes[0, 1].set_title('Histogram')\n\n# Plot 3: Box plot\nsns.boxplot(data=df, x='group', y='value', ax=axes[1, 0])\naxes[1, 0].set_title('Box Plot')\n\n# Plot 4: Line plot\naxes[1, 1].plot(range(50), np.cumsum(np.random.randn(50)))\naxes[1, 1].set_title('Line Plot')\n\nplt.tight_layout()\nplt.show()\n\n\n\n\n\n\n\n\n\n\n5.4.3 FacetGrid for small multiples\n\n# Create a faceted plot\ntips = sns.load_dataset('tips')\n\ng = sns.FacetGrid(tips, col='time', row='sex')\ng.map(sns.histplot, 'total_bill')\nplt.show()",
+    "crumbs": [
+      "Data Visualization and Summarization",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Data Visualization with matplotlib and seaborn</span>"
+    ]
+  },
+  {
+    "objectID": "03-visualization/matplotlib-seaborn.html#statistical-visualizations",
+    "href": "03-visualization/matplotlib-seaborn.html#statistical-visualizations",
+    "title": "5  Data Visualization with matplotlib and seaborn",
+    "section": "5.5 Statistical Visualizations",
+    "text": "5.5 Statistical Visualizations\n\n5.5.1 Regression plots\n\nplt.figure(figsize=(5, 3.5))\nsns.regplot(data=data, x='x', y='y')\nplt.title('Scatter Plot with Regression Line')\nplt.show()\n\n\n\n\n\n\n\n\n\n\n5.5.2 Correlation heatmaps\n\n# Create correlation matrix\nnp.random.seed(42)\ncorr_data = pd.DataFrame({\n    'A': np.random.randn(100),\n    'B': np.random.randn(100),\n    'C': np.random.randn(100),\n    'D': np.random.randn(100)\n})\ncorr_data['E'] = corr_data['A'] * 0.8 + np.random.randn(100) * 0.2\n\ncorr_matrix = corr_data.corr()\n\nplt.figure(figsize=(5, 3.5))\nsns.heatmap(corr_matrix, annot=True, cmap='coolwarm', center=0)\nplt.title('Correlation Heatmap')\nplt.show()\n\n\n\n\n\n\n\n\n\n\n5.5.3 Pair plots\n\n# Pair plot for exploring relationships\niris = sns.load_dataset('iris')\nsns.pairplot(iris, hue='species')\nplt.show()",
+    "crumbs": [
+      "Data Visualization and Summarization",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Data Visualization with matplotlib and seaborn</span>"
+    ]
+  },
+  {
+    "objectID": "03-visualization/matplotlib-seaborn.html#saving-figures",
+    "href": "03-visualization/matplotlib-seaborn.html#saving-figures",
+    "title": "5  Data Visualization with matplotlib and seaborn",
+    "section": "5.6 Saving Figures",
+    "text": "5.6 Saving Figures\n\n# Save a figure\nfig, ax = plt.subplots(figsize=(5, 3.5))\nsns.scatterplot(data=data, x='x', y='y', ax=ax)\nax.set_title('My Plot')\n\n# Save in different formats\nfig.savefig('my_plot.png', dpi=300, bbox_inches='tight')\nfig.savefig('my_plot.pdf', bbox_inches='tight')\nfig.savefig('my_plot.svg', bbox_inches='tight')",
+    "crumbs": [
+      "Data Visualization and Summarization",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Data Visualization with matplotlib and seaborn</span>"
+    ]
+  },
+  {
+    "objectID": "03-visualization/matplotlib-seaborn.html#exercises",
+    "href": "03-visualization/matplotlib-seaborn.html#exercises",
+    "title": "5  Data Visualization with matplotlib and seaborn",
+    "section": "5.7 Exercises",
+    "text": "5.7 Exercises\n\nCreate a scatter plot of any two numeric variables with different colors for different categories.\nCreate a histogram showing the distribution of a variable, with a kernel density estimate overlay.\nCreate a figure with 4 subplots showing different types of visualizations.\nCreate a heatmap showing correlations between variables in a dataset.",
+    "crumbs": [
+      "Data Visualization and Summarization",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Data Visualization with matplotlib and seaborn</span>"
+    ]
+  },
+  {
+    "objectID": "03-visualization/gapminder.html",
+    "href": "03-visualization/gapminder.html",
+    "title": "6  Gapminder Case Study",
+    "section": "",
+    "text": "6.1 Introduction\nIn this chapter, we’ll apply our visualization skills to explore the famous Gapminder dataset. This dataset contains information about countries over time, including population, life expectancy, and GDP per capita.\nimport pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport seaborn as sns\n\n# Load gapminder data from plotly\nimport plotly.express as px\ngapminder = px.data.gapminder()\n\nprint(gapminder.head())\n\n       country continent  year  lifeExp       pop   gdpPercap iso_alpha  \\\n0  Afghanistan      Asia  1952   28.801   8425333  779.445314       AFG   \n1  Afghanistan      Asia  1957   30.332   9240934  820.853030       AFG   \n2  Afghanistan      Asia  1962   31.997  10267083  853.100710       AFG   \n3  Afghanistan      Asia  1967   34.020  11537966  836.197138       AFG   \n4  Afghanistan      Asia  1972   36.088  13079460  739.981106       AFG   \n\n   iso_num  \n0        4  \n1        4  \n2        4  \n3        4  \n4        4\nprint(gapminder.info())\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 1704 entries, 0 to 1703\nData columns (total 8 columns):\n #   Column     Non-Null Count  Dtype  \n---  ------     --------------  -----  \n 0   country    1704 non-null   object \n 1   continent  1704 non-null   object \n 2   year       1704 non-null   int64  \n 3   lifeExp    1704 non-null   float64\n 4   pop        1704 non-null   int64  \n 5   gdpPercap  1704 non-null   float64\n 6   iso_alpha  1704 non-null   object \n 7   iso_num    1704 non-null   int64  \ndtypes: float64(2), int64(3), object(3)\nmemory usage: 106.6+ KB\nNone",
+    "crumbs": [
+      "Data Visualization and Summarization",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Gapminder Case Study</span>"
+    ]
+  },
+  {
+    "objectID": "03-visualization/gapminder.html#exploring-the-data",
+    "href": "03-visualization/gapminder.html#exploring-the-data",
+    "title": "6  Gapminder Case Study",
+    "section": "6.2 Exploring the Data",
+    "text": "6.2 Exploring the Data\n\n6.2.1 Countries and continents\n\nprint(f\"Number of countries: {gapminder['country'].nunique()}\")\nprint(f\"Continents: {gapminder['continent'].unique()}\")\nprint(f\"Years: {sorted(gapminder['year'].unique())}\")\n\nNumber of countries: 142\nContinents: ['Asia' 'Europe' 'Africa' 'Americas' 'Oceania']\nYears: [np.int64(1952), np.int64(1957), np.int64(1962), np.int64(1967), np.int64(1972), np.int64(1977), np.int64(1982), np.int64(1987), np.int64(1992), np.int64(1997), np.int64(2002), np.int64(2007)]\n\n\n\n\n6.2.2 Summary statistics\n\nprint(gapminder.describe())\n\n             year      lifeExp           pop      gdpPercap      iso_num\ncount  1704.00000  1704.000000  1.704000e+03    1704.000000  1704.000000\nmean   1979.50000    59.474439  2.960121e+07    7215.327081   425.880282\nstd      17.26533    12.917107  1.061579e+08    9857.454543   248.305709\nmin    1952.00000    23.599000  6.001100e+04     241.165876     4.000000\n25%    1965.75000    48.198000  2.793664e+06    1202.060309   208.000000\n50%    1979.50000    60.712500  7.023596e+06    3531.846989   410.000000\n75%    1993.25000    70.845500  1.958522e+07    9325.462346   638.000000\nmax    2007.00000    82.603000  1.318683e+09  113523.132900   894.000000",
+    "crumbs": [
+      "Data Visualization and Summarization",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Gapminder Case Study</span>"
+    ]
+  },
+  {
+    "objectID": "03-visualization/gapminder.html#visualizing-life-expectancy-over-time",
+    "href": "03-visualization/gapminder.html#visualizing-life-expectancy-over-time",
+    "title": "6  Gapminder Case Study",
+    "section": "6.3 Visualizing Life Expectancy Over Time",
+    "text": "6.3 Visualizing Life Expectancy Over Time\n\n6.3.1 Global trend\n\n# Average life expectancy over time\nyearly_avg = gapminder.groupby('year')['lifeExp'].mean().reset_index()\n\nplt.figure(figsize=(10, 6))\nplt.plot(yearly_avg['year'], yearly_avg['lifeExp'], marker='o')\nplt.xlabel('Year')\nplt.ylabel('Average Life Expectancy')\nplt.title('Global Average Life Expectancy Over Time')\nplt.grid(True, alpha=0.3)\nplt.show()\n\n\n\n\n\n\n\n\n\n\n6.3.2 By continent\n\n# Life expectancy by continent over time\nplt.figure(figsize=(12, 6))\nfor continent in gapminder['continent'].unique():\n    data = gapminder[gapminder['continent'] == continent]\n    yearly = data.groupby('year')['lifeExp'].mean()\n    plt.plot(yearly.index, yearly.values, label=continent, marker='o')\n\nplt.xlabel('Year')\nplt.ylabel('Average Life Expectancy')\nplt.title('Life Expectancy by Continent')\nplt.legend()\nplt.grid(True, alpha=0.3)\nplt.show()",
+    "crumbs": [
+      "Data Visualization and Summarization",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Gapminder Case Study</span>"
+    ]
+  },
+  {
+    "objectID": "03-visualization/gapminder.html#gdp-and-life-expectancy",
+    "href": "03-visualization/gapminder.html#gdp-and-life-expectancy",
+    "title": "6  Gapminder Case Study",
+    "section": "6.4 GDP and Life Expectancy",
+    "text": "6.4 GDP and Life Expectancy\n\n6.4.1 The wealth-health relationship\n\n# 2007 data\ndata_2007 = gapminder[gapminder['year'] == 2007]\n\nplt.figure(figsize=(12, 8))\nsns.scatterplot(\n    data=data_2007,\n    x='gdpPercap',\n    y='lifeExp',\n    size='pop',\n    hue='continent',\n    sizes=(20, 1000),\n    alpha=0.7\n)\nplt.xscale('log')\nplt.xlabel('GDP per Capita (log scale)')\nplt.ylabel('Life Expectancy')\nplt.title('Wealth vs Health (2007)')\nplt.legend(bbox_to_anchor=(1.05, 1), loc='upper left')\nplt.tight_layout()\nplt.show()\n\n\n\n\n\n\n\n\n\n\n6.4.2 Interactive visualization with Plotly\n\nfig = px.scatter(\n    data_2007,\n    x='gdpPercap',\n    y='lifeExp',\n    size='pop',\n    color='continent',\n    hover_name='country',\n    log_x=True,\n    size_max=60,\n    title='Gapminder 2007: GDP vs Life Expectancy'\n)\nfig.show()",
+    "crumbs": [
+      "Data Visualization and Summarization",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Gapminder Case Study</span>"
+    ]
+  },
+  {
+    "objectID": "03-visualization/gapminder.html#animated-visualization",
+    "href": "03-visualization/gapminder.html#animated-visualization",
+    "title": "6  Gapminder Case Study",
+    "section": "6.5 Animated Visualization",
+    "text": "6.5 Animated Visualization\n\n# Animated bubble chart\nfig = px.scatter(\n    gapminder,\n    x='gdpPercap',\n    y='lifeExp',\n    animation_frame='year',\n    animation_group='country',\n    size='pop',\n    color='continent',\n    hover_name='country',\n    log_x=True,\n    size_max=60,\n    range_x=[100, 100000],\n    range_y=[25, 90],\n    title='Gapminder: 50 Years of Global Development'\n)\nfig.show()",
+    "crumbs": [
+      "Data Visualization and Summarization",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Gapminder Case Study</span>"
+    ]
+  },
+  {
+    "objectID": "03-visualization/gapminder.html#population-distribution",
+    "href": "03-visualization/gapminder.html#population-distribution",
+    "title": "6  Gapminder Case Study",
+    "section": "6.6 Population Distribution",
+    "text": "6.6 Population Distribution\n\n6.6.1 By continent in 2007\n\npop_2007 = data_2007.groupby('continent')['pop'].sum().reset_index()\n\nplt.figure(figsize=(10, 6))\nplt.pie(pop_2007['pop'], labels=pop_2007['continent'], autopct='%1.1f%%')\nplt.title('World Population by Continent (2007)')\nplt.show()\n\n\n\n\n\n\n\n\n\n\n6.6.2 Population growth over time\n\npop_by_continent = gapminder.groupby(['year', 'continent'])['pop'].sum().reset_index()\n\nplt.figure(figsize=(12, 6))\nfor continent in pop_by_continent['continent'].unique():\n    data = pop_by_continent[pop_by_continent['continent'] == continent]\n    plt.plot(data['year'], data['pop'] / 1e9, label=continent, marker='o')\n\nplt.xlabel('Year')\nplt.ylabel('Population (Billions)')\nplt.title('Population Growth by Continent')\nplt.legend()\nplt.grid(True, alpha=0.3)\nplt.show()",
+    "crumbs": [
+      "Data Visualization and Summarization",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Gapminder Case Study</span>"
+    ]
+  },
+  {
+    "objectID": "03-visualization/gapminder.html#key-insights",
+    "href": "03-visualization/gapminder.html#key-insights",
+    "title": "6  Gapminder Case Study",
+    "section": "6.7 Key Insights",
+    "text": "6.7 Key Insights\n\nLife expectancy has increased globally - From about 50 years in 1952 to over 65 years in 2007\nStrong correlation between wealth and health - Countries with higher GDP per capita tend to have higher life expectancy\nRegional disparities persist - Africa still lags behind other continents in life expectancy\nAsia’s remarkable growth - Both in population and in economic development",
+    "crumbs": [
+      "Data Visualization and Summarization",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Gapminder Case Study</span>"
+    ]
+  },
+  {
+    "objectID": "03-visualization/gapminder.html#exercises",
+    "href": "03-visualization/gapminder.html#exercises",
+    "title": "6  Gapminder Case Study",
+    "section": "6.8 Exercises",
+    "text": "6.8 Exercises\n\nCreate a line plot showing the GDP per capita over time for a specific country of your choice.\nCompare the life expectancy distributions of different continents in 2007 using box plots.\nFind the countries with the highest and lowest life expectancy in each decade.\nCreate a visualization showing how the gap in life expectancy between continents has changed over time.",
+    "crumbs": [
+      "Data Visualization and Summarization",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Gapminder Case Study</span>"
+    ]
+  },
+  {
+    "objectID": "04-statistics/discrete.html",
+    "href": "04-statistics/discrete.html",
+    "title": "7  (PART) Statistics with Python",
+    "section": "",
+    "text": "8 Discrete Probability",
+    "crumbs": [
+      "Statistics with Python",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Discrete Probability</span>"
+    ]
+  },
+  {
+    "objectID": "04-statistics/discrete.html#introduction",
+    "href": "04-statistics/discrete.html#introduction",
+    "title": "7  (PART) Statistics with Python",
+    "section": "8.1 Introduction",
+    "text": "8.1 Introduction\nProbability theory is a fundamental tool in data science. In this chapter, we’ll explore discrete probability using Python and scipy.\n\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nfrom scipy import stats",
+    "crumbs": [
+      "Statistics with Python",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Discrete Probability</span>"
+    ]
+  },
+  {
+    "objectID": "04-statistics/discrete.html#basic-probability-concepts",
+    "href": "04-statistics/discrete.html#basic-probability-concepts",
+    "title": "7  (PART) Statistics with Python",
+    "section": "8.2 Basic Probability Concepts",
+    "text": "8.2 Basic Probability Concepts\n\n8.2.1 Sample space and events\n\n# Simulating a coin flip\nnp.random.seed(42)\ncoin_flips = np.random.choice(['Heads', 'Tails'], size=1000)\nprint(pd.Series(coin_flips).value_counts(normalize=True))\n\nTails    0.51\nHeads    0.49\nName: proportion, dtype: float64\n\n\n\n\n8.2.2 Rolling dice\n\n# Simulating dice rolls\ndice_rolls = np.random.randint(1, 7, size=1000)\nprint(pd.Series(dice_rolls).value_counts().sort_index())\n\n1    178\n2    168\n3    174\n4    133\n5    177\n6    170\nName: count, dtype: int64",
+    "crumbs": [
+      "Statistics with Python",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Discrete Probability</span>"
+    ]
+  },
+  {
+    "objectID": "04-statistics/discrete.html#discrete-distributions",
+    "href": "04-statistics/discrete.html#discrete-distributions",
+    "title": "7  (PART) Statistics with Python",
+    "section": "8.3 Discrete Distributions",
+    "text": "8.3 Discrete Distributions\n\n8.3.1 Binomial distribution\nThe binomial distribution models the number of successes in n independent trials.\n\n# Binomial distribution: probability of k successes in n trials\nn = 10  # number of trials\np = 0.5  # probability of success\n\n# Calculate probabilities for each possible outcome\nx = np.arange(0, n+1)\nprobabilities = stats.binom.pmf(x, n, p)\n\nplt.figure(figsize=(10, 6))\nplt.bar(x, probabilities)\nplt.xlabel('Number of Successes')\nplt.ylabel('Probability')\nplt.title(f'Binomial Distribution (n={n}, p={p})')\nplt.show()\n\n\n\n\n\n\n\n\n\n\n8.3.2 Poisson distribution\nThe Poisson distribution models the number of events in a fixed interval.\n\n# Poisson distribution\nlambda_param = 5  # average number of events\n\nx = np.arange(0, 20)\nprobabilities = stats.poisson.pmf(x, lambda_param)\n\nplt.figure(figsize=(10, 6))\nplt.bar(x, probabilities)\nplt.xlabel('Number of Events')\nplt.ylabel('Probability')\nplt.title(f'Poisson Distribution (λ={lambda_param})')\nplt.show()",
+    "crumbs": [
+      "Statistics with Python",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Discrete Probability</span>"
+    ]
+  },
+  {
+    "objectID": "04-statistics/discrete.html#sampling-and-simulation",
+    "href": "04-statistics/discrete.html#sampling-and-simulation",
+    "title": "7  (PART) Statistics with Python",
+    "section": "8.4 Sampling and Simulation",
+    "text": "8.4 Sampling and Simulation\n\n8.4.1 Random sampling\n\n# Sampling from a population\npopulation = list(range(1, 101))\nsample = np.random.choice(population, size=10, replace=False)\nprint(f\"Sample: {sample}\")\nprint(f\"Sample mean: {np.mean(sample)}\")\n\nSample: [55 25 62 19 16 43 24 34 99  8]\nSample mean: 38.5\n\n\n\n\n8.4.2 Monte Carlo simulation\n\n# Estimate probability using simulation\ndef estimate_probability(n_simulations=10000):\n    \"\"\"Estimate probability of getting at least one 6 in 4 dice rolls.\"\"\"\n    successes = 0\n    for _ in range(n_simulations):\n        rolls = np.random.randint(1, 7, size=4)\n        if 6 in rolls:\n            successes += 1\n    return successes / n_simulations\n\nestimated_prob = estimate_probability()\ntheoretical_prob = 1 - (5/6)**4\nprint(f\"Estimated probability: {estimated_prob:.4f}\")\nprint(f\"Theoretical probability: {theoretical_prob:.4f}\")\n\nEstimated probability: 0.5141\nTheoretical probability: 0.5177",
+    "crumbs": [
+      "Statistics with Python",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Discrete Probability</span>"
+    ]
+  },
+  {
+    "objectID": "04-statistics/discrete.html#exercises",
+    "href": "04-statistics/discrete.html#exercises",
+    "title": "7  (PART) Statistics with Python",
+    "section": "8.5 Exercises",
+    "text": "8.5 Exercises\n\nSimulate 1000 coin flips and calculate the proportion of heads.\nCreate a binomial distribution plot for n=20 trials and p=0.3 probability.\nUse Monte Carlo simulation to estimate the probability of getting exactly 3 heads in 5 coin flips.",
+    "crumbs": [
+      "Statistics with Python",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Discrete Probability</span>"
+    ]
+  },
+  {
+    "objectID": "04-statistics/continuous.html",
+    "href": "04-statistics/continuous.html",
+    "title": "8  Continuous Probability",
+    "section": "",
+    "text": "8.1 Introduction\nIn this chapter, we’ll explore continuous probability distributions, which are essential for statistical inference and machine learning.\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nfrom scipy import stats\nimport seaborn as sns",
+    "crumbs": [
+      "Statistics with Python",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Continuous Probability</span>"
+    ]
+  },
+  {
+    "objectID": "04-statistics/continuous.html#continuous-distributions",
+    "href": "04-statistics/continuous.html#continuous-distributions",
+    "title": "8  Continuous Probability",
+    "section": "8.2 Continuous Distributions",
+    "text": "8.2 Continuous Distributions\n\n8.2.1 Normal (Gaussian) Distribution\nThe most important continuous distribution in statistics.\n\n# Normal distribution\nmu = 0      # mean\nsigma = 1   # standard deviation\n\nx = np.linspace(-4, 4, 1000)\npdf = stats.norm.pdf(x, mu, sigma)\n\nplt.figure(figsize=(10, 6))\nplt.plot(x, pdf, 'b-', linewidth=2)\nplt.fill_between(x, pdf, alpha=0.3)\nplt.xlabel('x')\nplt.ylabel('Probability Density')\nplt.title('Standard Normal Distribution')\nplt.grid(True, alpha=0.3)\nplt.show()\n\n\n\n\n\n\n\n\n\n\n8.2.2 Probability calculations\n\n# P(X &lt; 1.96) for standard normal\nprob_less_than = stats.norm.cdf(1.96)\nprint(f\"P(X &lt; 1.96) = {prob_less_than:.4f}\")\n\n# P(X &gt; 1.96)\nprob_greater_than = 1 - stats.norm.cdf(1.96)\nprint(f\"P(X &gt; 1.96) = {prob_greater_than:.4f}\")\n\n# P(-1.96 &lt; X &lt; 1.96)\nprob_between = stats.norm.cdf(1.96) - stats.norm.cdf(-1.96)\nprint(f\"P(-1.96 &lt; X &lt; 1.96) = {prob_between:.4f}\")\n\nP(X &lt; 1.96) = 0.9750\nP(X &gt; 1.96) = 0.0250\nP(-1.96 &lt; X &lt; 1.96) = 0.9500\n\n\n\n\n8.2.3 Quantiles (Inverse CDF)\n\n# Find z-score for given probability\nz_95 = stats.norm.ppf(0.95)\nprint(f\"95th percentile: {z_95:.4f}\")\n\nz_975 = stats.norm.ppf(0.975)\nprint(f\"97.5th percentile: {z_975:.4f}\")\n\n95th percentile: 1.6449\n97.5th percentile: 1.9600",
+    "crumbs": [
+      "Statistics with Python",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Continuous Probability</span>"
+    ]
+  },
+  {
+    "objectID": "04-statistics/continuous.html#other-continuous-distributions",
+    "href": "04-statistics/continuous.html#other-continuous-distributions",
+    "title": "8  Continuous Probability",
+    "section": "8.3 Other Continuous Distributions",
+    "text": "8.3 Other Continuous Distributions\n\n8.3.1 t-Distribution\nUsed when estimating the mean of a normally distributed population with unknown variance.\n\nx = np.linspace(-4, 4, 1000)\n\nplt.figure(figsize=(10, 6))\nplt.plot(x, stats.norm.pdf(x), 'b-', label='Normal', linewidth=2)\nfor df in [1, 5, 30]:\n    plt.plot(x, stats.t.pdf(x, df), label=f't (df={df})')\n\nplt.xlabel('x')\nplt.ylabel('Probability Density')\nplt.title('t-Distribution vs Normal Distribution')\nplt.legend()\nplt.grid(True, alpha=0.3)\nplt.show()\n\n\n\n\n\n\n\n\n\n\n8.3.2 Chi-Square Distribution\n\nx = np.linspace(0, 30, 1000)\n\nplt.figure(figsize=(10, 6))\nfor df in [2, 5, 10, 15]:\n    plt.plot(x, stats.chi2.pdf(x, df), label=f'df={df}')\n\nplt.xlabel('x')\nplt.ylabel('Probability Density')\nplt.title('Chi-Square Distribution')\nplt.legend()\nplt.grid(True, alpha=0.3)\nplt.show()",
+    "crumbs": [
+      "Statistics with Python",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Continuous Probability</span>"
+    ]
+  },
+  {
+    "objectID": "04-statistics/continuous.html#central-limit-theorem",
+    "href": "04-statistics/continuous.html#central-limit-theorem",
+    "title": "8  Continuous Probability",
+    "section": "8.4 Central Limit Theorem",
+    "text": "8.4 Central Limit Theorem\nThe CLT states that the sampling distribution of the mean approaches a normal distribution.\n\n# Demonstrate CLT with exponential distribution\nnp.random.seed(42)\n\nsample_sizes = [1, 5, 30, 100]\nfig, axes = plt.subplots(2, 2, figsize=(12, 10))\n\nfor ax, n in zip(axes.flatten(), sample_sizes):\n    means = [np.mean(np.random.exponential(1, n)) for _ in range(1000)]\n    ax.hist(means, bins=30, density=True, alpha=0.7, edgecolor='black')\n    ax.set_title(f'Sample Size = {n}')\n    ax.set_xlabel('Sample Mean')\n    ax.set_ylabel('Density')\n\nplt.tight_layout()\nplt.show()",
+    "crumbs": [
+      "Statistics with Python",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Continuous Probability</span>"
+    ]
+  },
+  {
+    "objectID": "04-statistics/continuous.html#exercises",
+    "href": "04-statistics/continuous.html#exercises",
+    "title": "8  Continuous Probability",
+    "section": "8.5 Exercises",
+    "text": "8.5 Exercises\n\nCalculate P(X &gt; 2) for a normal distribution with mean 1 and standard deviation 0.5.\nFind the 95% confidence interval for a standard normal distribution.\nGenerate 1000 samples from a normal distribution and plot the histogram with the theoretical PDF overlay.",
+    "crumbs": [
+      "Statistics with Python",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Continuous Probability</span>"
+    ]
+  },
+  {
+    "objectID": "04-statistics/inference.html",
+    "href": "04-statistics/inference.html",
+    "title": "9  Statistical Inference",
+    "section": "",
+    "text": "9.1 Introduction\nStatistical inference allows us to draw conclusions about populations from samples.\nimport numpy as np\nimport pandas as pd\nfrom scipy import stats\nimport matplotlib.pyplot as plt",
+    "crumbs": [
+      "Statistics with Python",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Statistical Inference</span>"
+    ]
+  },
+  {
+    "objectID": "04-statistics/inference.html#confidence-intervals",
+    "href": "04-statistics/inference.html#confidence-intervals",
+    "title": "9  Statistical Inference",
+    "section": "9.2 Confidence Intervals",
+    "text": "9.2 Confidence Intervals\n\n9.2.1 Confidence interval for the mean\n\n# Sample data\nnp.random.seed(42)\nsample = np.random.normal(100, 15, 50)\n\n# Calculate confidence interval\nconfidence = 0.95\nmean = np.mean(sample)\nsem = stats.sem(sample)  # Standard error of the mean\nci = stats.t.interval(confidence, len(sample)-1, loc=mean, scale=sem)\n\nprint(f\"Sample mean: {mean:.2f}\")\nprint(f\"95% Confidence Interval: ({ci[0]:.2f}, {ci[1]:.2f})\")\n\nSample mean: 96.62\n95% Confidence Interval: (92.64, 100.60)",
+    "crumbs": [
+      "Statistics with Python",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Statistical Inference</span>"
+    ]
+  },
+  {
+    "objectID": "04-statistics/inference.html#hypothesis-testing",
+    "href": "04-statistics/inference.html#hypothesis-testing",
+    "title": "9  Statistical Inference",
+    "section": "9.3 Hypothesis Testing",
+    "text": "9.3 Hypothesis Testing\n\n9.3.1 One-sample t-test\n\n# Test if population mean equals 100\nsample = np.random.normal(105, 15, 50)\nt_stat, p_value = stats.ttest_1samp(sample, 100)\n\nprint(f\"t-statistic: {t_stat:.4f}\")\nprint(f\"p-value: {p_value:.4f}\")\n\nif p_value &lt; 0.05:\n    print(\"Reject null hypothesis: mean is significantly different from 100\")\nelse:\n    print(\"Fail to reject null hypothesis\")\n\nt-statistic: 2.8396\np-value: 0.0066\nReject null hypothesis: mean is significantly different from 100\n\n\n\n\n9.3.2 Two-sample t-test\n\n# Compare two groups\nnp.random.seed(42)\ngroup1 = np.random.normal(100, 15, 50)\ngroup2 = np.random.normal(105, 15, 50)\n\nt_stat, p_value = stats.ttest_ind(group1, group2)\n\nprint(f\"t-statistic: {t_stat:.4f}\")\nprint(f\"p-value: {p_value:.4f}\")\n\nt-statistic: -3.1874\np-value: 0.0019\n\n\n\n\n9.3.3 Chi-square test\n\n# Test for independence\nobserved = np.array([[50, 30], [20, 40]])\nchi2, p_value, dof, expected = stats.chi2_contingency(observed)\n\nprint(f\"Chi-square statistic: {chi2:.4f}\")\nprint(f\"p-value: {p_value:.4f}\")\nprint(f\"Degrees of freedom: {dof}\")\nprint(f\"Expected frequencies:\\n{expected}\")\n\nChi-square statistic: 10.5292\np-value: 0.0012\nDegrees of freedom: 1\nExpected frequencies:\n[[40. 40.]\n [30. 30.]]",
+    "crumbs": [
+      "Statistics with Python",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Statistical Inference</span>"
+    ]
+  },
+  {
+    "objectID": "04-statistics/inference.html#correlation",
+    "href": "04-statistics/inference.html#correlation",
+    "title": "9  Statistical Inference",
+    "section": "9.4 Correlation",
+    "text": "9.4 Correlation\n\n9.4.1 Pearson correlation\n\nx = np.random.normal(0, 1, 100)\ny = x * 0.8 + np.random.normal(0, 0.5, 100)\n\nr, p_value = stats.pearsonr(x, y)\nprint(f\"Pearson correlation: {r:.4f}\")\nprint(f\"p-value: {p_value:.4f}\")\n\nplt.figure(figsize=(5, 3.5))\nplt.scatter(x, y, alpha=0.6)\nplt.xlabel('X')\nplt.ylabel('Y')\nplt.title(f'Correlation: r = {r:.3f}')\nplt.show()\n\nPearson correlation: 0.8080\np-value: 0.0000",
+    "crumbs": [
+      "Statistics with Python",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Statistical Inference</span>"
+    ]
+  },
+  {
+    "objectID": "04-statistics/inference.html#linear-regression",
+    "href": "04-statistics/inference.html#linear-regression",
+    "title": "9  Statistical Inference",
+    "section": "9.5 Linear Regression",
+    "text": "9.5 Linear Regression\n\nfrom scipy.stats import linregress\n\n# Simple linear regression\nslope, intercept, r_value, p_value, std_err = linregress(x, y)\n\nprint(f\"Slope: {slope:.4f}\")\nprint(f\"Intercept: {intercept:.4f}\")\nprint(f\"R-squared: {r_value**2:.4f}\")\nprint(f\"p-value: {p_value:.4f}\")\n\n# Plot with regression line\nplt.figure(figsize=(5, 3.5))\nplt.scatter(x, y, alpha=0.6)\nplt.plot(x, slope*x + intercept, 'r-', linewidth=2, label='Regression line')\nplt.xlabel('X')\nplt.ylabel('Y')\nplt.title(f'Linear Regression (R² = {r_value**2:.3f})')\nplt.legend()\nplt.show()\n\nSlope: 0.7792\nIntercept: 0.0329\nR-squared: 0.6529\np-value: 0.0000",
+    "crumbs": [
+      "Statistics with Python",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Statistical Inference</span>"
+    ]
+  },
+  {
+    "objectID": "04-statistics/inference.html#exercises",
+    "href": "04-statistics/inference.html#exercises",
+    "title": "9  Statistical Inference",
+    "section": "9.6 Exercises",
+    "text": "9.6 Exercises\n\nGenerate a sample of 100 values and calculate a 99% confidence interval for the mean.\nPerform a two-sample t-test to compare two groups with different means.\nCalculate and visualize the correlation between two variables from a real dataset.",
+    "crumbs": [
+      "Statistics with Python",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Statistical Inference</span>"
+    ]
+  },
+  {
+    "objectID": "05-wrangling/importing-data.html",
+    "href": "05-wrangling/importing-data.html",
+    "title": "10  (PART) Data Wrangling",
+    "section": "",
+    "text": "11 Importing Data",
+    "crumbs": [
+      "Data Wrangling",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Importing Data</span>"
+    ]
+  },
+  {
+    "objectID": "05-wrangling/importing-data.html#introduction",
+    "href": "05-wrangling/importing-data.html#introduction",
+    "title": "10  (PART) Data Wrangling",
+    "section": "11.1 Introduction",
+    "text": "11.1 Introduction\nIn this chapter, we’ll learn how to import data from various sources into Python.\n\nimport pandas as pd\nimport numpy as np\nimport json\nimport requests",
+    "crumbs": [
+      "Data Wrangling",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Importing Data</span>"
+    ]
+  },
+  {
+    "objectID": "05-wrangling/importing-data.html#reading-csv-files",
+    "href": "05-wrangling/importing-data.html#reading-csv-files",
+    "title": "10  (PART) Data Wrangling",
+    "section": "11.2 Reading CSV Files",
+    "text": "11.2 Reading CSV Files\n\n# From URL\nurl = \"https://dparedesi.github.io/Data-Science-with-R-book/data/student-grades.csv\"\ndf = pd.read_csv(url)\nprint(df.head())\n\n   start_date  gender               type  P1  P2  P3  P4  P5  P6\n0  03/05/2020  female  Individual Work 1   5   5   5   5   5   5\n1  03/05/2020    male  Individual Work 1   5   5   5   5   4   5\n2  03/05/2020  female  Individual Work 1   5   5   4   5   5   5\n3  03/05/2020    male  Individual Work 1   5   5   5   5   5   5\n4  03/05/2020    male  Individual Work 1   2   5   5   5   5   5\n\n\n\n11.2.1 Common parameters\n\n# Various options for reading CSV files\ndf = pd.read_csv(\n    \"file.csv\",\n    sep=\",\",           # Column separator\n    header=0,          # Row number for column names\n    names=[\"col1\", \"col2\"],  # Custom column names\n    index_col=0,       # Column to use as index\n    usecols=[\"col1\", \"col2\"],  # Columns to read\n    dtype={\"col1\": str},  # Column data types\n    na_values=[\"NA\", \"\"],  # Values to treat as NA\n    parse_dates=[\"date_col\"],  # Columns to parse as dates\n    encoding=\"utf-8\"   # File encoding\n)",
+    "crumbs": [
+      "Data Wrangling",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Importing Data</span>"
+    ]
+  },
+  {
+    "objectID": "05-wrangling/importing-data.html#reading-excel-files",
+    "href": "05-wrangling/importing-data.html#reading-excel-files",
+    "title": "10  (PART) Data Wrangling",
+    "section": "11.3 Reading Excel Files",
+    "text": "11.3 Reading Excel Files\n\n# Reading Excel files (requires openpyxl)\ndf = pd.read_excel(\n    \"file.xlsx\",\n    sheet_name=\"Sheet1\",  # Or sheet index (0, 1, ...)\n    header=0,\n    usecols=\"A:D\"  # Can specify column range\n)",
+    "crumbs": [
+      "Data Wrangling",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Importing Data</span>"
+    ]
+  },
+  {
+    "objectID": "05-wrangling/importing-data.html#reading-json-data",
+    "href": "05-wrangling/importing-data.html#reading-json-data",
+    "title": "10  (PART) Data Wrangling",
+    "section": "11.4 Reading JSON Data",
+    "text": "11.4 Reading JSON Data\n\n# JSON string\njson_string = '{\"name\": \"John\", \"age\": 30, \"city\": \"New York\"}'\ndata = json.loads(json_string)\nprint(data)\n\n# From URL\nurl = \"https://jsonplaceholder.typicode.com/users/1\"\nresponse = requests.get(url)\nuser_data = response.json()\nprint(f\"Name: {user_data['name']}, Email: {user_data['email']}\")\n\n{'name': 'John', 'age': 30, 'city': 'New York'}\nName: Leanne Graham, Email: Sincere@april.biz",
+    "crumbs": [
+      "Data Wrangling",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Importing Data</span>"
+    ]
+  },
+  {
+    "objectID": "05-wrangling/importing-data.html#reading-from-databases",
+    "href": "05-wrangling/importing-data.html#reading-from-databases",
+    "title": "10  (PART) Data Wrangling",
+    "section": "11.5 Reading from Databases",
+    "text": "11.5 Reading from Databases\n\nimport sqlite3\n\n# SQLite database\nconn = sqlite3.connect(\"database.db\")\ndf = pd.read_sql(\"SELECT * FROM table_name\", conn)\nconn.close()",
+    "crumbs": [
+      "Data Wrangling",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Importing Data</span>"
+    ]
+  },
+  {
+    "objectID": "05-wrangling/importing-data.html#web-scraping-basics",
+    "href": "05-wrangling/importing-data.html#web-scraping-basics",
+    "title": "10  (PART) Data Wrangling",
+    "section": "11.6 Web Scraping Basics",
+    "text": "11.6 Web Scraping Basics\n\nfrom bs4 import BeautifulSoup\n\n# Parse HTML\nhtml = requests.get(\"https://example.com\").text\nsoup = BeautifulSoup(html, \"html.parser\")\n\n# Find elements\ntitles = soup.find_all(\"h1\")\nlinks = soup.find_all(\"a\")",
+    "crumbs": [
+      "Data Wrangling",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Importing Data</span>"
+    ]
+  },
+  {
+    "objectID": "05-wrangling/importing-data.html#working-with-paths",
+    "href": "05-wrangling/importing-data.html#working-with-paths",
+    "title": "10  (PART) Data Wrangling",
+    "section": "11.7 Working with Paths",
+    "text": "11.7 Working with Paths\n\nfrom pathlib import Path\n\n# Get current directory\ncwd = Path.cwd()\nprint(f\"Current directory: {cwd}\")\n\n# Build paths\ndata_path = cwd / \"data\" / \"file.csv\"\nprint(f\"Data path: {data_path}\")\n\nCurrent directory: /Users/danielparedes/Documents/Github/Data-Science-with-Python-book/05-wrangling\nData path: /Users/danielparedes/Documents/Github/Data-Science-with-Python-book/05-wrangling/data/file.csv",
+    "crumbs": [
+      "Data Wrangling",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Importing Data</span>"
+    ]
+  },
+  {
+    "objectID": "05-wrangling/importing-data.html#exercises",
+    "href": "05-wrangling/importing-data.html#exercises",
+    "title": "10  (PART) Data Wrangling",
+    "section": "11.8 Exercises",
+    "text": "11.8 Exercises\n\nRead a CSV file from a URL and display the first 10 rows.\nRead JSON data from an API endpoint using requests.\nCreate a function that reads multiple CSV files from a directory and combines them.",
+    "crumbs": [
+      "Data Wrangling",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Importing Data</span>"
+    ]
+  },
+  {
+    "objectID": "05-wrangling/text-processing.html",
+    "href": "05-wrangling/text-processing.html",
+    "title": "11  Text Processing",
+    "section": "",
+    "text": "11.1 Introduction\nText processing is essential for working with unstructured data. Python has excellent support for string manipulation and NLP.\nimport pandas as pd\nimport numpy as np\nimport re",
+    "crumbs": [
+      "Data Wrangling",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Text Processing</span>"
+    ]
+  },
+  {
+    "objectID": "05-wrangling/text-processing.html#string-methods-in-pandas",
+    "href": "05-wrangling/text-processing.html#string-methods-in-pandas",
+    "title": "11  Text Processing",
+    "section": "11.2 String Methods in pandas",
+    "text": "11.2 String Methods in pandas\n\n# Sample data\ndf = pd.DataFrame({\n    'text': ['Hello World', 'python programming', 'DATA SCIENCE', 'NLP is Fun']\n})\n\n# Convert case\nprint(df['text'].str.lower())\nprint(df['text'].str.upper())\nprint(df['text'].str.title())\n\n0           hello world\n1    python programming\n2          data science\n3            nlp is fun\nName: text, dtype: object\n0           HELLO WORLD\n1    PYTHON PROGRAMMING\n2          DATA SCIENCE\n3            NLP IS FUN\nName: text, dtype: object\n0           Hello World\n1    Python Programming\n2          Data Science\n3            Nlp Is Fun\nName: text, dtype: object\n\n\n\n11.2.1 Finding patterns\n\n# Check if strings contain a pattern\nprint(df['text'].str.contains('python', case=False))\n\n# Extract patterns\nemails = pd.Series(['john@email.com', 'jane.doe@company.org', 'invalid'])\nprint(emails.str.extract(r'(\\w+)@(\\w+)\\.(\\w+)'))\n\n0    False\n1     True\n2    False\n3    False\nName: text, dtype: bool\n      0        1    2\n0  john    email  com\n1   doe  company  org\n2   NaN      NaN  NaN\n\n\n\n\n11.2.2 String manipulation\n\n# Split strings\nprint(df['text'].str.split())\n\n# Replace patterns\nprint(df['text'].str.replace('World', 'Python'))\n\n# Get string length\nprint(df['text'].str.len())\n\n0           [Hello, World]\n1    [python, programming]\n2          [DATA, SCIENCE]\n3           [NLP, is, Fun]\nName: text, dtype: object\n0          Hello Python\n1    python programming\n2          DATA SCIENCE\n3            NLP is Fun\nName: text, dtype: object\n0    11\n1    18\n2    12\n3    10\nName: text, dtype: int64",
+    "crumbs": [
+      "Data Wrangling",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Text Processing</span>"
+    ]
+  },
+  {
+    "objectID": "05-wrangling/text-processing.html#regular-expressions",
+    "href": "05-wrangling/text-processing.html#regular-expressions",
+    "title": "11  Text Processing",
+    "section": "11.3 Regular Expressions",
+    "text": "11.3 Regular Expressions\n\ntext = \"Contact us at support@example.com or sales@company.org\"\n\n# Find all email addresses\npattern = r'\\b[\\w.-]+@[\\w.-]+\\.\\w+\\b'\nemails = re.findall(pattern, text)\nprint(emails)\n\n# Substitute patterns\ncleaned = re.sub(r'\\d+', 'NUMBER', 'Order #12345 shipped on 2023-05-15')\nprint(cleaned)\n\n['support@example.com', 'sales@company.org']\nOrder #NUMBER shipped on NUMBER-NUMBER-NUMBER",
+    "crumbs": [
+      "Data Wrangling",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Text Processing</span>"
+    ]
+  },
+  {
+    "objectID": "05-wrangling/text-processing.html#text-tokenization",
+    "href": "05-wrangling/text-processing.html#text-tokenization",
+    "title": "11  Text Processing",
+    "section": "11.4 Text Tokenization",
+    "text": "11.4 Text Tokenization\n\n# Simple tokenization\ntext = \"Natural language processing is fascinating!\"\ntokens = text.lower().split()\nprint(tokens)\n\n# Remove punctuation\nimport string\ntext_clean = text.translate(str.maketrans('', '', string.punctuation))\ntokens_clean = text_clean.lower().split()\nprint(tokens_clean)\n\n['natural', 'language', 'processing', 'is', 'fascinating!']\n['natural', 'language', 'processing', 'is', 'fascinating']",
+    "crumbs": [
+      "Data Wrangling",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Text Processing</span>"
+    ]
+  },
+  {
+    "objectID": "05-wrangling/text-processing.html#working-with-nltk",
+    "href": "05-wrangling/text-processing.html#working-with-nltk",
+    "title": "11  Text Processing",
+    "section": "11.5 Working with NLTK",
+    "text": "11.5 Working with NLTK\n\nimport nltk\nfrom nltk.tokenize import word_tokenize, sent_tokenize\nfrom nltk.corpus import stopwords\nfrom nltk.stem import PorterStemmer, WordNetLemmatizer\n\n# Download required data\nnltk.download('punkt')\nnltk.download('stopwords')\nnltk.download('wordnet')\n\n# Tokenization\ntext = \"Natural language processing is fascinating. It helps us understand text.\"\nwords = word_tokenize(text)\nsentences = sent_tokenize(text)\n\n# Remove stopwords\nstop_words = set(stopwords.words('english'))\nfiltered_words = [w for w in words if w.lower() not in stop_words]\n\n# Stemming and Lemmatization\nstemmer = PorterStemmer()\nlemmatizer = WordNetLemmatizer()\n\nstems = [stemmer.stem(w) for w in words]\nlemmas = [lemmatizer.lemmatize(w) for w in words]",
+    "crumbs": [
+      "Data Wrangling",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Text Processing</span>"
+    ]
+  },
+  {
+    "objectID": "05-wrangling/text-processing.html#date-and-time-parsing",
+    "href": "05-wrangling/text-processing.html#date-and-time-parsing",
+    "title": "11  Text Processing",
+    "section": "11.6 Date and Time Parsing",
+    "text": "11.6 Date and Time Parsing\n\n# Parse dates\ndates = pd.Series(['2023-01-15', '2023-02-20', '2023-03-25'])\nparsed_dates = pd.to_datetime(dates)\nprint(parsed_dates)\n\n# Extract components\ndf_dates = pd.DataFrame({\n    'date': parsed_dates,\n    'year': parsed_dates.dt.year,\n    'month': parsed_dates.dt.month,\n    'day': parsed_dates.dt.day,\n    'weekday': parsed_dates.dt.day_name()\n})\nprint(df_dates)\n\n0   2023-01-15\n1   2023-02-20\n2   2023-03-25\ndtype: datetime64[ns]\n        date  year  month  day   weekday\n0 2023-01-15  2023      1   15    Sunday\n1 2023-02-20  2023      2   20    Monday\n2 2023-03-25  2023      3   25  Saturday",
+    "crumbs": [
+      "Data Wrangling",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Text Processing</span>"
+    ]
+  },
+  {
+    "objectID": "05-wrangling/text-processing.html#exercises",
+    "href": "05-wrangling/text-processing.html#exercises",
+    "title": "11  Text Processing",
+    "section": "11.7 Exercises",
+    "text": "11.7 Exercises\n\nClean a text column by converting to lowercase and removing punctuation.\nExtract all phone numbers from a text using regular expressions.\nTokenize a document and calculate word frequencies.",
+    "crumbs": [
+      "Data Wrangling",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Text Processing</span>"
+    ]
+  },
+  {
+    "objectID": "06-machine-learning/intro.html",
+    "href": "06-machine-learning/intro.html",
+    "title": "12  (PART) Machine Learning",
+    "section": "",
+    "text": "13 Introduction to Machine Learning",
+    "crumbs": [
+      "Machine Learning",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Introduction to Machine Learning</span>"
+    ]
+  },
+  {
+    "objectID": "06-machine-learning/intro.html#what-is-machine-learning",
+    "href": "06-machine-learning/intro.html#what-is-machine-learning",
+    "title": "12  (PART) Machine Learning",
+    "section": "13.1 What is Machine Learning?",
+    "text": "13.1 What is Machine Learning?\nMachine learning is a subset of artificial intelligence that enables computers to learn from data without being explicitly programmed.",
+    "crumbs": [
+      "Machine Learning",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Introduction to Machine Learning</span>"
+    ]
+  },
+  {
+    "objectID": "06-machine-learning/intro.html#types-of-machine-learning",
+    "href": "06-machine-learning/intro.html#types-of-machine-learning",
+    "title": "12  (PART) Machine Learning",
+    "section": "13.2 Types of Machine Learning",
+    "text": "13.2 Types of Machine Learning\n\n13.2.1 Supervised Learning\nLearning from labeled data to make predictions: - Classification: Predicting categorical outcomes - Regression: Predicting continuous values\n\n\n13.2.2 Unsupervised Learning\nFinding patterns in unlabeled data: - Clustering: Grouping similar observations - Dimensionality Reduction: Reducing features while preserving information\n\n\n13.2.3 Reinforcement Learning\nLearning through interaction with an environment.",
+    "crumbs": [
+      "Machine Learning",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Introduction to Machine Learning</span>"
+    ]
+  },
+  {
+    "objectID": "06-machine-learning/intro.html#the-machine-learning-workflow",
+    "href": "06-machine-learning/intro.html#the-machine-learning-workflow",
+    "title": "12  (PART) Machine Learning",
+    "section": "13.3 The Machine Learning Workflow",
+    "text": "13.3 The Machine Learning Workflow\n\nData Collection: Gathering relevant data\nData Preprocessing: Cleaning and preparing data\nFeature Engineering: Creating meaningful features\nModel Selection: Choosing appropriate algorithms\nTraining: Fitting the model to data\nEvaluation: Assessing model performance\nDeployment: Putting the model into production",
+    "crumbs": [
+      "Machine Learning",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Introduction to Machine Learning</span>"
+    ]
+  },
+  {
+    "objectID": "06-machine-learning/intro.html#scikit-learn-the-ml-toolkit",
+    "href": "06-machine-learning/intro.html#scikit-learn-the-ml-toolkit",
+    "title": "12  (PART) Machine Learning",
+    "section": "13.4 scikit-learn: The ML Toolkit",
+    "text": "13.4 scikit-learn: The ML Toolkit\n\nimport numpy as np\nfrom sklearn.datasets import load_iris\nfrom sklearn.model_selection import train_test_split\n\n# Load example dataset\niris = load_iris()\nX, y = iris.data, iris.target\n\n# Split data\nX_train, X_test, y_train, y_test = train_test_split(\n    X, y, test_size=0.3, random_state=42\n)\n\nprint(f\"Training samples: {len(X_train)}\")\nprint(f\"Test samples: {len(X_test)}\")\n\nTraining samples: 105\nTest samples: 45",
+    "crumbs": [
+      "Machine Learning",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Introduction to Machine Learning</span>"
+    ]
+  },
+  {
+    "objectID": "06-machine-learning/intro.html#key-concepts",
+    "href": "06-machine-learning/intro.html#key-concepts",
+    "title": "12  (PART) Machine Learning",
+    "section": "13.5 Key Concepts",
+    "text": "13.5 Key Concepts\n\n13.5.1 Training and Test Sets\n\nTraining set: Data used to train the model\nTest set: Data used to evaluate model performance\n\n\n\n13.5.2 Overfitting and Underfitting\n\nOverfitting: Model learns noise, poor generalization\nUnderfitting: Model too simple, misses patterns\n\n\n\n13.5.3 Cross-Validation\nTechnique to assess model generalization by splitting data into multiple folds.",
+    "crumbs": [
+      "Machine Learning",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Introduction to Machine Learning</span>"
+    ]
+  },
+  {
+    "objectID": "06-machine-learning/intro.html#whats-next",
+    "href": "06-machine-learning/intro.html#whats-next",
+    "title": "12  (PART) Machine Learning",
+    "section": "13.6 What’s Next",
+    "text": "13.6 What’s Next\nIn the following chapters, we’ll dive deep into: - Supervised learning algorithms - Model evaluation metrics - Unsupervised learning techniques - Feature engineering - Model optimization",
+    "crumbs": [
+      "Machine Learning",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Introduction to Machine Learning</span>"
+    ]
+  },
+  {
+    "objectID": "06-machine-learning/supervised.html",
+    "href": "06-machine-learning/supervised.html",
+    "title": "13  Supervised Learning",
+    "section": "",
+    "text": "13.1 Introduction\nSupervised learning uses labeled data to train models that can make predictions on new data.\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nfrom sklearn.datasets import load_iris, make_classification\nfrom sklearn.model_selection import train_test_split, cross_val_score, GridSearchCV\nfrom sklearn.preprocessing import StandardScaler\nfrom sklearn.pipeline import Pipeline\nfrom sklearn.metrics import accuracy_score, classification_report, confusion_matrix",
+    "crumbs": [
+      "Machine Learning",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Supervised Learning</span>"
+    ]
+  },
+  {
+    "objectID": "06-machine-learning/supervised.html#classification",
+    "href": "06-machine-learning/supervised.html#classification",
+    "title": "13  Supervised Learning",
+    "section": "13.2 Classification",
+    "text": "13.2 Classification\n\n13.2.1 k-Nearest Neighbors\n\nfrom sklearn.neighbors import KNeighborsClassifier\n\n# Load data\niris = load_iris()\nX_train, X_test, y_train, y_test = train_test_split(\n    iris.data, iris.target, test_size=0.3, random_state=42\n)\n\n# Create pipeline with scaling and KNN\npipeline = Pipeline([\n    ('scaler', StandardScaler()),\n    ('knn', KNeighborsClassifier(n_neighbors=5))\n])\n\n# Train\npipeline.fit(X_train, y_train)\n\n# Predict\ny_pred = pipeline.predict(X_test)\nprint(f\"Accuracy: {accuracy_score(y_test, y_pred):.4f}\")\n\nAccuracy: 1.0000\n\n\n\n\n13.2.2 Logistic Regression\n\nfrom sklearn.linear_model import LogisticRegression\n\n# Create and train model\nlog_reg = Pipeline([\n    ('scaler', StandardScaler()),\n    ('classifier', LogisticRegression(random_state=42))\n])\n\nlog_reg.fit(X_train, y_train)\ny_pred = log_reg.predict(X_test)\nprint(f\"Accuracy: {accuracy_score(y_test, y_pred):.4f}\")\n\nAccuracy: 1.0000\n\n\n\n\n13.2.3 Decision Trees\n\nfrom sklearn.tree import DecisionTreeClassifier\n\ndt = DecisionTreeClassifier(max_depth=3, random_state=42)\ndt.fit(X_train, y_train)\ny_pred = dt.predict(X_test)\nprint(f\"Accuracy: {accuracy_score(y_test, y_pred):.4f}\")\n\nAccuracy: 1.0000\n\n\n\n\n13.2.4 Random Forest\n\nfrom sklearn.ensemble import RandomForestClassifier\n\nrf = RandomForestClassifier(n_estimators=100, random_state=42)\nrf.fit(X_train, y_train)\ny_pred = rf.predict(X_test)\nprint(f\"Accuracy: {accuracy_score(y_test, y_pred):.4f}\")\n\nAccuracy: 1.0000",
+    "crumbs": [
+      "Machine Learning",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Supervised Learning</span>"
+    ]
+  },
+  {
+    "objectID": "06-machine-learning/supervised.html#model-evaluation",
+    "href": "06-machine-learning/supervised.html#model-evaluation",
+    "title": "13  Supervised Learning",
+    "section": "13.3 Model Evaluation",
+    "text": "13.3 Model Evaluation\n\n13.3.1 Confusion Matrix\n\nfrom sklearn.metrics import ConfusionMatrixDisplay\n\ncm = confusion_matrix(y_test, y_pred)\ndisp = ConfusionMatrixDisplay(cm, display_labels=iris.target_names)\ndisp.plot()\nplt.title('Confusion Matrix')\nplt.show()\n\n\n\n\n\n\n\n\n\n\n13.3.2 Classification Report\n\nprint(classification_report(y_test, y_pred, target_names=iris.target_names))\n\n              precision    recall  f1-score   support\n\n      setosa       1.00      1.00      1.00        19\n  versicolor       1.00      1.00      1.00        13\n   virginica       1.00      1.00      1.00        13\n\n    accuracy                           1.00        45\n   macro avg       1.00      1.00      1.00        45\nweighted avg       1.00      1.00      1.00        45",
+    "crumbs": [
+      "Machine Learning",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Supervised Learning</span>"
+    ]
+  },
+  {
+    "objectID": "06-machine-learning/supervised.html#cross-validation",
+    "href": "06-machine-learning/supervised.html#cross-validation",
+    "title": "13  Supervised Learning",
+    "section": "13.4 Cross-Validation",
+    "text": "13.4 Cross-Validation\n\nscores = cross_val_score(rf, iris.data, iris.target, cv=5)\nprint(f\"CV Scores: {scores}\")\nprint(f\"Mean CV Score: {scores.mean():.4f} (+/- {scores.std()*2:.4f})\")\n\nCV Scores: [0.96666667 0.96666667 0.93333333 0.96666667 1.        ]\nMean CV Score: 0.9667 (+/- 0.0422)",
+    "crumbs": [
+      "Machine Learning",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Supervised Learning</span>"
+    ]
+  },
+  {
+    "objectID": "06-machine-learning/supervised.html#hyperparameter-tuning",
+    "href": "06-machine-learning/supervised.html#hyperparameter-tuning",
+    "title": "13  Supervised Learning",
+    "section": "13.5 Hyperparameter Tuning",
+    "text": "13.5 Hyperparameter Tuning\n\nparam_grid = {\n    'n_neighbors': [3, 5, 7, 9, 11],\n}\n\ngrid_search = GridSearchCV(\n    KNeighborsClassifier(),\n    param_grid,\n    cv=5,\n    scoring='accuracy'\n)\n\n# Fit on scaled data\nscaler = StandardScaler()\nX_scaled = scaler.fit_transform(iris.data)\n\ngrid_search.fit(X_scaled, iris.target)\nprint(f\"Best parameters: {grid_search.best_params_}\")\nprint(f\"Best score: {grid_search.best_score_:.4f}\")\n\nBest parameters: {'n_neighbors': 5}\nBest score: 0.9600",
+    "crumbs": [
+      "Machine Learning",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Supervised Learning</span>"
+    ]
+  },
+  {
+    "objectID": "06-machine-learning/supervised.html#regression",
+    "href": "06-machine-learning/supervised.html#regression",
+    "title": "13  Supervised Learning",
+    "section": "13.6 Regression",
+    "text": "13.6 Regression\n\n13.6.1 Linear Regression\n\nfrom sklearn.linear_model import LinearRegression\nfrom sklearn.metrics import mean_squared_error, r2_score\n\n# Create sample regression data\nnp.random.seed(42)\nX_reg = np.random.randn(100, 1)\ny_reg = 2 * X_reg.flatten() + 1 + np.random.randn(100) * 0.5\n\nX_train, X_test, y_train, y_test = train_test_split(\n    X_reg, y_reg, test_size=0.3, random_state=42\n)\n\n# Train model\nlr = LinearRegression()\nlr.fit(X_train, y_train)\ny_pred = lr.predict(X_test)\n\nprint(f\"R² Score: {r2_score(y_test, y_pred):.4f}\")\nprint(f\"RMSE: {np.sqrt(mean_squared_error(y_test, y_pred)):.4f}\")\n\n# Visualize\nplt.figure(figsize=(5, 3.5))\nplt.scatter(X_test, y_test, alpha=0.6, label='Actual')\nplt.plot(X_test, y_pred, 'r-', linewidth=2, label='Predicted')\nplt.xlabel('X')\nplt.ylabel('y')\nplt.legend()\nplt.title('Linear Regression')\nplt.show()\n\nR² Score: 0.9087\nRMSE: 0.4620",
+    "crumbs": [
+      "Machine Learning",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Supervised Learning</span>"
+    ]
+  },
+  {
+    "objectID": "06-machine-learning/supervised.html#exercises",
+    "href": "06-machine-learning/supervised.html#exercises",
+    "title": "13  Supervised Learning",
+    "section": "13.7 Exercises",
+    "text": "13.7 Exercises\n\nTrain a KNN classifier with different values of k and plot the accuracy.\nCompare multiple classifiers on the iris dataset using cross-validation.\nBuild a regression model to predict house prices using multiple features.",
+    "crumbs": [
+      "Machine Learning",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Supervised Learning</span>"
+    ]
+  },
+  {
+    "objectID": "06-machine-learning/unsupervised.html",
+    "href": "06-machine-learning/unsupervised.html",
+    "title": "14  Unsupervised Learning",
+    "section": "",
+    "text": "14.1 Introduction\nUnsupervised learning finds patterns in data without labeled outcomes.\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nfrom sklearn.preprocessing import StandardScaler",
+    "crumbs": [
+      "Machine Learning",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Unsupervised Learning</span>"
+    ]
+  },
+  {
+    "objectID": "06-machine-learning/unsupervised.html#clustering",
+    "href": "06-machine-learning/unsupervised.html#clustering",
+    "title": "14  Unsupervised Learning",
+    "section": "14.2 Clustering",
+    "text": "14.2 Clustering\n\n14.2.1 K-Means Clustering\n\nfrom sklearn.cluster import KMeans\nfrom sklearn.datasets import make_blobs\n\n# Create sample data\nX, y_true = make_blobs(n_samples=300, centers=4, random_state=42)\n\n# Fit K-Means\nkmeans = KMeans(n_clusters=4, random_state=42, n_init=10)\ny_pred = kmeans.fit_predict(X)\n\n# Visualize\nplt.figure(figsize=(10, 4))\n\nplt.subplot(1, 2, 1)\nplt.scatter(X[:, 0], X[:, 1], c=y_true, cmap='viridis')\nplt.title('True Labels')\n\nplt.subplot(1, 2, 2)\nplt.scatter(X[:, 0], X[:, 1], c=y_pred, cmap='viridis')\nplt.scatter(kmeans.cluster_centers_[:, 0], \n            kmeans.cluster_centers_[:, 1], \n            marker='x', s=200, c='red', linewidth=3)\nplt.title('K-Means Clustering')\n\nplt.tight_layout()\nplt.show()\n\n\n\n\n\n\n\n\n\n\n14.2.2 Choosing K (Elbow Method)\n\ninertias = []\nK = range(1, 10)\n\nfor k in K:\n    kmeans = KMeans(n_clusters=k, random_state=42, n_init=10)\n    kmeans.fit(X)\n    inertias.append(kmeans.inertia_)\n\nplt.figure(figsize=(8, 5))\nplt.plot(K, inertias, 'bo-')\nplt.xlabel('Number of Clusters (K)')\nplt.ylabel('Inertia')\nplt.title('Elbow Method')\nplt.show()\n\n\n\n\n\n\n\n\n\n\n14.2.3 Hierarchical Clustering\n\nfrom sklearn.cluster import AgglomerativeClustering\nfrom scipy.cluster.hierarchy import dendrogram, linkage\n\n# Fit hierarchical clustering\nhc = AgglomerativeClustering(n_clusters=4)\ny_hc = hc.fit_predict(X)\n\n# Create dendrogram (on subset for visibility)\nplt.figure(figsize=(12, 5))\nX_subset = X[:50]\nlinkage_matrix = linkage(X_subset, method='ward')\ndendrogram(linkage_matrix)\nplt.title('Hierarchical Clustering Dendrogram')\nplt.xlabel('Sample Index')\nplt.ylabel('Distance')\nplt.show()",
+    "crumbs": [
+      "Machine Learning",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Unsupervised Learning</span>"
+    ]
+  },
+  {
+    "objectID": "06-machine-learning/unsupervised.html#dimensionality-reduction",
+    "href": "06-machine-learning/unsupervised.html#dimensionality-reduction",
+    "title": "14  Unsupervised Learning",
+    "section": "14.3 Dimensionality Reduction",
+    "text": "14.3 Dimensionality Reduction\n\n14.3.1 Principal Component Analysis (PCA)\n\nfrom sklearn.decomposition import PCA\nfrom sklearn.datasets import load_iris\n\n# Load iris data\niris = load_iris()\nX = StandardScaler().fit_transform(iris.data)\n\n# Apply PCA\npca = PCA(n_components=2)\nX_pca = pca.fit_transform(X)\n\nprint(f\"Explained variance ratio: {pca.explained_variance_ratio_}\")\nprint(f\"Total explained variance: {sum(pca.explained_variance_ratio_):.4f}\")\n\n# Visualize\nplt.figure(figsize=(5, 3.5))\nscatter = plt.scatter(X_pca[:, 0], X_pca[:, 1], c=iris.target, cmap='viridis')\nplt.xlabel('First Principal Component')\nplt.ylabel('Second Principal Component')\nplt.title('PCA of Iris Dataset')\nplt.colorbar(scatter)\nplt.show()\n\nExplained variance ratio: [0.72962445 0.22850762]\nTotal explained variance: 0.9581\n\n\n\n\n\n\n\n\n\n\n\n14.3.2 Explained Variance\n\npca_full = PCA()\npca_full.fit(X)\n\nplt.figure(figsize=(8, 5))\nplt.bar(range(4), pca_full.explained_variance_ratio_)\nplt.plot(range(4), np.cumsum(pca_full.explained_variance_ratio_), 'ro-')\nplt.xlabel('Principal Component')\nplt.ylabel('Explained Variance Ratio')\nplt.title('PCA Explained Variance')\nplt.show()\n\n\n\n\n\n\n\n\n\n\n14.3.3 t-SNE\n\nfrom sklearn.manifold import TSNE\n\n# Apply t-SNE\ntsne = TSNE(n_components=2, random_state=42, perplexity=30)\nX_tsne = tsne.fit_transform(X)\n\n# Visualize\nplt.figure(figsize=(5, 3.5))\nscatter = plt.scatter(X_tsne[:, 0], X_tsne[:, 1], c=iris.target, cmap='viridis')\nplt.xlabel('t-SNE 1')\nplt.ylabel('t-SNE 2')\nplt.title('t-SNE of Iris Dataset')\nplt.colorbar(scatter)\nplt.show()",
+    "crumbs": [
+      "Machine Learning",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Unsupervised Learning</span>"
+    ]
+  },
+  {
+    "objectID": "06-machine-learning/unsupervised.html#exercises",
+    "href": "06-machine-learning/unsupervised.html#exercises",
+    "title": "14  Unsupervised Learning",
+    "section": "14.4 Exercises",
+    "text": "14.4 Exercises\n\nApply K-Means clustering to a real dataset and visualize the results.\nUse PCA to reduce a high-dimensional dataset to 2D and visualize.\nCompare K-Means and hierarchical clustering on the same dataset.",
+    "crumbs": [
+      "Machine Learning",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Unsupervised Learning</span>"
+    ]
+  },
+  {
+    "objectID": "07-real-cases/introduction.html",
+    "href": "07-real-cases/introduction.html",
+    "title": "15  Real-World Case Studies Introduction",
+    "section": "",
+    "text": "15.1 Overview\nIn this section, we apply data science techniques to real-world problems. Each case study demonstrates a complete workflow from data collection to insights.",
+    "crumbs": [
+      "Real Cases",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Real-World Case Studies Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "07-real-cases/introduction.html#what-youll-learn",
+    "href": "07-real-cases/introduction.html#what-youll-learn",
+    "title": "15  Real-World Case Studies Introduction",
+    "section": "15.2 What You’ll Learn",
+    "text": "15.2 What You’ll Learn\n\nReal Estate Analysis: Analyzing property markets using data\nGoogle Analytics: Understanding web traffic patterns\nEnd-to-end workflows: From data to actionable insights",
+    "crumbs": [
+      "Real Cases",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Real-World Case Studies Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "07-real-cases/introduction.html#skills-applied",
+    "href": "07-real-cases/introduction.html#skills-applied",
+    "title": "15  Real-World Case Studies Introduction",
+    "section": "15.3 Skills Applied",
+    "text": "15.3 Skills Applied\nThese case studies integrate skills from previous chapters:\n\nData Wrangling: Cleaning and transforming messy data\nVisualization: Creating insightful plots\nStatistical Analysis: Testing hypotheses\nMachine Learning: Building predictive models",
+    "crumbs": [
+      "Real Cases",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Real-World Case Studies Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "07-real-cases/introduction.html#tools-used",
+    "href": "07-real-cases/introduction.html#tools-used",
+    "title": "15  Real-World Case Studies Introduction",
+    "section": "15.4 Tools Used",
+    "text": "15.4 Tools Used\n\nimport pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.preprocessing import StandardScaler",
+    "crumbs": [
+      "Real Cases",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Real-World Case Studies Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "07-real-cases/introduction.html#case-study-approach",
+    "href": "07-real-cases/introduction.html#case-study-approach",
+    "title": "15  Real-World Case Studies Introduction",
+    "section": "15.5 Case Study Approach",
+    "text": "15.5 Case Study Approach\nEach case follows this structure:\n\nProblem Definition: What question are we answering?\nData Collection: Where does the data come from?\nExploratory Analysis: Understanding the data\nModel Building: Creating solutions\nEvaluation: Assessing results\nConclusions: What did we learn?\n\nLet’s dive into the case studies!",
+    "crumbs": [
+      "Real Cases",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Real-World Case Studies Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "07-real-cases/real-estate-analysis.html",
+    "href": "07-real-cases/real-estate-analysis.html",
+    "title": "16  Real Estate Analysis",
+    "section": "",
+    "text": "16.1 Introduction\nIn this case study, we’ll analyze real estate data to understand factors affecting property prices.\nimport pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.preprocessing import StandardScaler\nfrom sklearn.linear_model import LinearRegression\nfrom sklearn.ensemble import RandomForestRegressor\nfrom sklearn.metrics import mean_squared_error, r2_score",
+    "crumbs": [
+      "Real Cases",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Real Estate Analysis</span>"
+    ]
+  },
+  {
+    "objectID": "07-real-cases/real-estate-analysis.html#simulated-dataset",
+    "href": "07-real-cases/real-estate-analysis.html#simulated-dataset",
+    "title": "16  Real Estate Analysis",
+    "section": "16.2 Simulated Dataset",
+    "text": "16.2 Simulated Dataset\n\nnp.random.seed(42)\nn_samples = 500\n\n# Create simulated real estate data\ndata = pd.DataFrame({\n    'sqft': np.random.randint(800, 4000, n_samples),\n    'bedrooms': np.random.randint(1, 6, n_samples),\n    'bathrooms': np.random.randint(1, 4, n_samples),\n    'age': np.random.randint(0, 50, n_samples),\n    'location_score': np.random.uniform(1, 10, n_samples)\n})\n\n# Price based on features with some noise\ndata['price'] = (\n    150 * data['sqft'] + \n    20000 * data['bedrooms'] + \n    15000 * data['bathrooms'] - \n    1000 * data['age'] + \n    30000 * data['location_score'] +\n    np.random.normal(0, 50000, n_samples)\n)\n\nprint(data.head())\n\n   sqft  bedrooms  bathrooms  age  location_score          price\n0  3974         1          2   29        6.658883  827395.002614\n1  1660         5          1   38        7.618153  580169.558251\n2  2094         5          2   34        7.909515  631346.708133\n3  1930         1          1   17        5.543604  473678.034731\n4  1895         5          3   41        5.889705  602250.511674",
+    "crumbs": [
+      "Real Cases",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Real Estate Analysis</span>"
+    ]
+  },
+  {
+    "objectID": "07-real-cases/real-estate-analysis.html#exploratory-data-analysis",
+    "href": "07-real-cases/real-estate-analysis.html#exploratory-data-analysis",
+    "title": "16  Real Estate Analysis",
+    "section": "16.3 Exploratory Data Analysis",
+    "text": "16.3 Exploratory Data Analysis\n\nprint(data.describe())\n\n              sqft    bedrooms   bathrooms        age  location_score  \\\ncount   500.000000  500.000000  500.000000  500.00000      500.000000   \nmean   2435.276000    3.036000    2.000000   24.84000        5.389781   \nstd     913.031599    1.455659    0.825447   14.11811        2.485368   \nmin     801.000000    1.000000    1.000000    0.00000        1.002993   \n25%    1658.500000    2.000000    1.000000   12.00000        3.231573   \n50%    2440.500000    3.000000    2.000000   25.00000        5.367777   \n75%    3232.250000    4.000000    3.000000   37.00000        7.255539   \nmax    3991.000000    5.000000    3.000000   49.00000        9.959324   \n\n              price  \ncount  5.000000e+02  \nmean   5.950655e+05  \nstd    1.693110e+05  \nmin    1.554747e+05  \n25%    4.623300e+05  \n50%    5.969081e+05  \n75%    7.260488e+05  \nmax    1.018020e+06  \n\n\n\n# Correlation matrix\nplt.figure(figsize=(10, 8))\nsns.heatmap(data.corr(), annot=True, cmap='coolwarm', center=0)\nplt.title('Feature Correlations')\nplt.show()\n\n\n\n\n\n\n\n\n\n# Price distribution\nplt.figure(figsize=(10, 6))\nplt.hist(data['price'] / 1000, bins=30, edgecolor='black')\nplt.xlabel('Price (thousands)')\nplt.ylabel('Frequency')\nplt.title('Price Distribution')\nplt.show()",
+    "crumbs": [
+      "Real Cases",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Real Estate Analysis</span>"
+    ]
+  },
+  {
+    "objectID": "07-real-cases/real-estate-analysis.html#building-a-prediction-model",
+    "href": "07-real-cases/real-estate-analysis.html#building-a-prediction-model",
+    "title": "16  Real Estate Analysis",
+    "section": "16.4 Building a Prediction Model",
+    "text": "16.4 Building a Prediction Model\n\n# Prepare features\nX = data[['sqft', 'bedrooms', 'bathrooms', 'age', 'location_score']]\ny = data['price']\n\n# Split data\nX_train, X_test, y_train, y_test = train_test_split(\n    X, y, test_size=0.2, random_state=42\n)\n\n# Scale features\nscaler = StandardScaler()\nX_train_scaled = scaler.fit_transform(X_train)\nX_test_scaled = scaler.transform(X_test)\n\n\n16.4.1 Linear Regression\n\nlr = LinearRegression()\nlr.fit(X_train_scaled, y_train)\ny_pred_lr = lr.predict(X_test_scaled)\n\nprint(\"Linear Regression Results:\")\nprint(f\"R² Score: {r2_score(y_test, y_pred_lr):.4f}\")\nprint(f\"RMSE: ${np.sqrt(mean_squared_error(y_test, y_pred_lr)):,.0f}\")\n\nLinear Regression Results:\nR² Score: 0.8911\nRMSE: $53,296\n\n\n\n\n16.4.2 Random Forest\n\nrf = RandomForestRegressor(n_estimators=100, random_state=42)\nrf.fit(X_train, y_train)\ny_pred_rf = rf.predict(X_test)\n\nprint(\"Random Forest Results:\")\nprint(f\"R² Score: {r2_score(y_test, y_pred_rf):.4f}\")\nprint(f\"RMSE: ${np.sqrt(mean_squared_error(y_test, y_pred_rf)):,.0f}\")\n\nRandom Forest Results:\nR² Score: 0.8629\nRMSE: $59,806\n\n\n\n\n16.4.3 Feature Importance\n\nimportance = pd.DataFrame({\n    'Feature': X.columns,\n    'Importance': rf.feature_importances_\n}).sort_values('Importance', ascending=False)\n\nplt.figure(figsize=(10, 6))\nsns.barplot(data=importance, x='Importance', y='Feature')\nplt.title('Feature Importance (Random Forest)')\nplt.show()",
+    "crumbs": [
+      "Real Cases",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Real Estate Analysis</span>"
+    ]
+  },
+  {
+    "objectID": "07-real-cases/real-estate-analysis.html#conclusions",
+    "href": "07-real-cases/real-estate-analysis.html#conclusions",
+    "title": "16  Real Estate Analysis",
+    "section": "16.5 Conclusions",
+    "text": "16.5 Conclusions\n\nSquare footage is the most important factor in determining price\nLocation score significantly impacts property values\nAge has a negative relationship with price\nThe Random Forest model provides accurate predictions",
+    "crumbs": [
+      "Real Cases",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Real Estate Analysis</span>"
+    ]
+  },
+  {
+    "objectID": "07-real-cases/real-estate-analysis.html#exercises",
+    "href": "07-real-cases/real-estate-analysis.html#exercises",
+    "title": "16  Real Estate Analysis",
+    "section": "16.6 Exercises",
+    "text": "16.6 Exercises\n\nTry different models and compare their performance.\nEngineer new features (e.g., price per sqft) and assess their impact.\nBuild a model to classify properties into price categories.",
+    "crumbs": [
+      "Real Cases",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Real Estate Analysis</span>"
+    ]
+  },
+  {
+    "objectID": "07-real-cases/google-analytics-case.html",
+    "href": "07-real-cases/google-analytics-case.html",
+    "title": "17  Google Analytics Case Study",
+    "section": "",
+    "text": "17.1 Introduction\nIn this case study, we analyze web analytics data to understand user behavior and optimize website performance.\nimport pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport seaborn as sns",
+    "crumbs": [
+      "Real Cases",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Google Analytics Case Study</span>"
+    ]
+  },
+  {
+    "objectID": "07-real-cases/google-analytics-case.html#working-with-ga4-data",
+    "href": "07-real-cases/google-analytics-case.html#working-with-ga4-data",
+    "title": "17  Google Analytics Case Study",
+    "section": "17.2 Working with GA4 Data",
+    "text": "17.2 Working with GA4 Data\n\n17.2.1 Sample Analytics Data\n\nnp.random.seed(42)\nn_days = 90\n\n# Simulated GA data\ndates = pd.date_range(start='2023-01-01', periods=n_days)\n\nga_data = pd.DataFrame({\n    'date': dates,\n    'sessions': np.random.poisson(1000, n_days) + np.sin(np.arange(n_days) * 2 * np.pi / 7) * 200,\n    'users': np.random.poisson(800, n_days),\n    'pageviews': np.random.poisson(3000, n_days),\n    'bounce_rate': np.random.uniform(0.3, 0.6, n_days),\n    'avg_session_duration': np.random.uniform(60, 180, n_days)\n})\n\nga_data['sessions'] = ga_data['sessions'].astype(int)\n\nprint(ga_data.head())\n\n        date  sessions  users  pageviews  bounce_rate  avg_session_duration\n0 2023-01-01       988    804       3021     0.514005            172.600855\n1 2023-01-02      1178    812       2966     0.568562             81.747968\n2 2023-01-03      1157    818       3028     0.453503             67.979552\n3 2023-01-04      1095    785       3050     0.459634            148.934478\n4 2023-01-05       948    812       2912     0.332152            128.936774",
+    "crumbs": [
+      "Real Cases",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Google Analytics Case Study</span>"
+    ]
+  },
+  {
+    "objectID": "07-real-cases/google-analytics-case.html#traffic-analysis",
+    "href": "07-real-cases/google-analytics-case.html#traffic-analysis",
+    "title": "17  Google Analytics Case Study",
+    "section": "17.3 Traffic Analysis",
+    "text": "17.3 Traffic Analysis\n\n# Sessions over time\nplt.figure(figsize=(12, 6))\nplt.plot(ga_data['date'], ga_data['sessions'])\nplt.xlabel('Date')\nplt.ylabel('Sessions')\nplt.title('Daily Sessions Over Time')\nplt.xticks(rotation=45)\nplt.tight_layout()\nplt.show()\n\n\n\n\n\n\n\n\n\n# Weekly patterns\nga_data['day_of_week'] = ga_data['date'].dt.day_name()\nweekly_avg = ga_data.groupby('day_of_week')['sessions'].mean()\n\n# Reorder days\nday_order = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']\nweekly_avg = weekly_avg.reindex(day_order)\n\nplt.figure(figsize=(10, 6))\nweekly_avg.plot(kind='bar')\nplt.ylabel('Average Sessions')\nplt.title('Average Sessions by Day of Week')\nplt.xticks(rotation=45)\nplt.tight_layout()\nplt.show()",
+    "crumbs": [
+      "Real Cases",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Google Analytics Case Study</span>"
+    ]
+  },
+  {
+    "objectID": "07-real-cases/google-analytics-case.html#traffic-source-analysis",
+    "href": "07-real-cases/google-analytics-case.html#traffic-source-analysis",
+    "title": "17  Google Analytics Case Study",
+    "section": "17.4 Traffic Source Analysis",
+    "text": "17.4 Traffic Source Analysis\n\n# Simulated traffic sources\nsources = pd.DataFrame({\n    'source': ['Organic Search', 'Direct', 'Social', 'Referral', 'Email', 'Paid Search'],\n    'sessions': [4500, 3200, 2100, 1500, 800, 900],\n    'conversion_rate': [0.032, 0.028, 0.018, 0.025, 0.055, 0.042]\n})\n\nfig, axes = plt.subplots(1, 2, figsize=(14, 5))\n\n# Sessions by source\naxes[0].pie(sources['sessions'], labels=sources['source'], autopct='%1.1f%%')\naxes[0].set_title('Sessions by Traffic Source')\n\n# Conversion rate by source\nsns.barplot(data=sources, x='source', y='conversion_rate', ax=axes[1])\naxes[1].set_ylabel('Conversion Rate')\naxes[1].set_title('Conversion Rate by Source')\naxes[1].tick_params(axis='x', rotation=45)\n\nplt.tight_layout()\nplt.show()",
+    "crumbs": [
+      "Real Cases",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Google Analytics Case Study</span>"
+    ]
+  },
+  {
+    "objectID": "07-real-cases/google-analytics-case.html#key-metrics-dashboard",
+    "href": "07-real-cases/google-analytics-case.html#key-metrics-dashboard",
+    "title": "17  Google Analytics Case Study",
+    "section": "17.5 Key Metrics Dashboard",
+    "text": "17.5 Key Metrics Dashboard\n\n# Summary metrics\nprint(\"=== Key Metrics Summary ===\")\nprint(f\"Total Sessions: {ga_data['sessions'].sum():,}\")\nprint(f\"Total Users: {ga_data['users'].sum():,}\")\nprint(f\"Total Pageviews: {ga_data['pageviews'].sum():,}\")\nprint(f\"Avg Bounce Rate: {ga_data['bounce_rate'].mean():.1%}\")\nprint(f\"Avg Session Duration: {ga_data['avg_session_duration'].mean():.0f} seconds\")\n\n=== Key Metrics Summary ===\nTotal Sessions: 90,188\nTotal Users: 72,071\nTotal Pageviews: 268,869\nAvg Bounce Rate: 43.8%\nAvg Session Duration: 124 seconds",
+    "crumbs": [
+      "Real Cases",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Google Analytics Case Study</span>"
+    ]
+  },
+  {
+    "objectID": "07-real-cases/google-analytics-case.html#conclusions",
+    "href": "07-real-cases/google-analytics-case.html#conclusions",
+    "title": "17  Google Analytics Case Study",
+    "section": "17.6 Conclusions",
+    "text": "17.6 Conclusions\n\nWebsite traffic shows weekly seasonality with higher traffic on weekdays\nEmail marketing has the highest conversion rate despite lower volume\nOrganic search drives the most traffic\nThere’s opportunity to improve engagement on weekends",
+    "crumbs": [
+      "Real Cases",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Google Analytics Case Study</span>"
+    ]
+  },
+  {
+    "objectID": "08-genai/intro-llm.html",
+    "href": "08-genai/intro-llm.html",
+    "title": "18  Introduction to Large Language Models",
+    "section": "",
+    "text": "18.1 What are LLMs?\nLarge Language Models (LLMs) are neural networks trained on vast amounts of text data to understand and generate human-like text.",
+    "crumbs": [
+      "Generative AI",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Introduction to Large Language Models</span>"
+    ]
+  },
+  {
+    "objectID": "08-genai/intro-llm.html#key-concepts",
+    "href": "08-genai/intro-llm.html#key-concepts",
+    "title": "18  Introduction to Large Language Models",
+    "section": "18.2 Key Concepts",
+    "text": "18.2 Key Concepts\n\n18.2.1 Transformer Architecture\nModern LLMs use the transformer architecture, which processes text in parallel rather than sequentially.\n\n\n18.2.2 Tokens\nLLMs process text as tokens (word pieces), not individual characters or words.\n\n\n18.2.3 Context Window\nThe maximum amount of text the model can process at once.",
+    "crumbs": [
+      "Generative AI",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Introduction to Large Language Models</span>"
+    ]
+  },
+  {
+    "objectID": "08-genai/intro-llm.html#major-llm-providers",
+    "href": "08-genai/intro-llm.html#major-llm-providers",
+    "title": "18  Introduction to Large Language Models",
+    "section": "18.3 Major LLM Providers",
+    "text": "18.3 Major LLM Providers\n\nOpenAI: GPT-4, GPT-3.5\nAnthropic: Claude 3\nGoogle: Gemini\nMeta: Llama\nMistral: Mixtral",
+    "crumbs": [
+      "Generative AI",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Introduction to Large Language Models</span>"
+    ]
+  },
+  {
+    "objectID": "08-genai/intro-llm.html#use-cases",
+    "href": "08-genai/intro-llm.html#use-cases",
+    "title": "18  Introduction to Large Language Models",
+    "section": "18.4 Use Cases",
+    "text": "18.4 Use Cases\n\nText Generation: Writing assistance, content creation\nSummarization: Condensing long documents\nTranslation: Language translation\nCode Generation: Programming assistance\nQuestion Answering: Information retrieval\nAnalysis: Data interpretation and insights",
+    "crumbs": [
+      "Generative AI",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Introduction to Large Language Models</span>"
+    ]
+  },
+  {
+    "objectID": "08-genai/intro-llm.html#getting-started",
+    "href": "08-genai/intro-llm.html#getting-started",
+    "title": "18  Introduction to Large Language Models",
+    "section": "18.5 Getting Started",
+    "text": "18.5 Getting Started\n\n# Install the OpenAI package\n# pip install openai\n\nfrom openai import OpenAI\nimport os\n\n# Set up the client\nclient = OpenAI(api_key=os.getenv(\"OPENAI_API_KEY\"))",
+    "crumbs": [
+      "Generative AI",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Introduction to Large Language Models</span>"
+    ]
+  },
+  {
+    "objectID": "08-genai/intro-llm.html#ethical-considerations",
+    "href": "08-genai/intro-llm.html#ethical-considerations",
+    "title": "18  Introduction to Large Language Models",
+    "section": "18.6 Ethical Considerations",
+    "text": "18.6 Ethical Considerations\n\nBias: LLMs can reflect biases in training data\nHallucinations: Models may generate plausible but incorrect information\nPrivacy: Be careful with sensitive data\nAttribution: AI-generated content should be disclosed",
+    "crumbs": [
+      "Generative AI",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Introduction to Large Language Models</span>"
+    ]
+  },
+  {
+    "objectID": "08-genai/intro-llm.html#whats-next",
+    "href": "08-genai/intro-llm.html#whats-next",
+    "title": "18  Introduction to Large Language Models",
+    "section": "18.7 What’s Next",
+    "text": "18.7 What’s Next\nIn the following chapters, we’ll learn: - How to use LLM APIs - Working with embeddings - Building applications with LLMs",
+    "crumbs": [
+      "Generative AI",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Introduction to Large Language Models</span>"
+    ]
+  },
+  {
+    "objectID": "08-genai/llm-api.html",
+    "href": "08-genai/llm-api.html",
+    "title": "19  Working with LLM APIs",
+    "section": "",
+    "text": "19.1 Introduction\nIn this chapter, we’ll learn how to interact with LLM APIs using Python.",
+    "crumbs": [
+      "Generative AI",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Working with LLM APIs</span>"
+    ]
+  },
+  {
+    "objectID": "08-genai/llm-api.html#setting-up-api-access",
+    "href": "08-genai/llm-api.html#setting-up-api-access",
+    "title": "19  Working with LLM APIs",
+    "section": "19.2 Setting Up API Access",
+    "text": "19.2 Setting Up API Access\n\nimport os\nfrom dotenv import load_dotenv\n\n# Load environment variables\nload_dotenv()\n\n# API keys should be stored securely, never in code\napi_key = os.getenv(\"OPENAI_API_KEY\")",
+    "crumbs": [
+      "Generative AI",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Working with LLM APIs</span>"
+    ]
+  },
+  {
+    "objectID": "08-genai/llm-api.html#using-the-openai-api",
+    "href": "08-genai/llm-api.html#using-the-openai-api",
+    "title": "19  Working with LLM APIs",
+    "section": "19.3 Using the OpenAI API",
+    "text": "19.3 Using the OpenAI API\n\nfrom openai import OpenAI\n\nclient = OpenAI()\n\n# Basic completion\nresponse = client.chat.completions.create(\n    model=\"gpt-4\",\n    messages=[\n        {\"role\": \"system\", \"content\": \"You are a helpful assistant.\"},\n        {\"role\": \"user\", \"content\": \"What is data science?\"}\n    ]\n)\n\nprint(response.choices[0].message.content)",
+    "crumbs": [
+      "Generative AI",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Working with LLM APIs</span>"
+    ]
+  },
+  {
+    "objectID": "08-genai/llm-api.html#practical-example-text-analysis",
+    "href": "08-genai/llm-api.html#practical-example-text-analysis",
+    "title": "19  Working with LLM APIs",
+    "section": "19.4 Practical Example: Text Analysis",
+    "text": "19.4 Practical Example: Text Analysis\n\ndef analyze_sentiment(text):\n    \"\"\"Analyze sentiment of text using GPT.\"\"\"\n    response = client.chat.completions.create(\n        model=\"gpt-3.5-turbo\",\n        messages=[\n            {\"role\": \"system\", \"content\": \"You are a sentiment analyst. Respond with only: POSITIVE, NEGATIVE, or NEUTRAL.\"},\n            {\"role\": \"user\", \"content\": f\"Analyze the sentiment: {text}\"}\n        ]\n    )\n    return response.choices[0].message.content\n\n# Example usage\ntexts = [\n    \"I love this product, it's amazing!\",\n    \"This is the worst experience ever.\",\n    \"The weather is cloudy today.\"\n]\n\nfor text in texts:\n    sentiment = analyze_sentiment(text)\n    print(f\"'{text}' -&gt; {sentiment}\")",
+    "crumbs": [
+      "Generative AI",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Working with LLM APIs</span>"
+    ]
+  },
+  {
+    "objectID": "08-genai/llm-api.html#using-anthropics-claude",
+    "href": "08-genai/llm-api.html#using-anthropics-claude",
+    "title": "19  Working with LLM APIs",
+    "section": "19.5 Using Anthropic’s Claude",
+    "text": "19.5 Using Anthropic’s Claude\n\nimport anthropic\n\nclient = anthropic.Anthropic()\n\nmessage = client.messages.create(\n    model=\"claude-3-sonnet-20240229\",\n    max_tokens=1024,\n    messages=[\n        {\"role\": \"user\", \"content\": \"Explain machine learning in simple terms.\"}\n    ]\n)\n\nprint(message.content[0].text)",
+    "crumbs": [
+      "Generative AI",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Working with LLM APIs</span>"
+    ]
+  },
+  {
+    "objectID": "08-genai/llm-api.html#structured-outputs",
+    "href": "08-genai/llm-api.html#structured-outputs",
+    "title": "19  Working with LLM APIs",
+    "section": "19.6 Structured Outputs",
+    "text": "19.6 Structured Outputs\n\nimport json\n\ndef extract_entities(text):\n    \"\"\"Extract named entities from text.\"\"\"\n    response = client.chat.completions.create(\n        model=\"gpt-3.5-turbo\",\n        messages=[\n            {\"role\": \"system\", \"content\": \"\"\"Extract entities and return as JSON:\n            {\"people\": [], \"organizations\": [], \"locations\": []}\"\"\"},\n            {\"role\": \"user\", \"content\": text}\n        ]\n    )\n    return json.loads(response.choices[0].message.content)\n\n# Example\ntext = \"Apple CEO Tim Cook announced new products at their Cupertino headquarters.\"\nentities = extract_entities(text)\nprint(entities)",
+    "crumbs": [
+      "Generative AI",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Working with LLM APIs</span>"
+    ]
+  },
+  {
+    "objectID": "08-genai/llm-api.html#best-practices",
+    "href": "08-genai/llm-api.html#best-practices",
+    "title": "19  Working with LLM APIs",
+    "section": "19.7 Best Practices",
+    "text": "19.7 Best Practices\n\nUse system prompts to set context and behavior\nHandle errors gracefully with try/except\nSet temperature based on use case (0 for factual, higher for creative)\nMonitor costs and set usage limits\nCache responses when possible",
+    "crumbs": [
+      "Generative AI",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Working with LLM APIs</span>"
+    ]
+  },
+  {
+    "objectID": "08-genai/llm-api.html#exercises",
+    "href": "08-genai/llm-api.html#exercises",
+    "title": "19  Working with LLM APIs",
+    "section": "19.8 Exercises",
+    "text": "19.8 Exercises\n\nBuild a function that summarizes long texts using an LLM.\nCreate a question-answering system for a specific domain.\nImplement a text classifier using LLM prompts.",
+    "crumbs": [
+      "Generative AI",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Working with LLM APIs</span>"
+    ]
+  },
+  {
+    "objectID": "08-genai/embeddings.html",
+    "href": "08-genai/embeddings.html",
+    "title": "20  Embeddings and Vector Search",
+    "section": "",
+    "text": "20.1 What are Embeddings?\nEmbeddings are numerical representations of text that capture semantic meaning.\nimport numpy as np\nfrom sklearn.metrics.pairwise import cosine_similarity",
+    "crumbs": [
+      "Generative AI",
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Embeddings and Vector Search</span>"
+    ]
+  },
+  {
+    "objectID": "08-genai/embeddings.html#creating-embeddings-with-openai",
+    "href": "08-genai/embeddings.html#creating-embeddings-with-openai",
+    "title": "20  Embeddings and Vector Search",
+    "section": "20.2 Creating Embeddings with OpenAI",
+    "text": "20.2 Creating Embeddings with OpenAI\n\nfrom openai import OpenAI\n\nclient = OpenAI()\n\ndef get_embedding(text, model=\"text-embedding-3-small\"):\n    \"\"\"Get embedding for a text.\"\"\"\n    response = client.embeddings.create(\n        input=text,\n        model=model\n    )\n    return response.data[0].embedding\n\n# Example\nembedding = get_embedding(\"Hello, world!\")\nprint(f\"Embedding dimension: {len(embedding)}\")",
+    "crumbs": [
+      "Generative AI",
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Embeddings and Vector Search</span>"
+    ]
+  },
+  {
+    "objectID": "08-genai/embeddings.html#using-sentence-transformers-local",
+    "href": "08-genai/embeddings.html#using-sentence-transformers-local",
+    "title": "20  Embeddings and Vector Search",
+    "section": "20.3 Using Sentence Transformers (Local)",
+    "text": "20.3 Using Sentence Transformers (Local)\n\nfrom sentence_transformers import SentenceTransformer\n\n# Load model\nmodel = SentenceTransformer('all-MiniLM-L6-v2')\n\n# Create embeddings\nsentences = [\n    \"The weather is beautiful today.\",\n    \"It's a lovely sunny day outside.\",\n    \"I love programming in Python.\",\n    \"Machine learning is fascinating.\"\n]\n\nembeddings = model.encode(sentences)\nprint(f\"Shape: {embeddings.shape}\")",
+    "crumbs": [
+      "Generative AI",
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Embeddings and Vector Search</span>"
+    ]
+  },
+  {
+    "objectID": "08-genai/embeddings.html#semantic-search",
+    "href": "08-genai/embeddings.html#semantic-search",
+    "title": "20  Embeddings and Vector Search",
+    "section": "20.4 Semantic Search",
+    "text": "20.4 Semantic Search\n\n# Simulated embeddings for demonstration\nnp.random.seed(42)\ndocuments = [\n    \"Python is a programming language\",\n    \"Machine learning uses algorithms to learn from data\",\n    \"Data science combines statistics and programming\",\n    \"Neural networks are inspired by the human brain\",\n    \"Deep learning is a subset of machine learning\"\n]\n\n# Simulated embeddings (in practice, use real model)\ndoc_embeddings = np.random.randn(5, 128)\n\ndef search(query_embedding, doc_embeddings, documents, top_k=3):\n    \"\"\"Find most similar documents.\"\"\"\n    similarities = cosine_similarity([query_embedding], doc_embeddings)[0]\n    top_indices = similarities.argsort()[-top_k:][::-1]\n    \n    results = []\n    for idx in top_indices:\n        results.append({\n            'document': documents[idx],\n            'similarity': similarities[idx]\n        })\n    return results\n\n# Simulated query embedding\nquery_embedding = np.random.randn(128)\nresults = search(query_embedding, doc_embeddings, documents)\n\nfor r in results:\n    print(f\"Score: {r['similarity']:.3f} | {r['document']}\")\n\nScore: 0.048 | Neural networks are inspired by the human brain\nScore: 0.039 | Data science combines statistics and programming\nScore: -0.055 | Python is a programming language",
+    "crumbs": [
+      "Generative AI",
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Embeddings and Vector Search</span>"
+    ]
+  },
+  {
+    "objectID": "08-genai/embeddings.html#vector-databases",
+    "href": "08-genai/embeddings.html#vector-databases",
+    "title": "20  Embeddings and Vector Search",
+    "section": "20.5 Vector Databases",
+    "text": "20.5 Vector Databases\n\n20.5.1 ChromaDB Example\n\nimport chromadb\n\n# Create client and collection\nclient = chromadb.Client()\ncollection = client.create_collection(name=\"documents\")\n\n# Add documents\ncollection.add(\n    documents=[\"Python programming\", \"Machine learning\", \"Data science\"],\n    metadatas=[{\"source\": \"doc1\"}, {\"source\": \"doc2\"}, {\"source\": \"doc3\"}],\n    ids=[\"id1\", \"id2\", \"id3\"]\n)\n\n# Query\nresults = collection.query(\n    query_texts=[\"programming languages\"],\n    n_results=2\n)\n\nprint(results)",
+    "crumbs": [
+      "Generative AI",
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Embeddings and Vector Search</span>"
+    ]
+  },
+  {
+    "objectID": "08-genai/embeddings.html#rag-retrieval-augmented-generation",
+    "href": "08-genai/embeddings.html#rag-retrieval-augmented-generation",
+    "title": "20  Embeddings and Vector Search",
+    "section": "20.6 RAG (Retrieval Augmented Generation)",
+    "text": "20.6 RAG (Retrieval Augmented Generation)\n\ndef rag_query(question, documents, embedder, llm_client):\n    \"\"\"Simple RAG implementation.\"\"\"\n    \n    # 1. Get question embedding\n    q_embedding = embedder.encode([question])\n    \n    # 2. Find relevant documents\n    doc_embeddings = embedder.encode(documents)\n    similarities = cosine_similarity(q_embedding, doc_embeddings)[0]\n    top_docs = [documents[i] for i in similarities.argsort()[-3:][::-1]]\n    \n    # 3. Generate answer with context\n    context = \"\\n\".join(top_docs)\n    response = llm_client.chat.completions.create(\n        model=\"gpt-3.5-turbo\",\n        messages=[\n            {\"role\": \"system\", \"content\": f\"Answer based on this context:\\n{context}\"},\n            {\"role\": \"user\", \"content\": question}\n        ]\n    )\n    \n    return response.choices[0].message.content",
+    "crumbs": [
+      "Generative AI",
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Embeddings and Vector Search</span>"
+    ]
+  },
+  {
+    "objectID": "08-genai/embeddings.html#exercises",
+    "href": "08-genai/embeddings.html#exercises",
+    "title": "20  Embeddings and Vector Search",
+    "section": "20.7 Exercises",
+    "text": "20.7 Exercises\n\nCreate embeddings for a set of documents and implement semantic search.\nBuild a simple RAG system for Q&A over your own documents.\nCompare different embedding models on a similarity task.",
+    "crumbs": [
+      "Generative AI",
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Embeddings and Vector Search</span>"
+    ]
+  },
+  {
+    "objectID": "09-appendix/ethics-checklist.html",
+    "href": "09-appendix/ethics-checklist.html",
+    "title": "21  Ethics Checklist for Data Science",
+    "section": "",
+    "text": "21.1 Introduction\nEthical considerations are fundamental to responsible data science practice.",
+    "crumbs": [
+      "Appendix",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Ethics Checklist for Data Science</span>"
+    ]
+  },
+  {
+    "objectID": "09-appendix/ethics-checklist.html#the-ethics-checklist",
+    "href": "09-appendix/ethics-checklist.html#the-ethics-checklist",
+    "title": "21  Ethics Checklist for Data Science",
+    "section": "21.2 The Ethics Checklist",
+    "text": "21.2 The Ethics Checklist\n\n21.2.1 Data Collection\n\nIs data collection transparent?\nDo we have consent for data use?\nAre we collecting only necessary data?\nIs data collection equitable across groups?\n\n\n\n21.2.2 Data Storage\n\nIs data stored securely?\nAre access controls in place?\nIs personally identifiable information (PII) protected?\nDo we have a data retention policy?\n\n\n\n21.2.3 Model Development\n\nHave we tested for bias in training data?\nAre all demographic groups fairly represented?\nHave we considered potential misuse?\nIs the model interpretable/explainable?\n\n\n\n21.2.4 Deployment\n\nCan users opt out of automated decisions?\nIs there human oversight for critical decisions?\nAre model limitations clearly communicated?\nIs there a feedback mechanism?\n\n\n\n21.2.5 Monitoring\n\nDo we monitor for model drift?\nAre we tracking fairness metrics over time?\nIs there a process for addressing issues?\nDo we conduct regular ethics reviews?",
+    "crumbs": [
+      "Appendix",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Ethics Checklist for Data Science</span>"
+    ]
+  },
+  {
+    "objectID": "09-appendix/ethics-checklist.html#common-biases-in-ml",
+    "href": "09-appendix/ethics-checklist.html#common-biases-in-ml",
+    "title": "21  Ethics Checklist for Data Science",
+    "section": "21.3 Common Biases in ML",
+    "text": "21.3 Common Biases in ML\n\nSelection Bias: Training data not representative\nConfirmation Bias: Seeking patterns that confirm beliefs\nMeasurement Bias: Systematic errors in data collection\nHistorical Bias: Encoding past discrimination\nAggregation Bias: Assuming all groups behave similarly",
+    "crumbs": [
+      "Appendix",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Ethics Checklist for Data Science</span>"
+    ]
+  },
+  {
+    "objectID": "09-appendix/ethics-checklist.html#fairness-metrics",
+    "href": "09-appendix/ethics-checklist.html#fairness-metrics",
+    "title": "21  Ethics Checklist for Data Science",
+    "section": "21.4 Fairness Metrics",
+    "text": "21.4 Fairness Metrics\n\nimport numpy as np\n\ndef demographic_parity(y_pred, sensitive_attr):\n    \"\"\"Check if prediction rates are equal across groups.\"\"\"\n    rates = {}\n    for group in np.unique(sensitive_attr):\n        mask = sensitive_attr == group\n        rates[group] = np.mean(y_pred[mask])\n    return rates\n\n# Example\nnp.random.seed(42)\npredictions = np.random.randint(0, 2, 100)\ngroups = np.random.choice(['A', 'B'], 100)\n\nprint(\"Prediction rates by group:\")\nprint(demographic_parity(predictions, groups))\n\nPrediction rates by group:\n{np.str_('A'): np.float64(0.5535714285714286), np.str_('B'): np.float64(0.5681818181818182)}",
+    "crumbs": [
+      "Appendix",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Ethics Checklist for Data Science</span>"
+    ]
+  },
+  {
+    "objectID": "09-appendix/ethics-checklist.html#privacy-preserving-techniques",
+    "href": "09-appendix/ethics-checklist.html#privacy-preserving-techniques",
+    "title": "21  Ethics Checklist for Data Science",
+    "section": "21.5 Privacy-Preserving Techniques",
+    "text": "21.5 Privacy-Preserving Techniques\n\nDifferential Privacy: Adding noise to protect individuals\nFederated Learning: Training without centralizing data\nData Anonymization: Removing identifying information\nSynthetic Data: Generating artificial but realistic data",
+    "crumbs": [
+      "Appendix",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Ethics Checklist for Data Science</span>"
+    ]
+  },
+  {
+    "objectID": "09-appendix/ethics-checklist.html#resources",
+    "href": "09-appendix/ethics-checklist.html#resources",
+    "title": "21  Ethics Checklist for Data Science",
+    "section": "21.6 Resources",
+    "text": "21.6 Resources\n\nAI Ethics Guidelines (UNESCO)\nResponsible AI (Microsoft)\nGoogle AI Principles",
+    "crumbs": [
+      "Appendix",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Ethics Checklist for Data Science</span>"
+    ]
+  },
+  {
+    "objectID": "09-appendix/oop-intro.html",
+    "href": "09-appendix/oop-intro.html",
+    "title": "22  Object-Oriented Programming in Python",
+    "section": "",
+    "text": "22.1 Introduction\nPython is a fully object-oriented language. In this appendix, we’ll cover the fundamentals of OOP in Python.",
+    "crumbs": [
+      "Appendix",
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Object-Oriented Programming in Python</span>"
+    ]
+  },
+  {
+    "objectID": "09-appendix/oop-intro.html#classes-and-objects",
+    "href": "09-appendix/oop-intro.html#classes-and-objects",
+    "title": "22  Object-Oriented Programming in Python",
+    "section": "22.2 Classes and Objects",
+    "text": "22.2 Classes and Objects\n\n22.2.1 Defining a Class\n\nclass Person:\n    \"\"\"A simple Person class.\"\"\"\n    \n    def __init__(self, name, age):\n        \"\"\"Initialize the person.\"\"\"\n        self.name = name\n        self.age = age\n    \n    def greet(self):\n        \"\"\"Return a greeting.\"\"\"\n        return f\"Hello, my name is {self.name} and I'm {self.age} years old.\"\n\n# Create an instance\nperson = Person(\"Alice\", 30)\nprint(person.greet())\n\nHello, my name is Alice and I'm 30 years old.\n\n\n\n\n22.2.2 The __init__ Method\nThe __init__ method is the constructor that initializes object attributes.\n\n\n22.2.3 The self Parameter\nself refers to the instance of the class and is used to access attributes and methods.",
+    "crumbs": [
+      "Appendix",
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Object-Oriented Programming in Python</span>"
+    ]
+  },
+  {
+    "objectID": "09-appendix/oop-intro.html#attributes-and-methods",
+    "href": "09-appendix/oop-intro.html#attributes-and-methods",
+    "title": "22  Object-Oriented Programming in Python",
+    "section": "22.3 Attributes and Methods",
+    "text": "22.3 Attributes and Methods\n\nclass BankAccount:\n    \"\"\"A bank account class.\"\"\"\n    \n    interest_rate = 0.02  # Class attribute\n    \n    def __init__(self, owner, balance=0):\n        self.owner = owner      # Instance attribute\n        self.balance = balance\n    \n    def deposit(self, amount):\n        \"\"\"Deposit money.\"\"\"\n        if amount &gt; 0:\n            self.balance += amount\n            return f\"Deposited ${amount}. New balance: ${self.balance}\"\n        return \"Invalid amount\"\n    \n    def withdraw(self, amount):\n        \"\"\"Withdraw money.\"\"\"\n        if 0 &lt; amount &lt;= self.balance:\n            self.balance -= amount\n            return f\"Withdrew ${amount}. New balance: ${self.balance}\"\n        return \"Insufficient funds or invalid amount\"\n    \n    def add_interest(self):\n        \"\"\"Add interest to the balance.\"\"\"\n        interest = self.balance * self.interest_rate\n        self.balance += interest\n        return f\"Added ${interest:.2f} interest\"\n\n# Example usage\naccount = BankAccount(\"Bob\", 1000)\nprint(account.deposit(500))\nprint(account.withdraw(200))\nprint(account.add_interest())\n\nDeposited $500. New balance: $1500\nWithdrew $200. New balance: $1300\nAdded $26.00 interest",
+    "crumbs": [
+      "Appendix",
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Object-Oriented Programming in Python</span>"
+    ]
+  },
+  {
+    "objectID": "09-appendix/oop-intro.html#inheritance",
+    "href": "09-appendix/oop-intro.html#inheritance",
+    "title": "22  Object-Oriented Programming in Python",
+    "section": "22.4 Inheritance",
+    "text": "22.4 Inheritance\n\nclass Animal:\n    \"\"\"Base Animal class.\"\"\"\n    \n    def __init__(self, name):\n        self.name = name\n    \n    def speak(self):\n        raise NotImplementedError(\"Subclasses must implement speak()\")\n\nclass Dog(Animal):\n    \"\"\"Dog class inheriting from Animal.\"\"\"\n    \n    def speak(self):\n        return f\"{self.name} says Woof!\"\n\nclass Cat(Animal):\n    \"\"\"Cat class inheriting from Animal.\"\"\"\n    \n    def speak(self):\n        return f\"{self.name} says Meow!\"\n\n# Polymorphism in action\nanimals = [Dog(\"Rex\"), Cat(\"Whiskers\")]\nfor animal in animals:\n    print(animal.speak())\n\nRex says Woof!\nWhiskers says Meow!",
+    "crumbs": [
+      "Appendix",
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Object-Oriented Programming in Python</span>"
+    ]
+  },
+  {
+    "objectID": "09-appendix/oop-intro.html#properties-and-decorators",
+    "href": "09-appendix/oop-intro.html#properties-and-decorators",
+    "title": "22  Object-Oriented Programming in Python",
+    "section": "22.5 Properties and Decorators",
+    "text": "22.5 Properties and Decorators\n\nclass Circle:\n    \"\"\"Circle with computed properties.\"\"\"\n    \n    def __init__(self, radius):\n        self._radius = radius\n    \n    @property\n    def radius(self):\n        \"\"\"Getter for radius.\"\"\"\n        return self._radius\n    \n    @radius.setter\n    def radius(self, value):\n        \"\"\"Setter for radius with validation.\"\"\"\n        if value &gt; 0:\n            self._radius = value\n        else:\n            raise ValueError(\"Radius must be positive\")\n    \n    @property\n    def area(self):\n        \"\"\"Computed property for area.\"\"\"\n        import math\n        return math.pi * self._radius ** 2\n    \n    @property\n    def circumference(self):\n        \"\"\"Computed property for circumference.\"\"\"\n        import math\n        return 2 * math.pi * self._radius\n\n# Example\ncircle = Circle(5)\nprint(f\"Radius: {circle.radius}\")\nprint(f\"Area: {circle.area:.2f}\")\nprint(f\"Circumference: {circle.circumference:.2f}\")\n\nRadius: 5\nArea: 78.54\nCircumference: 31.42",
+    "crumbs": [
+      "Appendix",
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Object-Oriented Programming in Python</span>"
+    ]
+  },
+  {
+    "objectID": "09-appendix/oop-intro.html#static-and-class-methods",
+    "href": "09-appendix/oop-intro.html#static-and-class-methods",
+    "title": "22  Object-Oriented Programming in Python",
+    "section": "22.6 Static and Class Methods",
+    "text": "22.6 Static and Class Methods\n\nclass MathUtils:\n    \"\"\"Utility class with static and class methods.\"\"\"\n    \n    @staticmethod\n    def add(a, b):\n        \"\"\"Static method - no access to instance or class.\"\"\"\n        return a + b\n    \n    @classmethod\n    def create_from_string(cls, string):\n        \"\"\"Class method - access to class but not instance.\"\"\"\n        return cls()\n    \n    count = 0\n    \n    @classmethod\n    def increment_count(cls):\n        \"\"\"Modify class state.\"\"\"\n        cls.count += 1\n        return cls.count\n\nprint(MathUtils.add(5, 3))\nprint(MathUtils.increment_count())\nprint(MathUtils.increment_count())\n\n8\n1\n2",
+    "crumbs": [
+      "Appendix",
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Object-Oriented Programming in Python</span>"
+    ]
+  },
+  {
+    "objectID": "09-appendix/oop-intro.html#dunder-magic-methods",
+    "href": "09-appendix/oop-intro.html#dunder-magic-methods",
+    "title": "22  Object-Oriented Programming in Python",
+    "section": "22.7 Dunder (Magic) Methods",
+    "text": "22.7 Dunder (Magic) Methods\n\nclass Vector:\n    \"\"\"A 2D vector with operator overloading.\"\"\"\n    \n    def __init__(self, x, y):\n        self.x = x\n        self.y = y\n    \n    def __repr__(self):\n        return f\"Vector({self.x}, {self.y})\"\n    \n    def __add__(self, other):\n        return Vector(self.x + other.x, self.y + other.y)\n    \n    def __mul__(self, scalar):\n        return Vector(self.x * scalar, self.y * scalar)\n    \n    def __eq__(self, other):\n        return self.x == other.x and self.y == other.y\n\nv1 = Vector(1, 2)\nv2 = Vector(3, 4)\n\nprint(f\"v1 = {v1}\")\nprint(f\"v2 = {v2}\")\nprint(f\"v1 + v2 = {v1 + v2}\")\nprint(f\"v1 * 3 = {v1 * 3}\")\n\nv1 = Vector(1, 2)\nv2 = Vector(3, 4)\nv1 + v2 = Vector(4, 6)\nv1 * 3 = Vector(3, 6)",
+    "crumbs": [
+      "Appendix",
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Object-Oriented Programming in Python</span>"
+    ]
+  },
+  {
+    "objectID": "09-appendix/oop-intro.html#data-classes-python-3.7",
+    "href": "09-appendix/oop-intro.html#data-classes-python-3.7",
+    "title": "22  Object-Oriented Programming in Python",
+    "section": "22.8 Data Classes (Python 3.7+)",
+    "text": "22.8 Data Classes (Python 3.7+)\n\nfrom dataclasses import dataclass\n\n@dataclass\nclass Point:\n    \"\"\"A point in 2D space.\"\"\"\n    x: float\n    y: float\n    \n    def distance_from_origin(self):\n        return (self.x ** 2 + self.y ** 2) ** 0.5\n\np = Point(3, 4)\nprint(p)\nprint(f\"Distance from origin: {p.distance_from_origin()}\")\n\nPoint(x=3, y=4)\nDistance from origin: 5.0",
+    "crumbs": [
+      "Appendix",
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Object-Oriented Programming in Python</span>"
+    ]
+  },
+  {
+    "objectID": "09-appendix/oop-intro.html#exercises",
+    "href": "09-appendix/oop-intro.html#exercises",
+    "title": "22  Object-Oriented Programming in Python",
+    "section": "22.9 Exercises",
+    "text": "22.9 Exercises\n\nCreate a Rectangle class with width, height, and methods for area and perimeter.\nImplement a Student class that inherits from Person and adds grades.\nCreate a Counter class that tracks the number of instances created.",
+    "crumbs": [
+      "Appendix",
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Object-Oriented Programming in Python</span>"
+    ]
+  }
+]

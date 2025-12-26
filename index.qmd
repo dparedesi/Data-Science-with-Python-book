@@ -1,0 +1,54 @@
+---
+jupyter: python3
+execute:
+  echo: true
+  warning: false
+---
+
+# Preface {.unnumbered}
+
+Welcome to *Data Science with Python*!
+
+In an era where data-driven decisions shape industries from healthcare to finance, mastering Python gives you the power to extract insights, build predictive models, and communicate findings effectively. This book has evolved from personal learning notes into a comprehensive resource that takes you from fundamentals to advanced data science techniques using practical, hands-on exercises.
+
+This book is designed for beginners with no prior Python experience who want a structured path into data science, as well as analysts looking to upgrade from spreadsheets to reproducible Python workflows. It also serves students, professionals, and practitioners seeking to modernize their machine learning skills with scikit-learn. Basic familiarity with statistics concepts is helpful but not required, as all code examples are self-contained and explained step-by-step.
+
+This book reflects the latest developments in the Python ecosystem. We use Python 3.11+ along with modern tools like VS Code and Jupyter notebooks. The book covers modern pandas patterns including method chaining, comprehensive data visualization with matplotlib and seaborn, and machine learning with scikit-learn. We have also included entirely new topics such as Generative AI and LLM integration with Python, AI-assisted coding workflows, ethics in data science, and enhanced text processing with NLTK and spaCy.
+
+Each chapter builds on previous concepts, but you can also jump to topics of interest. If you are learning Python from scratch, start with the Fundamentals in the first two chapters. Chapter 3 covers visualization with matplotlib and seaborn, while Chapter 12 dives into building machine learning models. For those interested in working with Large Language Models, Chapter 14 covers Generative AI. Throughout the book, you will find hands-on exercises to test your understanding. Solutions are provided, but we encourage you to try them yourself first.
+
+Many exercises are inspired by practical classroom experiences and activities from the [Professional Certificate in Data Science](https://online-learning.harvard.edu/series/professional-certificate-data-science)^[https://online-learning.harvard.edu/series/professional-certificate-data-science] by **HarvardX**. The code used to generate this book is available on GitHub, encouraging transparency and reproducibility.
+
+## Support This Work {.unnumbered}
+
+Over 700 hours went into creating this resource. If you find it valuable, consider purchasing the PDF on [Leanpub](https://leanpub.com/data-science-with-python)^[https://leanpub.com/data-science-with-python]. Your purchase includes:
+
+- Future updates at no extra cost
+- Three months of direct Q&A access with the author
+- Support for keeping the web version free for everyone
+
+The web version available at [GitHub Pages](https://dparedesi.github.io/Data-Science-with-Python-book/)^[https://dparedesi.github.io/Data-Science-with-Python-book/] seeks to democratize data science knowledge. Share it and let's contribute together to freeing knowledge.
+
+## Stay Connected {.unnumbered}
+
+This book has reached readers worldwide. I deeply thank readers for their comments and suggestions, which have been fundamental to improving this version.
+
+If you have questions or suggestions, write to me at dparedesi@uni.pe. I usually respond within 48 hours.
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+
+# Acknowledgments {.unnumbered}
+
+## Family {.unnumbered}
+
+First and foremost, I want to express my profound gratitude to my wife, Desislava, for her invaluable emotional support during the countless hours I dedicated to this project.
+
+## Mentors and Inspirations {.unnumbered}
+
+A special thanks to [Rafael Irizarry](https://hsph.harvard.edu/profile/rafael-a-irizarry/)^[https://hsph.harvard.edu/profile/rafael-a-irizarry/], a true benchmark in the data science world, whose didactic approach to teaching advanced techniques significantly advanced my learning. I also extend my gratitude to the Python community and developers who continue to create and maintain this wonderful language and its ecosystem.
+
+My gratitude also goes to Briguit Reinaldo, CEO of Cedhinfo, whose tireless work brings the teaching of computer technologies to more people in Peru, inspiring many to explore new opportunities.
+
+## Contributors {.unnumbered}
+
+Finally, I want to acknowledge the valuable contribution of students who participated in grammatical review, paraphrasing, exercise creation, and topic proposals. Special thanks to [Josep Agama](https://www.linkedin.com/in/josep-agama-749a61190/)^[https://www.linkedin.com/in/josep-agama-749a61190/] and [Andrés Espinoza](https://www.linkedin.com/in/aespinozacontreras/)^[https://www.linkedin.com/in/aespinozacontreras/] for their fundamental contributions.

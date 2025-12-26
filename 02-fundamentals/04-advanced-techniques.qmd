@@ -1,0 +1,247 @@
+---
+jupyter: python3
+execute:
+  echo: true
+  warning: false
+---
+
+# Advanced Techniques
+
+## Metaprogramming: dynamic code generation
+
+In previous chapters, we explored different object types in Python and how to use functions to manipulate them. Now, we are going to delve into a more advanced concept that Python excels at: **metaprogramming** and **dynamic code generation**.
+
+Metaprogramming is a technique that allows us to write code that generates or manipulates other code. In Python, this is facilitated through its dynamic nature and powerful introspection capabilities.
+
+### Dynamic attribute access
+
+Python allows us to access and modify attributes dynamically using `getattr()`, `setattr()`, and `hasattr()`:
+
+```{python}
+#| eval: true
+class City:
+    def __init__(self, name, population):
+        self.name = name
+        self.population = population
+
+city = City("Seattle", 724745)
+
+# Dynamic attribute access
+attr_name = "population"
+print(getattr(city, attr_name))  # Output: 724745
+
+# Dynamic attribute setting
+setattr(city, "area", 217)
+print(city.area)  # Output: 217
+```
+
+### Creating functions dynamically
+
+Python's `lambda` expressions and closures enable dynamic function creation:
+
+```{python}
+#| eval: true
+def create_multiplier(n):
+    """Create a function that multiplies by n."""
+    return lambda x: x * n
+
+multiply_by_5 = create_multiplier(5)
+multiply_by_10 = create_multiplier(10)
+
+print(multiply_by_5(10))   # Output: 50
+print(multiply_by_10(10))  # Output: 100
+```
+
+### Decorators: modifying function behavior
+
+Decorators are a powerful Python feature for modifying or enhancing functions:
+
+```{python}
+#| eval: true
+import time
+
+def timer(func):
+    """Decorator that measures execution time."""
+    def wrapper(*args, **kwargs):
+        start = time.time()
+        result = func(*args, **kwargs)
+        end = time.time()
+        print(f"{func.__name__} took {end - start:.4f} seconds")
+        return result
+    return wrapper
+
+@timer
+def slow_function():
+    time.sleep(0.1)
+    return "Done"
+
+result = slow_function()
+```
+
+## Functional programming
+
+Functional programming is a programming style based on the use of **pure functions** and data **immutability**.
+
+### Pure functions
+
+A pure function always produces the same output for the same input and has no side effects:
+
+```{python}
+#| eval: true
+# Pure function - always returns same result for same input
+def add(a, b):
+    return a + b
+
+print(add(2, 3))  # Always returns 5
+print(add(2, 3))  # Always returns 5
+```
+
+### Immutability
+
+Instead of modifying data, we create new objects:
+
+```{python}
+#| eval: true
+# Instead of modifying a list, create a new one
+original = [1, 2, 3]
+new_list = original + [4]  # Creates new list
+
+print(f"Original: {original}")
+print(f"New: {new_list}")
+```
+
+### Higher-order functions with functools
+
+The `functools` module provides tools for functional programming:
+
+```{python}
+#| eval: true
+from functools import reduce
+
+numbers = [1, 2, 3, 4, 5]
+
+# map: apply function to each element
+squares = list(map(lambda x: x**2, numbers))
+print(f"Squares: {squares}")
+
+# filter: keep elements that satisfy condition
+evens = list(filter(lambda x: x % 2 == 0, numbers))
+print(f"Evens: {evens}")
+
+# reduce: accumulate values
+total = reduce(lambda a, b: a + b, numbers)
+print(f"Sum: {total}")
+```
+
+### Combining functional operations
+
+```{python}
+#| eval: true
+numbers = [1, 2, 3, 4, 5]
+
+# Sum of squares of even numbers
+result = reduce(
+    lambda a, b: a + b,
+    map(lambda x: x**2, filter(lambda x: x % 2 == 0, numbers))
+)
+print(result)  # 4 + 16 = 20
+```
+
+Or more Pythonically with comprehensions:
+
+```{python}
+#| eval: true
+result = sum(x**2 for x in numbers if x % 2 == 0)
+print(result)  # 20
+```
+
+## Object-Oriented Programming in Python
+
+Python has excellent support for Object-Oriented Programming (OOP). For a detailed introduction to Python's class system, please refer to [Appendix B: OOP Introduction](#sec-oop-intro).
+
+Here's a quick preview:
+
+```{python}
+#| eval: true
+class DataAnalyzer:
+    """A simple data analyzer class."""
+    
+    def __init__(self, data):
+        self.data = data
+    
+    def mean(self):
+        return sum(self.data) / len(self.data)
+    
+    def summary(self):
+        return {
+            "mean": self.mean(),
+            "min": min(self.data),
+            "max": max(self.data),
+            "count": len(self.data)
+        }
+
+analyzer = DataAnalyzer([1, 2, 3, 4, 5])
+print(analyzer.summary())
+```
+
+## Exercises
+
+1. Create an expression that calculates the sum of two variables `a` and `b`, then evaluate it.
+
+<details>
+  <summary>Solution</summary>
+```python
+a = 5
+b = 10
+result = a + b
+print(result)  # 15
+```
+</details>
+
+2. Create a function `create_power_function(n)` that returns a new function capable of raising its input to the power of `n`.
+
+<details>
+  <summary>Solution</summary>
+```python
+def create_power_function(n):
+    return lambda x: x ** n
+
+square = create_power_function(2)
+cube = create_power_function(3)
+
+print(square(4))  # 16
+print(cube(4))    # 64
+```
+</details>
+
+3. Use `map()`, `filter()`, and `reduce()` to calculate the product of all even numbers in a list.
+
+<details>
+  <summary>Solution</summary>
+```python
+from functools import reduce
+
+numbers = [1, 2, 3, 4, 5, 6]
+result = reduce(lambda a, b: a * b, filter(lambda x: x % 2 == 0, numbers))
+print(result)  # 2 * 4 * 6 = 48
+```
+</details>
+
+4. Create a decorator called `debug` that prints the function name and arguments before each call.
+
+<details>
+  <summary>Solution</summary>
+```python
+def debug(func):
+    def wrapper(*args, **kwargs):
+        print(f"Calling {func.__name__} with args={args}, kwargs={kwargs}")
+        return func(*args, **kwargs)
+    return wrapper
+
+@debug
+def add(a, b):
+    return a + b
+
+result = add(2, 3)
+```
+</details>

@@ -1,0 +1,160 @@
+---
+jupyter: python3
+execute:
+  echo: true
+  warning: false
+---
+
+# Embeddings and Vector Search
+
+## What are Embeddings?
+
+Embeddings are numerical representations of text that capture semantic meaning.
+
+```{python}
+#| eval: true
+import numpy as np
+from sklearn.metrics.pairwise import cosine_similarity
+```
+
+## Creating Embeddings with OpenAI
+
+```{python}
+#| eval: false
+from openai import OpenAI
+
+client = OpenAI()
+
+def get_embedding(text, model="text-embedding-3-small"):
+    """Get embedding for a text."""
+    response = client.embeddings.create(
+        input=text,
+        model=model
+    )
+    return response.data[0].embedding
+
+# Example
+embedding = get_embedding("Hello, world!")
+print(f"Embedding dimension: {len(embedding)}")
+```
+
+## Using Sentence Transformers (Local)
+
+```{python}
+#| eval: false
+from sentence_transformers import SentenceTransformer
+
+# Load model
+model = SentenceTransformer('all-MiniLM-L6-v2')
+
+# Create embeddings
+sentences = [
+    "The weather is beautiful today.",
+    "It's a lovely sunny day outside.",
+    "I love programming in Python.",
+    "Machine learning is fascinating."
+]
+
+embeddings = model.encode(sentences)
+print(f"Shape: {embeddings.shape}")
+```
+
+## Semantic Search
+
+```{python}
+#| eval: true
+# Simulated embeddings for demonstration
+np.random.seed(42)
+documents = [
+    "Python is a programming language",
+    "Machine learning uses algorithms to learn from data",
+    "Data science combines statistics and programming",
+    "Neural networks are inspired by the human brain",
+    "Deep learning is a subset of machine learning"
+]
+
+# Simulated embeddings (in practice, use real model)
+doc_embeddings = np.random.randn(5, 128)
+
+def search(query_embedding, doc_embeddings, documents, top_k=3):
+    """Find most similar documents."""
+    similarities = cosine_similarity([query_embedding], doc_embeddings)[0]
+    top_indices = similarities.argsort()[-top_k:][::-1]
+    
+    results = []
+    for idx in top_indices:
+        results.append({
+            'document': documents[idx],
+            'similarity': similarities[idx]
+        })
+    return results
+
+# Simulated query embedding
+query_embedding = np.random.randn(128)
+results = search(query_embedding, doc_embeddings, documents)
+
+for r in results:
+    print(f"Score: {r['similarity']:.3f} | {r['document']}")
+```
+
+## Vector Databases
+
+### ChromaDB Example
+
+```{python}
+#| eval: false
+import chromadb
+
+# Create client and collection
+client = chromadb.Client()
+collection = client.create_collection(name="documents")
+
+# Add documents
+collection.add(
+    documents=["Python programming", "Machine learning", "Data science"],
+    metadatas=[{"source": "doc1"}, {"source": "doc2"}, {"source": "doc3"}],
+    ids=["id1", "id2", "id3"]
+)
+
+# Query
+results = collection.query(
+    query_texts=["programming languages"],
+    n_results=2
+)
+
+print(results)
+```
+
+## RAG (Retrieval Augmented Generation)
+
+```{python}
+#| eval: false
+def rag_query(question, documents, embedder, llm_client):
+    """Simple RAG implementation."""
+    
+    # 1. Get question embedding
+    q_embedding = embedder.encode([question])
+    
+    # 2. Find relevant documents
+    doc_embeddings = embedder.encode(documents)
+    similarities = cosine_similarity(q_embedding, doc_embeddings)[0]
+    top_docs = [documents[i] for i in similarities.argsort()[-3:][::-1]]
+    
+    # 3. Generate answer with context
+    context = "\n".join(top_docs)
+    response = llm_client.chat.completions.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "system", "content": f"Answer based on this context:\n{context}"},
+            {"role": "user", "content": question}
+        ]
+    )
+    
+    return response.choices[0].message.content
+```
+
+## Exercises
+
+1. Create embeddings for a set of documents and implement semantic search.
+2. Build a simple RAG system for Q&A over your own documents.
+3. Compare different embedding models on a similarity task.

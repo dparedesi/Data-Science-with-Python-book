@@ -1,0 +1,142 @@
+---
+jupyter: python3
+execute:
+  echo: true
+  warning: false
+---
+
+# Statistical Inference
+
+## Introduction
+
+Statistical inference allows us to draw conclusions about populations from samples.
+
+```{python}
+#| eval: true
+import numpy as np
+import pandas as pd
+from scipy import stats
+import matplotlib.pyplot as plt
+```
+
+## Confidence Intervals
+
+### Confidence interval for the mean
+
+```{python}
+#| eval: true
+# Sample data
+np.random.seed(42)
+sample = np.random.normal(100, 15, 50)
+
+# Calculate confidence interval
+confidence = 0.95
+mean = np.mean(sample)
+sem = stats.sem(sample)  # Standard error of the mean
+ci = stats.t.interval(confidence, len(sample)-1, loc=mean, scale=sem)
+
+print(f"Sample mean: {mean:.2f}")
+print(f"95% Confidence Interval: ({ci[0]:.2f}, {ci[1]:.2f})")
+```
+
+## Hypothesis Testing
+
+### One-sample t-test
+
+```{python}
+#| eval: true
+# Test if population mean equals 100
+sample = np.random.normal(105, 15, 50)
+t_stat, p_value = stats.ttest_1samp(sample, 100)
+
+print(f"t-statistic: {t_stat:.4f}")
+print(f"p-value: {p_value:.4f}")
+
+if p_value < 0.05:
+    print("Reject null hypothesis: mean is significantly different from 100")
+else:
+    print("Fail to reject null hypothesis")
+```
+
+### Two-sample t-test
+
+```{python}
+#| eval: true
+# Compare two groups
+np.random.seed(42)
+group1 = np.random.normal(100, 15, 50)
+group2 = np.random.normal(105, 15, 50)
+
+t_stat, p_value = stats.ttest_ind(group1, group2)
+
+print(f"t-statistic: {t_stat:.4f}")
+print(f"p-value: {p_value:.4f}")
+```
+
+### Chi-square test
+
+```{python}
+#| eval: true
+# Test for independence
+observed = np.array([[50, 30], [20, 40]])
+chi2, p_value, dof, expected = stats.chi2_contingency(observed)
+
+print(f"Chi-square statistic: {chi2:.4f}")
+print(f"p-value: {p_value:.4f}")
+print(f"Degrees of freedom: {dof}")
+print(f"Expected frequencies:\n{expected}")
+```
+
+## Correlation
+
+### Pearson correlation
+
+```{python}
+#| eval: true
+x = np.random.normal(0, 1, 100)
+y = x * 0.8 + np.random.normal(0, 0.5, 100)
+
+r, p_value = stats.pearsonr(x, y)
+print(f"Pearson correlation: {r:.4f}")
+print(f"p-value: {p_value:.4f}")
+
+plt.figure(figsize=(5, 3.5))
+plt.scatter(x, y, alpha=0.6)
+plt.xlabel('X')
+plt.ylabel('Y')
+plt.title(f'Correlation: r = {r:.3f}')
+plt.show()
+```
+
+## Linear Regression
+
+```{python}
+#| eval: true
+from scipy.stats import linregress
+
+# Simple linear regression
+slope, intercept, r_value, p_value, std_err = linregress(x, y)
+
+print(f"Slope: {slope:.4f}")
+print(f"Intercept: {intercept:.4f}")
+print(f"R-squared: {r_value**2:.4f}")
+print(f"p-value: {p_value:.4f}")
+
+# Plot with regression line
+plt.figure(figsize=(5, 3.5))
+plt.scatter(x, y, alpha=0.6)
+plt.plot(x, slope*x + intercept, 'r-', linewidth=2, label='Regression line')
+plt.xlabel('X')
+plt.ylabel('Y')
+plt.title(f'Linear Regression (R² = {r_value**2:.3f})')
+plt.legend()
+plt.show()
+```
+
+## Exercises
+
+1. Generate a sample of 100 values and calculate a 99% confidence interval for the mean.
+
+2. Perform a two-sample t-test to compare two groups with different means.
+
+3. Calculate and visualize the correlation between two variables from a real dataset.

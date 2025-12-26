@@ -1,0 +1,68 @@
+---
+jupyter: python3
+execute:
+  echo: true
+  warning: false
+---
+
+# Introduction to Large Language Models
+
+## What are LLMs?
+
+Large Language Models (LLMs) are neural networks trained on vast amounts of text data to understand and generate human-like text.
+
+## Key Concepts
+
+### Transformer Architecture
+Modern LLMs use the transformer architecture, which processes text in parallel rather than sequentially.
+
+### Tokens
+LLMs process text as tokens (word pieces), not individual characters or words.
+
+### Context Window
+The maximum amount of text the model can process at once.
+
+## Major LLM Providers
+
+- **OpenAI**: GPT-4, GPT-3.5
+- **Anthropic**: Claude 3
+- **Google**: Gemini
+- **Meta**: Llama
+- **Mistral**: Mixtral
+
+## Use Cases
+
+1. **Text Generation**: Writing assistance, content creation
+2. **Summarization**: Condensing long documents
+3. **Translation**: Language translation
+4. **Code Generation**: Programming assistance
+5. **Question Answering**: Information retrieval
+6. **Analysis**: Data interpretation and insights
+
+## Getting Started
+
+```{python}
+#| eval: false
+# Install the OpenAI package
+# pip install openai
+
+from openai import OpenAI
+import os
+
+# Set up the client
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+```
+
+## Ethical Considerations
+
+- **Bias**: LLMs can reflect biases in training data
+- **Hallucinations**: Models may generate plausible but incorrect information
+- **Privacy**: Be careful with sensitive data
+- **Attribution**: AI-generated content should be disclosed
+
+## What's Next
+
+In the following chapters, we'll learn:
+- How to use LLM APIs
+- Working with embeddings
+- Building applications with LLMs

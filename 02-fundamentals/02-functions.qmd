@@ -1,0 +1,362 @@
+---
+jupyter: python3
+execute:
+  echo: true
+  warning: false
+---
+
+# Functions
+
+## Introduction to the world of functions
+
+In the previous chapter, we explored the different types of objects we can use to store and organize information in Python. We learned to create variables, lists, dictionaries, tuples, and NumPy arrays, and saw how to access their elements and perform operations with them.
+
+Now, in this chapter, we will go a step further and delve into the world of **functions**. Functions are one of the fundamental pillars of programming in Python, allowing us to perform more complex tasks and automate our work.
+
+### What are functions?
+
+Imagine a coffee machine. You provide the ingredients (water, coffee, sugar), and the machine performs a series of steps to produce a cup of coffee. Similarly, a function in Python is a set of instructions that receives input data (the **arguments** or **parameters**) and performs a series of operations to produce a result (the **return value**).
+
+Functions allow us to encapsulate a set of instructions into a single block of code, facilitating reuse and code organization. Instead of writing the same instructions over and over again, we can create a function that performs them for us.
+
+### Why use functions?
+
+Functions offer several advantages, starting with **Reusability**, which allows us to use the same logic in different parts of our code or across projects. They also improve **Organization** by breaking code into logical blocks, and enhance **Readability** by keeping scripts concise. Finally, functions provide **Abstraction**, hiding complex implementation details so we can focus on the problem logic.
+
+### First functions: exploring basic Python functions
+
+Python includes a large number of built-in functions. For instance, `sum()` calculates the total of a list's elements, while `len()` tells us how many elements are in a collection.
+
+```{python}
+#| eval: true
+numbers = [1, 2, 3, 4, 5]
+print(sum(numbers))  # Output: 15
+
+temperatures = [25, 28, 26, 29, 27]
+print(sum(temperatures) / len(temperatures))  # Mean: 27.0
+```
+
+Other common functions include `round()`, which limits the number of decimal places, and `len()`, which tells us how many elements a collection contains.
+
+```{python}
+#| eval: true
+import math
+print(math.pi)  # Output: 3.141592653589793
+print(round(math.pi, 2))  # Output: 3.14
+
+cities = ["New York", "Los Angeles", "Chicago"]
+print(len(cities))  # Output: 3
+```
+
+These are just a few of the many built-in functions that Python offers. As we progress through the book, we will explore more functions and learn how to use them to perform more complex data analysis.
+
+## Anatomy of a function
+
+In the previous section, we saw what functions are and why they are so useful in programming. Now, we are going to delve into the structure of a function, so you can create your own functions and automate tasks in your data analysis.
+
+### Arguments: the ingredients of the function
+
+To make a cup of coffee, you need ingredients: water, coffee, and maybe sugar or milk. Similarly, functions in Python need **arguments** (also called **parameters**) to do their job. Arguments are the input data that the function uses to perform its operations.
+
+A function's arguments are specified in parentheses after the function name. If a function requires multiple arguments, they are separated by commas.
+
+### Body: the instructions of the function
+
+The **body** of a function is the set of instructions that are executed when the function is called. The body is defined using indentation (typically 4 spaces).
+
+```{python}
+#| eval: true
+def calculate_vacation_cost(ticket_price, num_people, discount=0):
+    """Calculate the total cost of a vacation."""
+    total_cost = ticket_price * num_people * (1 - discount)
+    return total_cost
+```
+
+Note that in the function definition, the argument `discount` has a default value of 0. This means that if we do not specify a value for `discount` when calling the function, the value 0 will be used.
+
+```{python}
+#| eval: true
+# Call the function without specifying the discount
+print(calculate_vacation_cost(ticket_price=300, num_people=2))
+```
+
+```{python}
+#| eval: true
+# Call with a 10% discount
+print(calculate_vacation_cost(ticket_price=300, num_people=2, discount=0.1))
+```
+
+### Return value: the result of the function
+
+The **return value** is the result the function produces after executing its instructions. In Python, the return value is specified with the `return` statement. If `return` is not used, the function returns `None`.
+
+### Examples: creating simple functions step by step
+
+Let's see an example of how to create a simple function that converts degrees Celsius to Fahrenheit:
+
+```{python}
+#| eval: true
+def celsius_to_fahrenheit(celsius):
+    """Convert Celsius to Fahrenheit."""
+    fahrenheit = (celsius * 9 / 5) + 32
+    return fahrenheit
+```
+
+Now we can use our function to convert temperatures:
+
+```{python}
+#| eval: true
+print(celsius_to_fahrenheit(0))    # Output: 32.0
+print(celsius_to_fahrenheit(100))  # Output: 212.0
+```
+
+Congratulations! You just created your first function in Python.
+
+## Mastering the use of functions
+
+### Functions with a variable number of arguments (`*args`, `**kwargs`)
+
+Sometimes, we don't know beforehand how many arguments a function will receive. Python offers `*args` for variable positional arguments and `**kwargs` for variable keyword arguments.
+
+```{python}
+#| eval: true
+def calculate_average(*args):
+    """Calculate the average of any number of values."""
+    if len(args) == 0:
+        return 0
+    return sum(args) / len(args)
+
+print(calculate_average(1, 2, 3))
+print(calculate_average(1, 2, 3, 4, 5))
+```
+
+### Variable scope: local and global variables
+
+The **scope** of a variable refers to the part of the code where the variable is accessible. Variables defined inside a function have a **local** scope, meaning they are only accessible within the function. Variables defined outside any function have a **global** scope.
+
+**Best Practice:** Always pass all necessary values as arguments to the function. This makes functions self-contained, testable, and easier to understand.
+
+```{python}
+#| eval: true
+def kilometers_to_miles(kilometers, conversion_rate=0.621371):
+    """Convert kilometers to miles.
+    
+    Args:
+        kilometers: Distance in kilometers
+        conversion_rate: Conversion factor (default: 0.621371)
+    """
+    miles = kilometers * conversion_rate
+    return miles
+
+print(kilometers_to_miles(100))
+```
+
+:::{.callout-tip}
+**Tip:** By using a default argument value, we get the convenience of not having to specify common values while keeping the function self-contained and testable.
+:::
+
+### Examples: functions to calculate taxes, discounts, etc.
+
+**Calculating shipping cost for a package:**
+
+```{python}
+#| eval: true
+def calculate_shipping_cost(weight, destination):
+    """Calculate shipping cost based on weight and destination."""
+    if destination == "local":
+        cost = 5 + 0.1 * weight
+    elif destination == "national":
+        cost = 10 + 0.2 * weight
+    else:  # international
+        cost = 20 + 0.5 * weight
+    return cost
+
+# Usage example
+package_weight = 2.5  # Weight in kilograms
+destination = "national"
+shipping_cost = calculate_shipping_cost(package_weight, destination)
+print(shipping_cost)
+```
+
+**Calculating income tax with brackets:**
+
+```{python}
+#| eval: true
+def calculate_income_tax(income):
+    """Calculate income tax based on income brackets."""
+    if income <= 10000:
+        rate = 0.10
+    elif income <= 20000:
+        rate = 0.15
+    else:
+        rate = 0.20
+    tax = income * rate
+    return tax
+
+# Usage example
+print(calculate_income_tax(15000))
+```
+
+## Lambda functions
+
+Python supports **lambda functions**—small anonymous functions defined in a single line:
+
+```{python}
+#| eval: true
+# Regular function
+def square(x):
+    return x ** 2
+
+# Equivalent lambda function
+square_lambda = lambda x: x ** 2
+
+print(square(5))
+print(square_lambda(5))
+```
+
+Lambda functions are particularly useful with higher-order functions like `map()`, `filter()`, and `sorted()`.
+
+## Higher-order functions
+
+Higher-order functions are those that can receive other functions as arguments or return a function as a result.
+
+### `map()`: applying a function to each element
+
+```{python}
+#| eval: true
+numbers = [1, 2, 3, 4, 5]
+
+# Square each number
+squares = list(map(lambda x: x ** 2, numbers))
+print(squares)
+```
+
+### List comprehensions: the Pythonic way
+
+While `map()` is useful, Python has an even more elegant solution—**list comprehensions**:
+
+```{python}
+#| eval: true
+numbers = [1, 2, 3, 4, 5]
+
+# Square each number
+squares = [x ** 2 for x in numbers]
+print(squares)
+```
+
+```{python}
+#| eval: true
+# Filter even numbers and square them
+even_squares = [x ** 2 for x in numbers if x % 2 == 0]
+print(even_squares)
+```
+
+### `filter()`: selecting elements
+
+```{python}
+#| eval: true
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+# Filter even numbers
+evens = list(filter(lambda x: x % 2 == 0, numbers))
+print(evens)
+```
+
+## Error handling: `try/except`
+
+Sometimes, we want our code to continue executing even if an error occurs. Python uses `try/except` blocks:
+
+```{python}
+#| eval: true
+def calculate_growth_rate(initial_population, final_population, years):
+    """Calculate annual population growth rate."""
+    try:
+        rate = ((final_population / initial_population) ** (1 / years) - 1) * 100
+        return rate
+    except ZeroDivisionError:
+        print("Error: Initial population cannot be zero.")
+        return None
+
+print(calculate_growth_rate(10000, 12000, 5))
+print(calculate_growth_rate(0, 12000, 5))
+```
+
+## Exercises
+
+1. Create a function called `miles_to_kilometers()` converting miles to kilometers. The function should receive a `miles` argument and return the equivalent in kilometers. (Remember that 1 mile equals 1.60934 kilometers).
+
+<details>
+  <summary>Solution</summary>
+```python
+def miles_to_kilometers(miles):
+    kilometers = miles * 1.60934
+    return kilometers
+```
+</details>
+
+2. Create a function called `triangle_area()` calculating the area of a triangle. The function should receive two arguments: `base` and `height`, and return the triangle's area.
+
+<details>
+  <summary>Solution</summary>
+```python
+def triangle_area(base, height):
+    area = (base * height) / 2
+    return area
+```
+</details>
+
+3. Create a function called `price_with_vat()` calculating the price of a product including VAT. The function should receive two arguments: `price_without_vat` and `vat_rate` (default, 0.16), and return the price with VAT.
+
+<details>
+  <summary>Solution</summary>
+```python
+def price_with_vat(price_without_vat, vat_rate=0.16):
+    return price_without_vat * (1 + vat_rate)
+```
+</details>
+
+4. Create a function called `is_even()` determining if a number is even. The function should receive a `number` argument and return `True` if the number is even and `False` if not.
+
+<details>
+  <summary>Solution</summary>
+```python
+def is_even(number):
+    return number % 2 == 0
+```
+</details>
+
+5. Create a function called `my_factorial()` calculating the factorial of a number using recursion.
+
+<details>
+  <summary>Solution</summary>
+```python
+def my_factorial(n):
+    if n < 0:
+        print("Factorial is not defined for negative numbers")
+        return None
+    if n == 0:
+        return 1
+    else:
+        return n * my_factorial(n - 1)
+```
+</details>
+
+6. Create a function called `fibonacci()` generating a Fibonacci sequence of a given length.
+
+<details>
+  <summary>Solution</summary>
+```python
+def fibonacci(n):
+    if n <= 0:
+        return []
+    elif n == 1:
+        return [0]
+    elif n == 2:
+        return [0, 1]
+    else:
+        fib_seq = [0, 1]
+        for i in range(2, n):
+            fib_seq.append(fib_seq[i-1] + fib_seq[i-2])
+        return fib_seq
+```
+</details>

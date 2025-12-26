@@ -1,0 +1,335 @@
+---
+jupyter: python3
+execute:
+  echo: true
+  warning: false
+---
+
+# Objects {#sec-objects}
+
+In the world of programming, an **object** is like a container that holds information. This information can be of different types: numbers, text, complex data, and even code. The important thing is that an object groups everything necessary to represent an entity or concept.
+
+In Python, practically everything is an object. The variables we will use to store data, the functions we will use to process that data, and even the data itself, are objects.
+
+## What are objects in Python?
+
+Imagine you are organizing your move to the United States. Each item you pack in a box (clothes, books, appliances) can be considered an object. Each object has characteristics that define it: a name, a type, a size, a weight, etc.
+
+In Python, objects also have characteristics that define them. These characteristics are called **attributes**. For instance, every object has a **Name** so we can refer to it, and a **Type** that indicates what kind of data it contains (int, float, str, bool, etc.). Objects also have a **Class** defining their structure and behavior (such as list, dict, or DataFrame) and methods that define what operations can be performed on them.
+
+### Python as an object-oriented language
+
+Python is an **object-oriented** programming language, meaning it relies on the concept of objects to organize and process information. This approach offers several advantages, such as **Modularity**, allowing us to divide a program into smaller, manageable parts. It also promotes **Reusability**, as objects can be used in different parts of the program or even in other projects. Furthermore, objects provide **Encapsulation**, hiding implementation details to facilitate their use and maintenance.
+
+### The power of abstraction
+
+The concept of an object allows us to **abstract** the complexity of the real world. Instead of thinking about the details of how data is stored and processed in computer memory, we can think in terms of objects representing real-world entities.
+
+For example, instead of thinking of a series of numbers representing the temperatures of different cities, we can think of a "temperatures" object containing all that information.
+
+This abstraction facilitates understanding and handling information, allowing us to focus on the logic of the problem we want to solve.
+
+## Variables: The first objects on your journey
+
+Before we start packing for our move to the United States, we need to know what things we will take. Each object we decide to take is represented in Python as a **variable**.
+
+Think of variables as labels we put on each object. For example, we could use the variable `state` to save the name of the state we are moving to, or the variable `num_suitcases` to save the number of suitcases we will take.
+
+### Creating variables in Python
+
+In Python, we simply assign a value to a variable using the `=` symbol.
+
+```{python}
+#| eval: true
+# Assign the value "California" to the variable "state"
+state = "California"
+
+# Assign the value 5 to the variable "num_suitcases"
+num_suitcases = 5
+
+# Display the value
+print(state)
+```
+
+When executing this code, you will see the value `California` appear in the output.
+
+### Operations with variables
+
+We can also use variables to perform operations. For example, if we want to calculate the total cost of our plane trip, we could use the variables `ticket_price` and `num_people`.
+
+```{python}
+#| eval: true
+ticket_price = 300
+num_people = 4
+
+total_cost = ticket_price * num_people
+
+print(total_cost)
+```
+
+In this example, we first assign values to the variables `ticket_price` and `num_people`. Then, we multiply these variables to calculate the `total_cost` and display its value.
+
+### Best practices for naming variables
+
+**Watch out for capitalization!**
+
+Python is case-sensitive. If you create a variable called `state` and then try to access it as `State`, Python will not find it.
+
+**Descriptive names**
+
+It is important to use descriptive names for variables, clearly indicating what information they contain. Instead of using variables like `x` or `y`, it is better to use names like `ticket_price` or `num_suitcases`.
+
+**Rules for naming variables** (PEP 8 style guide)
+
+When naming your variables, remember that they can contain letters, numbers, and underscores (`_`), but they cannot start with a number or contain spaces. Python convention is to use `snake_case` (lowercase with underscores) for variable names.
+
+### Data types
+
+Variables in Python can contain different types of data:
+
+- **int** (integers): Whole numbers like 5, -3, 1000
+- **float** (floating-point): Decimal numbers like 3.14, -0.5, 2.0
+- **str** (strings): Text like "California" or 'Los Angeles'
+- **bool** (boolean): Truth values `True` or `False`
+
+```{python}
+#| eval: true
+# Check types using type()
+print(type(42))
+print(type(3.14))
+print(type("Hello"))
+print(type(True))
+```
+
+## Object types for complex data
+
+The variables we have seen so far are very useful for storing individual information, such as the name of a city or the number of suitcases we will carry on our move. However, in the real world, we often need to work with more complex datasets.
+
+Imagine you want to save the names of all the cities you plan to visit on your trip to the United States. Would you have to create a variable for each city? That would be very tedious!
+
+Fortunately, Python offers other types of objects that allow us to organize and manipulate information more efficiently. Let's look at some of them:
+
+### Lists: organizing information
+
+Lists are ordered collections that can hold items of different types. They are defined using square brackets `[]`.
+
+```{python}
+#| eval: true
+# Create a list with the names of some states
+states = ["California", "Texas", "Florida", "New York"]
+
+# Create a list with the population of each state (in millions)
+population = [39.2, 29.0, 21.4, 19.4]
+
+print(states)
+print(population)
+```
+
+**Getting information about lists:**
+
+```{python}
+#| eval: true
+print(len(population))  # Length of the list
+print(type(states))     # Type of the object
+```
+
+**Accessing list elements:** Python uses **0-based indexing**, meaning the first element is at position 0.
+
+```{python}
+#| eval: true
+# Show the first element of the "states" list
+print(states[0])  # Output: "California"
+
+# Show the third element of the "population" list  
+print(population[2])  # Output: 21.4
+```
+
+:::{.callout-warning}
+**Important: 0-based indexing!**
+
+Unlike some other languages, Python starts counting from 0. The first element is at index `[0]`, the second at `[1]`, and so on. This is one of the most common sources of confusion for beginners.
+:::
+
+We can also access multiple elements using **slicing**:
+
+```{python}
+#| eval: true
+# Access elements from index 1 to 3 (exclusive of 4)
+print(states[1:4])
+```
+
+**List operations:**
+
+```{python}
+#| eval: true
+# Sum all elements
+print(sum(population))
+
+# Calculate mean
+print(sum(population) / len(population))
+```
+
+For numerical operations, we often use **NumPy arrays** instead of lists:
+
+```{python}
+#| eval: true
+import numpy as np
+
+population_array = np.array([39.2, 29.0, 21.4, 19.4])
+
+# Calculate square root of each element
+print(np.sqrt(population_array))
+```
+
+**Sorting lists:**
+
+```{python}
+#| eval: true
+districts = ["Comas", "Lince", "Miraflores", "Lurigancho", "Chorrillos"]
+print(sorted(districts))  # Returns a new sorted list
+```
+
+**Handling missing values with NumPy:**
+
+```{python}
+#| eval: true
+example_na = np.array([28, 3, 19, np.nan, 89, 45, np.nan, 86, 5, 18, 28, np.nan])
+# Filter out NaN values and calculate mean
+print(np.nanmean(example_na))
+```
+
+### Dictionaries: grouping objects with keys
+
+Dictionaries are like containers that map keys to values. They are defined using curly braces `{}`.
+
+```{python}
+#| eval: true
+# Create a dictionary with information about a city
+city_info = {
+    "name": "San Francisco",
+    "population": 880000,
+    "cost_of_living": 3.8,
+    "climate": "Temperate"
+}
+
+print(city_info)
+```
+
+**Accessing dictionary elements:**
+
+```{python}
+#| eval: true
+# Access by key
+print(city_info["name"])  # Output: "San Francisco"
+
+# Access using get() method (safer, returns None if key doesn't exist)
+print(city_info.get("population"))  # Output: 880000
+```
+
+### Tuples: immutable sequences
+
+Tuples are like lists, but they cannot be modified after creation. They are defined using parentheses `()`.
+
+```{python}
+#| eval: true
+coordinates = (37.7749, -122.4194)  # San Francisco coordinates
+print(coordinates)
+print(coordinates[0])  # Latitude
+```
+
+### NumPy arrays: efficient numerical computing
+
+For numerical work, NumPy arrays are much more efficient than Python lists:
+
+```{python}
+#| eval: true
+import numpy as np
+
+# Create a 2D array (matrix) with distances between cities (in miles)
+city_distances = np.array([
+    [0, 2600, 2100, 950],
+    [2600, 0, 1100, 2700],
+    [2100, 1100, 0, 2100],
+    [950, 2700, 2100, 0]
+])
+
+print(city_distances)
+```
+
+**Accessing array elements:**
+
+```{python}
+#| eval: true
+# Access the element in row 0, column 2
+print(city_distances[0, 2])
+```
+
+### Comparison with other languages
+
+While many modern programming languages use the object-oriented paradigm, Python has a particularly elegant approach. In Python, creating and using objects is intuitive and the language provides powerful built-in data structures. Unlike some languages where you must explicitly define classes for everything, Python allows you to work productively with its built-in types while still supporting full object-oriented programming when needed.
+
+## Exercises
+
+Now that you know the different types of objects in Python, it's time to put your knowledge to the test.
+
+1. Create four variables to plan your move. Define `city_name` with the city you would like to move to, `population` with its number of inhabitants, and `distance` with the kilometers from your current location. Also, create a boolean variable `want_to_live_there` indicating if you truly want to live there.
+
+<details>
+  <summary>Solution</summary>
+```python
+city_name = "Seattle"
+population = 724745 
+distance = 8340  # Approximate distance from Lima, Peru
+want_to_live_there = True
+```
+</details>
+
+2. Create a list called `nearby_cities` containing the names of three cities near the city you chose in the previous exercise.
+
+<details>
+  <summary>Solution</summary>
+```python
+nearby_cities = ["Tacoma", "Bellevue", "Everett"]
+```
+</details>
+
+3. Construct a dictionary called `my_info` that groups different types of information about yourself. It should include your name, your age, a list with your three favorite colors, and a boolean value indicating if you like chocolate.
+
+<details>
+  <summary>Solution</summary>
+```python
+my_info = {
+    "name": "Ana",
+    "age": 30,
+    "favorite_colors": ["blue", "green", "red"],
+    "likes_chocolate": True
+}
+```
+</details>
+
+4. Create a NumPy array called `monthly_expenses` containing your estimated monthly expenses for Housing, Transport, Food, and Entertainment for January, February, and March.
+
+<details>
+  <summary>Solution</summary>
+```python
+import numpy as np
+
+monthly_expenses = np.array([
+    [1500, 1500, 1500],  # Housing
+    [300, 250, 350],     # Transport
+    [500, 400, 550],     # Food
+    [200, 150, 250]      # Entertainment
+])
+```
+</details>
+
+5. Create a list called `cities_to_visit` with the names of 5 cities you would like to visit in the United States. Then, create another list called `days_per_city` with the number of days you would like to spend in each city. Finally, create a third list called `daily_cost` with the estimated daily cost in each city (in dollars).
+
+<details>
+  <summary>Solution</summary>
+```python
+cities_to_visit = ["New York", "Los Angeles", "Chicago", "San Francisco", "Miami"]
+days_per_city = [5, 4, 3, 6, 2]
+daily_cost = [200, 180, 150, 220, 170]
+```
+</details>

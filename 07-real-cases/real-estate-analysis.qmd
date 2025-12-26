@@ -1,0 +1,154 @@
+---
+jupyter: python3
+execute:
+  echo: true
+  warning: false
+---
+
+# Real Estate Analysis
+
+## Introduction
+
+In this case study, we'll analyze real estate data to understand factors affecting property prices.
+
+```{python}
+#| eval: true
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LinearRegression
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.metrics import mean_squared_error, r2_score
+```
+
+## Simulated Dataset
+
+```{python}
+#| eval: true
+np.random.seed(42)
+n_samples = 500
+
+# Create simulated real estate data
+data = pd.DataFrame({
+    'sqft': np.random.randint(800, 4000, n_samples),
+    'bedrooms': np.random.randint(1, 6, n_samples),
+    'bathrooms': np.random.randint(1, 4, n_samples),
+    'age': np.random.randint(0, 50, n_samples),
+    'location_score': np.random.uniform(1, 10, n_samples)
+})
+
+# Price based on features with some noise
+data['price'] = (
+    150 * data['sqft'] + 
+    20000 * data['bedrooms'] + 
+    15000 * data['bathrooms'] - 
+    1000 * data['age'] + 
+    30000 * data['location_score'] +
+    np.random.normal(0, 50000, n_samples)
+)
+
+print(data.head())
+```
+
+## Exploratory Data Analysis
+
+```{python}
+#| eval: true
+print(data.describe())
+```
+
+```{python}
+#| eval: true
+# Correlation matrix
+plt.figure(figsize=(10, 8))
+sns.heatmap(data.corr(), annot=True, cmap='coolwarm', center=0)
+plt.title('Feature Correlations')
+plt.show()
+```
+
+```{python}
+#| eval: true
+# Price distribution
+plt.figure(figsize=(10, 6))
+plt.hist(data['price'] / 1000, bins=30, edgecolor='black')
+plt.xlabel('Price (thousands)')
+plt.ylabel('Frequency')
+plt.title('Price Distribution')
+plt.show()
+```
+
+## Building a Prediction Model
+
+```{python}
+#| eval: true
+# Prepare features
+X = data[['sqft', 'bedrooms', 'bathrooms', 'age', 'location_score']]
+y = data['price']
+
+# Split data
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
+
+# Scale features
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+```
+
+### Linear Regression
+
+```{python}
+#| eval: true
+lr = LinearRegression()
+lr.fit(X_train_scaled, y_train)
+y_pred_lr = lr.predict(X_test_scaled)
+
+print("Linear Regression Results:")
+print(f"R² Score: {r2_score(y_test, y_pred_lr):.4f}")
+print(f"RMSE: ${np.sqrt(mean_squared_error(y_test, y_pred_lr)):,.0f}")
+```
+
+### Random Forest
+
+```{python}
+#| eval: true
+rf = RandomForestRegressor(n_estimators=100, random_state=42)
+rf.fit(X_train, y_train)
+y_pred_rf = rf.predict(X_test)
+
+print("Random Forest Results:")
+print(f"R² Score: {r2_score(y_test, y_pred_rf):.4f}")
+print(f"RMSE: ${np.sqrt(mean_squared_error(y_test, y_pred_rf)):,.0f}")
+```
+
+### Feature Importance
+
+```{python}
+#| eval: true
+importance = pd.DataFrame({
+    'Feature': X.columns,
+    'Importance': rf.feature_importances_
+}).sort_values('Importance', ascending=False)
+
+plt.figure(figsize=(10, 6))
+sns.barplot(data=importance, x='Importance', y='Feature')
+plt.title('Feature Importance (Random Forest)')
+plt.show()
+```
+
+## Conclusions
+
+- Square footage is the most important factor in determining price
+- Location score significantly impacts property values
+- Age has a negative relationship with price
+- The Random Forest model provides accurate predictions
+
+## Exercises
+
+1. Try different models and compare their performance.
+2. Engineer new features (e.g., price per sqft) and assess their impact.
+3. Build a model to classify properties into price categories.

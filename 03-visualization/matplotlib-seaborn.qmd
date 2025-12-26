@@ -1,0 +1,271 @@
+---
+jupyter: python3
+execute:
+  echo: true
+  warning: false
+---
+
+# Data Visualization with matplotlib and seaborn {#sec-visualization}
+
+## Introduction to Data Visualization in Python
+
+Data visualization is a crucial skill in data science. In Python, we have several powerful libraries for creating visualizations:
+
+- **matplotlib**: The foundational plotting library
+- **seaborn**: Built on matplotlib, provides statistical visualizations
+- **plotly**: For interactive visualizations
+
+In this chapter, we'll focus on matplotlib and seaborn, which together provide everything you need for publication-quality static visualizations.
+
+```{python}
+#| eval: true
+import matplotlib.pyplot as plt
+import seaborn as sns
+import pandas as pd
+import numpy as np
+
+# Set the style
+sns.set_theme(style="whitegrid")
+```
+
+## The Grammar of Graphics
+
+While R's ggplot2 follows an explicit "grammar of graphics" approach, matplotlib and seaborn take a more imperative approach. However, seaborn provides a high-level interface that's conceptually similar to ggplot2.
+
+### Creating a basic plot
+
+```{python}
+#| eval: true
+# Create sample data
+np.random.seed(42)
+data = pd.DataFrame({
+    'x': np.random.randn(100),
+    'y': np.random.randn(100),
+    'category': np.random.choice(['A', 'B', 'C'], 100)
+})
+
+# Basic scatter plot with matplotlib
+plt.figure(figsize=(5, 3.5))
+plt.scatter(data['x'], data['y'])
+plt.xlabel('X Variable')
+plt.ylabel('Y Variable')
+plt.title('Simple Scatter Plot')
+plt.show()
+```
+
+### Using seaborn for enhanced plots
+
+```{python}
+#| eval: true
+# Seaborn scatter plot with color by category
+plt.figure(figsize=(5, 3.5))
+sns.scatterplot(data=data, x='x', y='y', hue='category')
+plt.title('Scatter Plot by Category')
+plt.show()
+```
+
+## Common Plot Types
+
+### Line plots
+
+```{python}
+#| eval: true
+# Time series data
+dates = pd.date_range('2023-01-01', periods=100)
+values = np.cumsum(np.random.randn(100))
+
+plt.figure(figsize=(10, 6))
+plt.plot(dates, values)
+plt.xlabel('Date')
+plt.ylabel('Value')
+plt.title('Time Series')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+```
+
+### Bar charts
+
+```{python}
+#| eval: true
+# Category data
+categories = ['A', 'B', 'C', 'D', 'E']
+values = [25, 40, 30, 55, 45]
+
+plt.figure(figsize=(5, 3.5))
+sns.barplot(x=categories, y=values)
+plt.xlabel('Category')
+plt.ylabel('Value')
+plt.title('Bar Chart')
+plt.show()
+```
+
+### Histograms
+
+```{python}
+#| eval: true
+# Distribution of data
+data_sample = np.random.normal(loc=50, scale=10, size=1000)
+
+plt.figure(figsize=(5, 3.5))
+sns.histplot(data_sample, bins=30, kde=True)
+plt.xlabel('Value')
+plt.ylabel('Frequency')
+plt.title('Histogram with KDE')
+plt.show()
+```
+
+### Box plots
+
+```{python}
+#| eval: true
+# Create data for multiple groups
+df = pd.DataFrame({
+    'group': np.repeat(['A', 'B', 'C', 'D'], 50),
+    'value': np.concatenate([
+        np.random.normal(50, 5, 50),
+        np.random.normal(60, 8, 50),
+        np.random.normal(55, 6, 50),
+        np.random.normal(65, 7, 50)
+    ])
+})
+
+plt.figure(figsize=(5, 3.5))
+sns.boxplot(data=df, x='group', y='value')
+plt.xlabel('Group')
+plt.ylabel('Value')
+plt.title('Box Plot by Group')
+plt.show()
+```
+
+### Violin plots
+
+```{python}
+#| eval: true
+plt.figure(figsize=(5, 3.5))
+sns.violinplot(data=df, x='group', y='value')
+plt.xlabel('Group')
+plt.ylabel('Value')
+plt.title('Violin Plot by Group')
+plt.show()
+```
+
+## Customizing Visualizations
+
+### Colors and palettes
+
+```{python}
+#| eval: true
+# Using color palettes
+plt.figure(figsize=(5, 3.5))
+sns.barplot(x=categories, y=values, palette='viridis')
+plt.title('Bar Chart with Viridis Palette')
+plt.show()
+```
+
+### Multiple subplots
+
+```{python}
+#| eval: true
+fig, axes = plt.subplots(2, 2, figsize=(12, 10))
+
+# Plot 1: Scatter
+sns.scatterplot(data=data, x='x', y='y', ax=axes[0, 0])
+axes[0, 0].set_title('Scatter Plot')
+
+# Plot 2: Histogram
+sns.histplot(data['x'], ax=axes[0, 1])
+axes[0, 1].set_title('Histogram')
+
+# Plot 3: Box plot
+sns.boxplot(data=df, x='group', y='value', ax=axes[1, 0])
+axes[1, 0].set_title('Box Plot')
+
+# Plot 4: Line plot
+axes[1, 1].plot(range(50), np.cumsum(np.random.randn(50)))
+axes[1, 1].set_title('Line Plot')
+
+plt.tight_layout()
+plt.show()
+```
+
+### FacetGrid for small multiples
+
+```{python}
+#| eval: true
+# Create a faceted plot
+tips = sns.load_dataset('tips')
+
+g = sns.FacetGrid(tips, col='time', row='sex')
+g.map(sns.histplot, 'total_bill')
+plt.show()
+```
+
+## Statistical Visualizations
+
+### Regression plots
+
+```{python}
+#| eval: true
+plt.figure(figsize=(5, 3.5))
+sns.regplot(data=data, x='x', y='y')
+plt.title('Scatter Plot with Regression Line')
+plt.show()
+```
+
+### Correlation heatmaps
+
+```{python}
+#| eval: true
+# Create correlation matrix
+np.random.seed(42)
+corr_data = pd.DataFrame({
+    'A': np.random.randn(100),
+    'B': np.random.randn(100),
+    'C': np.random.randn(100),
+    'D': np.random.randn(100)
+})
+corr_data['E'] = corr_data['A'] * 0.8 + np.random.randn(100) * 0.2
+
+corr_matrix = corr_data.corr()
+
+plt.figure(figsize=(5, 3.5))
+sns.heatmap(corr_matrix, annot=True, cmap='coolwarm', center=0)
+plt.title('Correlation Heatmap')
+plt.show()
+```
+
+### Pair plots
+
+```{python}
+#| eval: true
+# Pair plot for exploring relationships
+iris = sns.load_dataset('iris')
+sns.pairplot(iris, hue='species')
+plt.show()
+```
+
+## Saving Figures
+
+```{python}
+#| eval: false
+# Save a figure
+fig, ax = plt.subplots(figsize=(5, 3.5))
+sns.scatterplot(data=data, x='x', y='y', ax=ax)
+ax.set_title('My Plot')
+
+# Save in different formats
+fig.savefig('my_plot.png', dpi=300, bbox_inches='tight')
+fig.savefig('my_plot.pdf', bbox_inches='tight')
+fig.savefig('my_plot.svg', bbox_inches='tight')
+```
+
+## Exercises
+
+1. Create a scatter plot of any two numeric variables with different colors for different categories.
+
+2. Create a histogram showing the distribution of a variable, with a kernel density estimate overlay.
+
+3. Create a figure with 4 subplots showing different types of visualizations.
+
+4. Create a heatmap showing correlations between variables in a dataset.

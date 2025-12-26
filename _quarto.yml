@@ -1,0 +1,105 @@
+project:
+  type: book
+  output-dir: docs
+  resources:
+    - data/**
+
+book:
+  title: "Data Science with Python"
+  subtitle: "Data Analysis and Prediction Algorithms with Python"
+  author: "Mg. Daniel Paredes Inilupu"
+  date: today
+  repo-url: https://github.com/dparedesi/Data-Science-with-Python-book
+  repo-actions: [edit, issue]
+  
+  chapters:
+    - index.qmd
+    - part: "Fundamentals and Key Tools"
+      chapters:
+        - 01-introduction/introduction.qmd
+        - 02-fundamentals/01-objects.qmd
+        - 02-fundamentals/02-functions.qmd
+        - 02-fundamentals/03-data-structures.qmd
+        - 02-fundamentals/04-advanced-techniques.qmd
+    - part: "Data Visualization and Summarization"
+      chapters:
+        - 03-visualization/matplotlib-seaborn.qmd
+        - 03-visualization/gapminder.qmd
+    - part: "Statistics with Python"
+      chapters:
+        - 04-statistics/discrete.qmd
+        - 04-statistics/continuous.qmd
+        - 04-statistics/inference.qmd
+    - part: "Data Wrangling"
+      chapters:
+        - 05-wrangling/importing-data.qmd
+        - 05-wrangling/text-processing.qmd
+    - part: "Machine Learning"
+      chapters:
+        - 06-machine-learning/intro.qmd
+        - 06-machine-learning/supervised.qmd
+        - 06-machine-learning/unsupervised.qmd
+    - part: "Real Cases"
+      chapters:
+        - 07-real-cases/introduction.qmd
+        - 07-real-cases/real-estate-analysis.qmd
+        - 07-real-cases/google-analytics-case.qmd
+    - part: "Generative AI"
+      chapters:
+        - 08-genai/intro-llm.qmd
+        - 08-genai/llm-api.qmd
+        - 08-genai/embeddings.qmd
+    - part: "Appendix"
+      chapters:
+        - 09-appendix/ethics-checklist.qmd
+        - 09-appendix/oop-intro.qmd
+    - references.qmd
+
+format:
+  html:
+    theme:
+      light: cosmo
+      dark: darkly
+    css: styles/custom.scss
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    code-fold: false
+    code-tools: true
+    code-copy: true
+    code-link: true
+    
+  pdf:
+    documentclass: scrbook
+    papersize: letter
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    colorlinks: true
+    geometry:
+      - top=1in
+      - bottom=1in
+      - left=1in
+      - right=1in
+    pagestyle: headings
+    classoption:
+      - footinclude=true
+      - headinclude=false
+    fig-width: 5
+    fig-height: 4
+    fig-pos: 'H'
+    include-in-header:
+      text: |
+        \raggedbottom
+        \RedeclareSectionCommand[beforeskip=1.5ex,afterskip=1ex]{section}
+        \RedeclareSectionCommand[beforeskip=1ex,afterskip=0.5ex]{subsection}
+        \RedeclareSectionCommand[beforeskip=0.5ex,afterskip=0.5ex]{subsubsection}
+    
+  epub:
+    toc: true
+    number-sections: true
+
+execute:
+  freeze: auto
+  
+bibliography: book.bib

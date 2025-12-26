@@ -1,0 +1,193 @@
+---
+jupyter: python3
+execute:
+  echo: true
+  warning: false
+---
+
+# Supervised Learning
+
+## Introduction
+
+Supervised learning uses labeled data to train models that can make predictions on new data.
+
+```{python}
+#| eval: true
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.datasets import load_iris, make_classification
+from sklearn.model_selection import train_test_split, cross_val_score, GridSearchCV
+from sklearn.preprocessing import StandardScaler
+from sklearn.pipeline import Pipeline
+from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
+```
+
+## Classification
+
+### k-Nearest Neighbors
+
+```{python}
+#| eval: true
+from sklearn.neighbors import KNeighborsClassifier
+
+# Load data
+iris = load_iris()
+X_train, X_test, y_train, y_test = train_test_split(
+    iris.data, iris.target, test_size=0.3, random_state=42
+)
+
+# Create pipeline with scaling and KNN
+pipeline = Pipeline([
+    ('scaler', StandardScaler()),
+    ('knn', KNeighborsClassifier(n_neighbors=5))
+])
+
+# Train
+pipeline.fit(X_train, y_train)
+
+# Predict
+y_pred = pipeline.predict(X_test)
+print(f"Accuracy: {accuracy_score(y_test, y_pred):.4f}")
+```
+
+### Logistic Regression
+
+```{python}
+#| eval: true
+from sklearn.linear_model import LogisticRegression
+
+# Create and train model
+log_reg = Pipeline([
+    ('scaler', StandardScaler()),
+    ('classifier', LogisticRegression(random_state=42))
+])
+
+log_reg.fit(X_train, y_train)
+y_pred = log_reg.predict(X_test)
+print(f"Accuracy: {accuracy_score(y_test, y_pred):.4f}")
+```
+
+### Decision Trees
+
+```{python}
+#| eval: true
+from sklearn.tree import DecisionTreeClassifier
+
+dt = DecisionTreeClassifier(max_depth=3, random_state=42)
+dt.fit(X_train, y_train)
+y_pred = dt.predict(X_test)
+print(f"Accuracy: {accuracy_score(y_test, y_pred):.4f}")
+```
+
+### Random Forest
+
+```{python}
+#| eval: true
+from sklearn.ensemble import RandomForestClassifier
+
+rf = RandomForestClassifier(n_estimators=100, random_state=42)
+rf.fit(X_train, y_train)
+y_pred = rf.predict(X_test)
+print(f"Accuracy: {accuracy_score(y_test, y_pred):.4f}")
+```
+
+## Model Evaluation
+
+### Confusion Matrix
+
+```{python}
+#| eval: true
+from sklearn.metrics import ConfusionMatrixDisplay
+
+cm = confusion_matrix(y_test, y_pred)
+disp = ConfusionMatrixDisplay(cm, display_labels=iris.target_names)
+disp.plot()
+plt.title('Confusion Matrix')
+plt.show()
+```
+
+### Classification Report
+
+```{python}
+#| eval: true
+print(classification_report(y_test, y_pred, target_names=iris.target_names))
+```
+
+## Cross-Validation
+
+```{python}
+#| eval: true
+scores = cross_val_score(rf, iris.data, iris.target, cv=5)
+print(f"CV Scores: {scores}")
+print(f"Mean CV Score: {scores.mean():.4f} (+/- {scores.std()*2:.4f})")
+```
+
+## Hyperparameter Tuning
+
+```{python}
+#| eval: true
+param_grid = {
+    'n_neighbors': [3, 5, 7, 9, 11],
+}
+
+grid_search = GridSearchCV(
+    KNeighborsClassifier(),
+    param_grid,
+    cv=5,
+    scoring='accuracy'
+)
+
+# Fit on scaled data
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(iris.data)
+
+grid_search.fit(X_scaled, iris.target)
+print(f"Best parameters: {grid_search.best_params_}")
+print(f"Best score: {grid_search.best_score_:.4f}")
+```
+
+## Regression
+
+### Linear Regression
+
+```{python}
+#| eval: true
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error, r2_score
+
+# Create sample regression data
+np.random.seed(42)
+X_reg = np.random.randn(100, 1)
+y_reg = 2 * X_reg.flatten() + 1 + np.random.randn(100) * 0.5
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X_reg, y_reg, test_size=0.3, random_state=42
+)
+
+# Train model
+lr = LinearRegression()
+lr.fit(X_train, y_train)
+y_pred = lr.predict(X_test)
+
+print(f"R² Score: {r2_score(y_test, y_pred):.4f}")
+print(f"RMSE: {np.sqrt(mean_squared_error(y_test, y_pred)):.4f}")
+
+# Visualize
+plt.figure(figsize=(5, 3.5))
+plt.scatter(X_test, y_test, alpha=0.6, label='Actual')
+plt.plot(X_test, y_pred, 'r-', linewidth=2, label='Predicted')
+plt.xlabel('X')
+plt.ylabel('y')
+plt.legend()
+plt.title('Linear Regression')
+plt.show()
+```
+
+## Exercises
+
+1. Train a KNN classifier with different values of k and plot the accuracy.
+
+2. Compare multiple classifiers on the iris dataset using cross-validation.
+
+3. Build a regression model to predict house prices using multiple features.

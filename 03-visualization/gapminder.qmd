@@ -1,0 +1,205 @@
+---
+jupyter: python3
+execute:
+  echo: true
+  warning: false
+---
+
+# Gapminder Case Study
+
+## Introduction
+
+In this chapter, we'll apply our visualization skills to explore the famous Gapminder dataset. This dataset contains information about countries over time, including population, life expectancy, and GDP per capita.
+
+```{python}
+#| eval: true
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Load gapminder data from plotly
+import plotly.express as px
+gapminder = px.data.gapminder()
+
+print(gapminder.head())
+```
+
+```{python}
+#| eval: true
+print(gapminder.info())
+```
+
+## Exploring the Data
+
+### Countries and continents
+
+```{python}
+#| eval: true
+print(f"Number of countries: {gapminder['country'].nunique()}")
+print(f"Continents: {gapminder['continent'].unique()}")
+print(f"Years: {sorted(gapminder['year'].unique())}")
+```
+
+### Summary statistics
+
+```{python}
+#| eval: true
+print(gapminder.describe())
+```
+
+## Visualizing Life Expectancy Over Time
+
+### Global trend
+
+```{python}
+#| eval: true
+# Average life expectancy over time
+yearly_avg = gapminder.groupby('year')['lifeExp'].mean().reset_index()
+
+plt.figure(figsize=(10, 6))
+plt.plot(yearly_avg['year'], yearly_avg['lifeExp'], marker='o')
+plt.xlabel('Year')
+plt.ylabel('Average Life Expectancy')
+plt.title('Global Average Life Expectancy Over Time')
+plt.grid(True, alpha=0.3)
+plt.show()
+```
+
+### By continent
+
+```{python}
+#| eval: true
+# Life expectancy by continent over time
+plt.figure(figsize=(12, 6))
+for continent in gapminder['continent'].unique():
+    data = gapminder[gapminder['continent'] == continent]
+    yearly = data.groupby('year')['lifeExp'].mean()
+    plt.plot(yearly.index, yearly.values, label=continent, marker='o')
+
+plt.xlabel('Year')
+plt.ylabel('Average Life Expectancy')
+plt.title('Life Expectancy by Continent')
+plt.legend()
+plt.grid(True, alpha=0.3)
+plt.show()
+```
+
+## GDP and Life Expectancy
+
+### The wealth-health relationship
+
+```{python}
+#| eval: true
+# 2007 data
+data_2007 = gapminder[gapminder['year'] == 2007]
+
+plt.figure(figsize=(12, 8))
+sns.scatterplot(
+    data=data_2007,
+    x='gdpPercap',
+    y='lifeExp',
+    size='pop',
+    hue='continent',
+    sizes=(20, 1000),
+    alpha=0.7
+)
+plt.xscale('log')
+plt.xlabel('GDP per Capita (log scale)')
+plt.ylabel('Life Expectancy')
+plt.title('Wealth vs Health (2007)')
+plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
+plt.tight_layout()
+plt.show()
+```
+
+### Interactive visualization with Plotly
+
+```{python}
+#| eval: true
+fig = px.scatter(
+    data_2007,
+    x='gdpPercap',
+    y='lifeExp',
+    size='pop',
+    color='continent',
+    hover_name='country',
+    log_x=True,
+    size_max=60,
+    title='Gapminder 2007: GDP vs Life Expectancy'
+)
+fig.show()
+```
+
+## Animated Visualization
+
+```{python}
+#| eval: true
+# Animated bubble chart
+fig = px.scatter(
+    gapminder,
+    x='gdpPercap',
+    y='lifeExp',
+    animation_frame='year',
+    animation_group='country',
+    size='pop',
+    color='continent',
+    hover_name='country',
+    log_x=True,
+    size_max=60,
+    range_x=[100, 100000],
+    range_y=[25, 90],
+    title='Gapminder: 50 Years of Global Development'
+)
+fig.show()
+```
+
+## Population Distribution
+
+### By continent in 2007
+
+```{python}
+#| eval: true
+pop_2007 = data_2007.groupby('continent')['pop'].sum().reset_index()
+
+plt.figure(figsize=(10, 6))
+plt.pie(pop_2007['pop'], labels=pop_2007['continent'], autopct='%1.1f%%')
+plt.title('World Population by Continent (2007)')
+plt.show()
+```
+
+### Population growth over time
+
+```{python}
+#| eval: true
+pop_by_continent = gapminder.groupby(['year', 'continent'])['pop'].sum().reset_index()
+
+plt.figure(figsize=(12, 6))
+for continent in pop_by_continent['continent'].unique():
+    data = pop_by_continent[pop_by_continent['continent'] == continent]
+    plt.plot(data['year'], data['pop'] / 1e9, label=continent, marker='o')
+
+plt.xlabel('Year')
+plt.ylabel('Population (Billions)')
+plt.title('Population Growth by Continent')
+plt.legend()
+plt.grid(True, alpha=0.3)
+plt.show()
+```
+
+## Key Insights
+
+1. **Life expectancy has increased globally** - From about 50 years in 1952 to over 65 years in 2007
+2. **Strong correlation between wealth and health** - Countries with higher GDP per capita tend to have higher life expectancy
+3. **Regional disparities persist** - Africa still lags behind other continents in life expectancy
+4. **Asia's remarkable growth** - Both in population and in economic development
+
+## Exercises
+
+1. Create a line plot showing the GDP per capita over time for a specific country of your choice.
+
+2. Compare the life expectancy distributions of different continents in 2007 using box plots.
+
+3. Find the countries with the highest and lowest life expectancy in each decade.
+
+4. Create a visualization showing how the gap in life expectancy between continents has changed over time.

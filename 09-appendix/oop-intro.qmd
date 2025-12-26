@@ -1,0 +1,246 @@
+---
+jupyter: python3
+execute:
+  echo: true
+  warning: false
+---
+
+# Object-Oriented Programming in Python {#sec-oop-intro}
+
+## Introduction
+
+Python is a fully object-oriented language. In this appendix, we'll cover the fundamentals of OOP in Python.
+
+## Classes and Objects
+
+### Defining a Class
+
+```{python}
+#| eval: true
+class Person:
+    """A simple Person class."""
+    
+    def __init__(self, name, age):
+        """Initialize the person."""
+        self.name = name
+        self.age = age
+    
+    def greet(self):
+        """Return a greeting."""
+        return f"Hello, my name is {self.name} and I'm {self.age} years old."
+
+# Create an instance
+person = Person("Alice", 30)
+print(person.greet())
+```
+
+### The `__init__` Method
+
+The `__init__` method is the constructor that initializes object attributes.
+
+### The `self` Parameter
+
+`self` refers to the instance of the class and is used to access attributes and methods.
+
+## Attributes and Methods
+
+```{python}
+#| eval: true
+class BankAccount:
+    """A bank account class."""
+    
+    interest_rate = 0.02  # Class attribute
+    
+    def __init__(self, owner, balance=0):
+        self.owner = owner      # Instance attribute
+        self.balance = balance
+    
+    def deposit(self, amount):
+        """Deposit money."""
+        if amount > 0:
+            self.balance += amount
+            return f"Deposited ${amount}. New balance: ${self.balance}"
+        return "Invalid amount"
+    
+    def withdraw(self, amount):
+        """Withdraw money."""
+        if 0 < amount <= self.balance:
+            self.balance -= amount
+            return f"Withdrew ${amount}. New balance: ${self.balance}"
+        return "Insufficient funds or invalid amount"
+    
+    def add_interest(self):
+        """Add interest to the balance."""
+        interest = self.balance * self.interest_rate
+        self.balance += interest
+        return f"Added ${interest:.2f} interest"
+
+# Example usage
+account = BankAccount("Bob", 1000)
+print(account.deposit(500))
+print(account.withdraw(200))
+print(account.add_interest())
+```
+
+## Inheritance
+
+```{python}
+#| eval: true
+class Animal:
+    """Base Animal class."""
+    
+    def __init__(self, name):
+        self.name = name
+    
+    def speak(self):
+        raise NotImplementedError("Subclasses must implement speak()")
+
+class Dog(Animal):
+    """Dog class inheriting from Animal."""
+    
+    def speak(self):
+        return f"{self.name} says Woof!"
+
+class Cat(Animal):
+    """Cat class inheriting from Animal."""
+    
+    def speak(self):
+        return f"{self.name} says Meow!"
+
+# Polymorphism in action
+animals = [Dog("Rex"), Cat("Whiskers")]
+for animal in animals:
+    print(animal.speak())
+```
+
+## Properties and Decorators
+
+```{python}
+#| eval: true
+class Circle:
+    """Circle with computed properties."""
+    
+    def __init__(self, radius):
+        self._radius = radius
+    
+    @property
+    def radius(self):
+        """Getter for radius."""
+        return self._radius
+    
+    @radius.setter
+    def radius(self, value):
+        """Setter for radius with validation."""
+        if value > 0:
+            self._radius = value
+        else:
+            raise ValueError("Radius must be positive")
+    
+    @property
+    def area(self):
+        """Computed property for area."""
+        import math
+        return math.pi * self._radius ** 2
+    
+    @property
+    def circumference(self):
+        """Computed property for circumference."""
+        import math
+        return 2 * math.pi * self._radius
+
+# Example
+circle = Circle(5)
+print(f"Radius: {circle.radius}")
+print(f"Area: {circle.area:.2f}")
+print(f"Circumference: {circle.circumference:.2f}")
+```
+
+## Static and Class Methods
+
+```{python}
+#| eval: true
+class MathUtils:
+    """Utility class with static and class methods."""
+    
+    @staticmethod
+    def add(a, b):
+        """Static method - no access to instance or class."""
+        return a + b
+    
+    @classmethod
+    def create_from_string(cls, string):
+        """Class method - access to class but not instance."""
+        return cls()
+    
+    count = 0
+    
+    @classmethod
+    def increment_count(cls):
+        """Modify class state."""
+        cls.count += 1
+        return cls.count
+
+print(MathUtils.add(5, 3))
+print(MathUtils.increment_count())
+print(MathUtils.increment_count())
+```
+
+## Dunder (Magic) Methods
+
+```{python}
+#| eval: true
+class Vector:
+    """A 2D vector with operator overloading."""
+    
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+    
+    def __repr__(self):
+        return f"Vector({self.x}, {self.y})"
+    
+    def __add__(self, other):
+        return Vector(self.x + other.x, self.y + other.y)
+    
+    def __mul__(self, scalar):
+        return Vector(self.x * scalar, self.y * scalar)
+    
+    def __eq__(self, other):
+        return self.x == other.x and self.y == other.y
+
+v1 = Vector(1, 2)
+v2 = Vector(3, 4)
+
+print(f"v1 = {v1}")
+print(f"v2 = {v2}")
+print(f"v1 + v2 = {v1 + v2}")
+print(f"v1 * 3 = {v1 * 3}")
+```
+
+## Data Classes (Python 3.7+)
+
+```{python}
+#| eval: true
+from dataclasses import dataclass
+
+@dataclass
+class Point:
+    """A point in 2D space."""
+    x: float
+    y: float
+    
+    def distance_from_origin(self):
+        return (self.x ** 2 + self.y ** 2) ** 0.5
+
+p = Point(3, 4)
+print(p)
+print(f"Distance from origin: {p.distance_from_origin()}")
+```
+
+## Exercises
+
+1. Create a `Rectangle` class with width, height, and methods for area and perimeter.
+
+2. Implement a `Student` class that inherits from `Person` and adds grades.
+
+3. Create a `Counter` class that tracks the number of instances created.

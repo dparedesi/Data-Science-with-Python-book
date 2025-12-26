@@ -1,0 +1,52 @@
+---
+jupyter: python3
+execute:
+  echo: true
+  warning: false
+---
+
+# Real-World Case Studies Introduction
+
+## Overview
+
+In this section, we apply data science techniques to real-world problems. Each case study demonstrates a complete workflow from data collection to insights.
+
+## What You'll Learn
+
+- **Real Estate Analysis**: Analyzing property markets using data
+- **Google Analytics**: Understanding web traffic patterns
+- **End-to-end workflows**: From data to actionable insights
+
+## Skills Applied
+
+These case studies integrate skills from previous chapters:
+
+1. **Data Wrangling**: Cleaning and transforming messy data
+2. **Visualization**: Creating insightful plots
+3. **Statistical Analysis**: Testing hypotheses
+4. **Machine Learning**: Building predictive models
+
+## Tools Used
+
+```{python}
+#| eval: true
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+```
+
+## Case Study Approach
+
+Each case follows this structure:
+
+1. **Problem Definition**: What question are we answering?
+2. **Data Collection**: Where does the data come from?
+3. **Exploratory Analysis**: Understanding the data
+4. **Model Building**: Creating solutions
+5. **Evaluation**: Assessing results
+6. **Conclusions**: What did we learn?
+
+Let's dive into the case studies!

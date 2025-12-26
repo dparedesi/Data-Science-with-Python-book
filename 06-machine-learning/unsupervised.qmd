@@ -1,0 +1,170 @@
+---
+jupyter: python3
+execute:
+  echo: true
+  warning: false
+---
+
+# Unsupervised Learning
+
+## Introduction
+
+Unsupervised learning finds patterns in data without labeled outcomes.
+
+```{python}
+#| eval: true
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.preprocessing import StandardScaler
+```
+
+## Clustering
+
+### K-Means Clustering
+
+```{python}
+#| eval: true
+from sklearn.cluster import KMeans
+from sklearn.datasets import make_blobs
+
+# Create sample data
+X, y_true = make_blobs(n_samples=300, centers=4, random_state=42)
+
+# Fit K-Means
+kmeans = KMeans(n_clusters=4, random_state=42, n_init=10)
+y_pred = kmeans.fit_predict(X)
+
+# Visualize
+plt.figure(figsize=(10, 4))
+
+plt.subplot(1, 2, 1)
+plt.scatter(X[:, 0], X[:, 1], c=y_true, cmap='viridis')
+plt.title('True Labels')
+
+plt.subplot(1, 2, 2)
+plt.scatter(X[:, 0], X[:, 1], c=y_pred, cmap='viridis')
+plt.scatter(kmeans.cluster_centers_[:, 0], 
+            kmeans.cluster_centers_[:, 1], 
+            marker='x', s=200, c='red', linewidth=3)
+plt.title('K-Means Clustering')
+
+plt.tight_layout()
+plt.show()
+```
+
+### Choosing K (Elbow Method)
+
+```{python}
+#| eval: true
+inertias = []
+K = range(1, 10)
+
+for k in K:
+    kmeans = KMeans(n_clusters=k, random_state=42, n_init=10)
+    kmeans.fit(X)
+    inertias.append(kmeans.inertia_)
+
+plt.figure(figsize=(8, 5))
+plt.plot(K, inertias, 'bo-')
+plt.xlabel('Number of Clusters (K)')
+plt.ylabel('Inertia')
+plt.title('Elbow Method')
+plt.show()
+```
+
+### Hierarchical Clustering
+
+```{python}
+#| eval: true
+from sklearn.cluster import AgglomerativeClustering
+from scipy.cluster.hierarchy import dendrogram, linkage
+
+# Fit hierarchical clustering
+hc = AgglomerativeClustering(n_clusters=4)
+y_hc = hc.fit_predict(X)
+
+# Create dendrogram (on subset for visibility)
+plt.figure(figsize=(12, 5))
+X_subset = X[:50]
+linkage_matrix = linkage(X_subset, method='ward')
+dendrogram(linkage_matrix)
+plt.title('Hierarchical Clustering Dendrogram')
+plt.xlabel('Sample Index')
+plt.ylabel('Distance')
+plt.show()
+```
+
+## Dimensionality Reduction
+
+### Principal Component Analysis (PCA)
+
+```{python}
+#| eval: true
+from sklearn.decomposition import PCA
+from sklearn.datasets import load_iris
+
+# Load iris data
+iris = load_iris()
+X = StandardScaler().fit_transform(iris.data)
+
+# Apply PCA
+pca = PCA(n_components=2)
+X_pca = pca.fit_transform(X)
+
+print(f"Explained variance ratio: {pca.explained_variance_ratio_}")
+print(f"Total explained variance: {sum(pca.explained_variance_ratio_):.4f}")
+
+# Visualize
+plt.figure(figsize=(5, 3.5))
+scatter = plt.scatter(X_pca[:, 0], X_pca[:, 1], c=iris.target, cmap='viridis')
+plt.xlabel('First Principal Component')
+plt.ylabel('Second Principal Component')
+plt.title('PCA of Iris Dataset')
+plt.colorbar(scatter)
+plt.show()
+```
+
+### Explained Variance
+
+```{python}
+#| eval: true
+pca_full = PCA()
+pca_full.fit(X)
+
+plt.figure(figsize=(8, 5))
+plt.bar(range(4), pca_full.explained_variance_ratio_)
+plt.plot(range(4), np.cumsum(pca_full.explained_variance_ratio_), 'ro-')
+plt.xlabel('Principal Component')
+plt.ylabel('Explained Variance Ratio')
+plt.title('PCA Explained Variance')
+plt.show()
+```
+
+### t-SNE
+
+```{python}
+#| eval: true
+from sklearn.manifold import TSNE
+
+# Apply t-SNE
+tsne = TSNE(n_components=2, random_state=42, perplexity=30)
+X_tsne = tsne.fit_transform(X)
+
+# Visualize
+plt.figure(figsize=(5, 3.5))
+scatter = plt.scatter(X_tsne[:, 0], X_tsne[:, 1], c=iris.target, cmap='viridis')
+plt.xlabel('t-SNE 1')
+plt.ylabel('t-SNE 2')
+plt.title('t-SNE of Iris Dataset')
+plt.colorbar(scatter)
+plt.show()
+```
+
+## Exercises
+
+1. Apply K-Means clustering to a real dataset and visualize the results.
+
+2. Use PCA to reduce a high-dimensional dataset to 2D and visualize.
+
+3. Compare K-Means and hierarchical clustering on the same dataset.

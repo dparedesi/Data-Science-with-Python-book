@@ -1,0 +1,126 @@
+---
+jupyter: python3
+execute:
+  echo: true
+  warning: false
+---
+
+# Discrete Probability
+
+## Introduction
+
+Probability theory is a fundamental tool in data science. In this chapter, we'll explore discrete probability using Python and scipy.
+
+```{python}
+#| eval: true
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from scipy import stats
+```
+
+## Basic Probability Concepts
+
+### Sample space and events
+
+```{python}
+#| eval: true
+# Simulating a coin flip
+np.random.seed(42)
+coin_flips = np.random.choice(['Heads', 'Tails'], size=1000)
+print(pd.Series(coin_flips).value_counts(normalize=True))
+```
+
+### Rolling dice
+
+```{python}
+#| eval: true
+# Simulating dice rolls
+dice_rolls = np.random.randint(1, 7, size=1000)
+print(pd.Series(dice_rolls).value_counts().sort_index())
+```
+
+## Discrete Distributions
+
+### Binomial distribution
+
+The binomial distribution models the number of successes in n independent trials.
+
+```{python}
+#| eval: true
+# Binomial distribution: probability of k successes in n trials
+n = 10  # number of trials
+p = 0.5  # probability of success
+
+# Calculate probabilities for each possible outcome
+x = np.arange(0, n+1)
+probabilities = stats.binom.pmf(x, n, p)
+
+plt.figure(figsize=(10, 6))
+plt.bar(x, probabilities)
+plt.xlabel('Number of Successes')
+plt.ylabel('Probability')
+plt.title(f'Binomial Distribution (n={n}, p={p})')
+plt.show()
+```
+
+### Poisson distribution
+
+The Poisson distribution models the number of events in a fixed interval.
+
+```{python}
+#| eval: true
+# Poisson distribution
+lambda_param = 5  # average number of events
+
+x = np.arange(0, 20)
+probabilities = stats.poisson.pmf(x, lambda_param)
+
+plt.figure(figsize=(10, 6))
+plt.bar(x, probabilities)
+plt.xlabel('Number of Events')
+plt.ylabel('Probability')
+plt.title(f'Poisson Distribution (λ={lambda_param})')
+plt.show()
+```
+
+## Sampling and Simulation
+
+### Random sampling
+
+```{python}
+#| eval: true
+# Sampling from a population
+population = list(range(1, 101))
+sample = np.random.choice(population, size=10, replace=False)
+print(f"Sample: {sample}")
+print(f"Sample mean: {np.mean(sample)}")
+```
+
+### Monte Carlo simulation
+
+```{python}
+#| eval: true
+# Estimate probability using simulation
+def estimate_probability(n_simulations=10000):
+    """Estimate probability of getting at least one 6 in 4 dice rolls."""
+    successes = 0
+    for _ in range(n_simulations):
+        rolls = np.random.randint(1, 7, size=4)
+        if 6 in rolls:
+            successes += 1
+    return successes / n_simulations
+
+estimated_prob = estimate_probability()
+theoretical_prob = 1 - (5/6)**4
+print(f"Estimated probability: {estimated_prob:.4f}")
+print(f"Theoretical probability: {theoretical_prob:.4f}")
+```
+
+## Exercises
+
+1. Simulate 1000 coin flips and calculate the proportion of heads.
+
+2. Create a binomial distribution plot for n=20 trials and p=0.3 probability.
+
+3. Use Monte Carlo simulation to estimate the probability of getting exactly 3 heads in 5 coin flips.

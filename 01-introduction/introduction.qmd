@@ -1,0 +1,203 @@
+---
+jupyter: python3
+execute:
+  echo: true
+  warning: false
+---
+
+# Introduction {.unnumbered}
+
+:::{.callout-note}
+**What You'll Learn in This Chapter:**
+
+- Understand why Python is an excellent choice for data science
+- Install Python and set up your development environment
+- Navigate VS Code and Jupyter notebooks confidently
+- Write and execute your first Python code
+:::
+
+Data science requires a multidisciplinary approach that combines statistics, programming, data mining, and domain expertise. This book is designed to help you develop those skills through practical, hands-on examples in Python.
+
+![Venn diagram showing data science as intersection of statistics, programming, domain knowledge, and data mining](../assets/images/01-introduction/multidisciplinaria.png)
+
+## Why Python? {.unnumbered}
+
+Python is a versatile, beginner-friendly language that has become the industry standard for data science. It is free and open-source, meaning there are no licensing costs and you can inspect how any function works under the hood. Its rich ecosystem includes thousands of packages on PyPI covering virtually any analytical task, from machine learning to natural language processing.
+
+One of Python's strongest features is reproducibility, allowing you to write scripts once and share them with colleagues to obtain consistent results anywhere. It also offers excellent visualization through libraries like matplotlib, seaborn, and plotly for publication-quality graphics and interactive dashboards. Furthermore, you will find an active community with extensive documentation, tutorials, and a welcoming presence on social media.
+
+Python excels particularly in machine learning and AI, with frameworks like scikit-learn, TensorFlow, and PyTorch being the industry standard. These are the core skills we will develop throughout this book, leveraging the pandas ecosystem to make data manipulation intuitive and readable.
+
+## Installing Python {.unnumbered}
+
+You can download Python from the official website or use a package manager.
+
+### Option 1: Official Python Installer
+
+1. Visit [python.org](https://www.python.org/downloads/)
+2. Download the latest stable version (3.11 or higher recommended)
+3. Run the installer
+
+:::{.callout-tip}
+**Installation Tip (Windows):** Make sure to check "Add Python to PATH" during installation. This allows you to run Python from any command prompt.
+:::
+
+### Option 2: Using Anaconda (Recommended for Data Science)
+
+Anaconda is a Python distribution that includes many data science packages pre-installed:
+
+1. Visit [anaconda.com](https://www.anaconda.com/download)
+2. Download and install Anaconda for your operating system
+3. Anaconda includes Python, Jupyter, pandas, numpy, and many other packages
+
+## Installing VS Code {.unnumbered}
+
+While you can use Python with many editors, we recommend Visual Studio Code (VS Code)—a free, powerful editor that makes working with Python significantly more productive.
+
+1. Visit [code.visualstudio.com](https://code.visualstudio.com/)
+2. Download and install VS Code for your operating system
+3. Open VS Code and install the Python extension:
+   - Click the Extensions icon in the left sidebar (or press `Ctrl+Shift+X`)
+   - Search for "Python"
+   - Install the official Python extension by Microsoft
+
+## VS Code Sections {.unnumbered}
+
+When you open VS Code with the Python extension, you'll see several important areas:
+
+- **Explorer** (left sidebar): Browse your project files
+- **Editor** (center): Write and edit your Python code
+- **Terminal** (bottom): Run Python commands and scripts
+- **Extensions** (left sidebar): Manage additional features
+
+One of the great advantages of Python over point-and-click analysis software is that we can save our work as **Scripts**—text files containing Python code that can be shared, version-controlled, and re-run at any time.
+
+### Essential Keyboard Shortcuts {.unnumbered}
+
+Mastering keyboard shortcuts will significantly speed up your workflow:
+
+| Action | Windows/Linux | Mac |
+|--------|--------------|-----|
+| Run selection/line | `Shift + Enter` | `Shift + Enter` |
+| Run entire file | `Ctrl + Shift + P` → "Run Python File" | `Cmd + Shift + P` → "Run Python File" |
+| New file | `Ctrl + N` | `Cmd + N` |
+| Save file | `Ctrl + S` | `Cmd + S` |
+| Comment/uncomment | `Ctrl + /` | `Cmd + /` |
+| Open terminal | `` Ctrl + ` `` | `` Cmd + ` `` |
+
+:::{.callout-tip}
+**Pro Tip:** Press `Ctrl + Shift + P` (Windows/Linux) or `Cmd + Shift + P` (Mac) to open the Command Palette, which gives you access to all VS Code commands.
+:::
+
+## Jupyter Notebooks {.unnumbered}
+
+Jupyter notebooks are an interactive way to write and run Python code. They combine code, outputs, and explanatory text in a single document—perfect for data science exploration.
+
+To start Jupyter:
+
+```bash
+# If using Anaconda
+jupyter notebook
+
+# Or in VS Code
+# Open a .ipynb file or create one with Ctrl+Shift+P → "Create: New Jupyter Notebook"
+```
+
+Jupyter notebooks consist of **cells** that can contain either code or text (Markdown). You can run each cell independently and see results immediately.
+
+## Testing Your Installation {.unnumbered}
+
+Let's verify everything is working correctly. Open a Python terminal or Jupyter notebook and try:
+
+```{python}
+#| eval: true
+13 * 265
+```
+
+You should see `3445` as the result.
+
+Now let's try something more interesting. Python isn't just a calculator—it's a powerful tool for working with data:
+
+```{python}
+#| eval: true
+# Create a list of values
+values = [10, 20, 30, 40, 50]
+
+# Calculate the mean
+import statistics
+statistics.mean(values)
+```
+
+```{python}
+#| eval: true
+# How many elements are there?
+len(values)
+```
+
+You've just created your first data structure (a list) and applied functions to it—fundamental concepts we'll explore in depth in the next chapter.
+
+### Writing Scripts {.unnumbered}
+
+While notebooks are great for exploration, scripts are essential for reproducible work. Create a new file called `my_first_script.py`:
+
+```{python}
+#| eval: false
+# My First Python Script
+# Calculating basic statistics
+
+# Create some data
+temperatures = [22, 25, 23, 28, 30, 27, 24]
+
+# Calculate statistics
+import statistics
+print(f"Mean: {statistics.mean(temperatures)}")      # Average temperature
+print(f"Max: {max(temperatures)}")                   # Highest temperature
+print(f"Min: {min(temperatures)}")                   # Lowest temperature
+```
+
+To execute code in VS Code:
+
+1. **Run a single line**: Select the line and press `Shift + Enter`
+2. **Run selected lines**: Highlight the lines you want to run and press `Shift + Enter`
+3. **Run the entire script**: Right-click and select "Run Python File in Terminal"
+
+Notice that lines starting with `#` are **comments**—Python ignores them, but they're invaluable for explaining your code to others (and to your future self!).
+
+:::{.callout-caution}
+**Challenge: Test Your Setup**
+
+Try these exercises to confirm everything works:
+
+1. Calculate `144 ** 0.5` in Python (the square root of 144)
+2. Create a new script with three different calculations and save it as `my_first_script.py`
+3. Use assignment to store a value: `my_number = 42`
+4. Print your stored value with `print(my_number)`
+:::
+
+## Virtual Environments {.unnumbered}
+
+A virtual environment is an isolated Python installation where you can install packages without affecting other projects. This is a best practice for Python development.
+
+```bash
+# Create a virtual environment
+python -m venv .venv
+
+# Activate it (Windows)
+.venv\Scripts\activate
+
+# Activate it (Mac/Linux)
+source .venv/bin/activate
+
+# Install packages
+pip install pandas numpy matplotlib
+```
+
+When the environment is active, you'll see `(.venv)` in your terminal prompt.
+
+## What's Next? {.unnumbered}
+
+Congratulations! You have successfully set up your Python environment and written your first Python code. You now understand why Python is a powerful choice for data science and how to navigate VS Code and Jupyter notebooks. You have also learned to write scripts and apply essential keyboard shortcuts.
+
+In the next chapter, we will dive into **Python Fundamentals**, learning about objects, data types, lists, and functions that form the foundation of all Python programming. You will discover how Python stores and manipulates data, setting the stage for the data analysis and visualization techniques to come.
+
+Let's continue the journey!

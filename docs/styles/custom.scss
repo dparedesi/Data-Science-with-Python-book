@@ -1,0 +1,34 @@
+/*-- scss:defaults --*/
+
+$primary: #306998;
+$secondary: #FFD43B;
+
+/*-- scss:rules --*/
+
+/* Python-themed styling */
+.callout-note {
+  border-left-color: $primary;
+}
+
+.callout-tip {
+  border-left-color: $secondary;
+}
+
+/* Code block styling */
+pre code {
+  font-size: 0.9em;
+}
+
+/* Header styling */
+h1, h2, h3 {
+  color: $primary;
+}
+
+/* Link styling */
+a {
+  color: $primary;
+}
+
+a:hover {
+  color: darken($primary, 15%);
+}

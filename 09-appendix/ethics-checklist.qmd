@@ -1,0 +1,93 @@
+---
+jupyter: python3
+execute:
+  echo: true
+  warning: false
+---
+
+# Ethics Checklist for Data Science
+
+## Introduction
+
+Ethical considerations are fundamental to responsible data science practice.
+
+## The Ethics Checklist
+
+### Data Collection
+
+- [ ] Is data collection transparent?
+- [ ] Do we have consent for data use?
+- [ ] Are we collecting only necessary data?
+- [ ] Is data collection equitable across groups?
+
+### Data Storage
+
+- [ ] Is data stored securely?
+- [ ] Are access controls in place?
+- [ ] Is personally identifiable information (PII) protected?
+- [ ] Do we have a data retention policy?
+
+### Model Development
+
+- [ ] Have we tested for bias in training data?
+- [ ] Are all demographic groups fairly represented?
+- [ ] Have we considered potential misuse?
+- [ ] Is the model interpretable/explainable?
+
+### Deployment
+
+- [ ] Can users opt out of automated decisions?
+- [ ] Is there human oversight for critical decisions?
+- [ ] Are model limitations clearly communicated?
+- [ ] Is there a feedback mechanism?
+
+### Monitoring
+
+- [ ] Do we monitor for model drift?
+- [ ] Are we tracking fairness metrics over time?
+- [ ] Is there a process for addressing issues?
+- [ ] Do we conduct regular ethics reviews?
+
+## Common Biases in ML
+
+1. **Selection Bias**: Training data not representative
+2. **Confirmation Bias**: Seeking patterns that confirm beliefs
+3. **Measurement Bias**: Systematic errors in data collection
+4. **Historical Bias**: Encoding past discrimination
+5. **Aggregation Bias**: Assuming all groups behave similarly
+
+## Fairness Metrics
+
+```{python}
+#| eval: true
+import numpy as np
+
+def demographic_parity(y_pred, sensitive_attr):
+    """Check if prediction rates are equal across groups."""
+    rates = {}
+    for group in np.unique(sensitive_attr):
+        mask = sensitive_attr == group
+        rates[group] = np.mean(y_pred[mask])
+    return rates
+
+# Example
+np.random.seed(42)
+predictions = np.random.randint(0, 2, 100)
+groups = np.random.choice(['A', 'B'], 100)
+
+print("Prediction rates by group:")
+print(demographic_parity(predictions, groups))
+```
+
+## Privacy-Preserving Techniques
+
+- **Differential Privacy**: Adding noise to protect individuals
+- **Federated Learning**: Training without centralizing data
+- **Data Anonymization**: Removing identifying information
+- **Synthetic Data**: Generating artificial but realistic data
+
+## Resources
+
+- [AI Ethics Guidelines (UNESCO)](https://www.unesco.org/en/artificial-intelligence)
+- [Responsible AI (Microsoft)](https://www.microsoft.com/en-us/ai/responsible-ai)
+- [Google AI Principles](https://ai.google/principles/)

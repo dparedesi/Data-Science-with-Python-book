@@ -1,0 +1,349 @@
+---
+jupyter: python3
+execute:
+  echo: true
+  warning: false
+---
+
+# Data Structures with pandas
+
+## Introduction to DataFrames
+
+In previous chapters, we explored different types of objects in Python, such as variables, lists, dictionaries, and NumPy arrays. These objects allow us to store information in more efficient ways. Now, in this chapter, we will delve into the world of **DataFrames**, an essential tool for organizing and analyzing information using the pandas library.
+
+### What are DataFrames?
+
+Imagine a spreadsheet, with rows and columns organizing information in a tabular way. In Python, a DataFrame (from the pandas library) is precisely that: a data structure that stores information in a tabular format, with rows representing **observations** (for example, every US city) and columns representing **variables** (such as population, cost of living, crime rate).
+
+Each column of a DataFrame can contain a different data type: numeric, string, boolean, datetime, etc. This makes DataFrames very versatile for storing diverse information.
+
+### Why DataFrames?
+
+DataFrames are uniquely suited for data analysis because of their specific features. Their **tabular structure** organizes data into rows and columns, similar to a spreadsheet, making it intuitive to visualize. They offer **flexibility** by allowing each column to hold a different data type. This structure also ensures **efficiency**, as most Python analysis packages are optimized to work directly with DataFrames.
+
+## Creating DataFrames
+
+### Installing and importing pandas
+
+First, let's import pandas:
+
+```{python}
+#| eval: true
+import pandas as pd
+import numpy as np
+```
+
+### Importing data from files: CSV, Excel
+
+A common way to create DataFrames is by importing data from external files:
+
+```{python}
+#| eval: true
+# Import data from a CSV file
+url = "https://dparedesi.github.io/Data-Science-with-Python-book/data/student-grades.csv"
+grades = pd.read_csv(url)
+print(grades.head())
+```
+
+For Excel files, use `pd.read_excel()` (requires `openpyxl` package):
+
+```python
+# Import data from an Excel file
+df = pd.read_excel("states.xlsx")
+```
+
+### Creating DataFrames manually
+
+We can also create DataFrames manually from dictionaries:
+
+```{python}
+#| eval: true
+# Create a DataFrame with city information
+df_cities = pd.DataFrame({
+    "city": ["New York", "Los Angeles", "Chicago", "Houston"],
+    "state": ["New York", "California", "Illinois", "Texas"],
+    "cost_of_living": [3.5, 2.8, 2.5, 2.0],
+    "crime_rate": [400, 350, 500, 450],
+    "climate": ["Temperate", "Mediterranean", "Continental", "Subtropical"]
+})
+
+print(df_cities)
+```
+
+## Exploring DataFrames
+
+### Basic exploration functions
+
+```{python}
+#| eval: true
+# First rows
+print(df_cities.head())
+```
+
+```{python}
+#| eval: true
+# Data types and structure
+print(df_cities.info())
+```
+
+```{python}
+#| eval: true
+# Statistical summary
+print(df_cities.describe())
+```
+
+### Accessing rows, columns, and cells
+
+```{python}
+#| eval: true
+# Access a column
+print(df_cities["state"])
+```
+
+```{python}
+#| eval: true
+# Access multiple columns
+print(df_cities[["city", "state"]])
+```
+
+```{python}
+#| eval: true
+# Access by row index with .iloc
+print(df_cities.iloc[0])  # First row
+```
+
+```{python}
+#| eval: true
+# Access specific cell
+print(df_cities.iloc[1, 2])  # Row 1, Column 2
+```
+
+## Manipulating DataFrames
+
+### Method chaining: the pandas way
+
+pandas encourages **method chaining**, where operations are strung together in sequence. This is similar to the pipe operator in R:
+
+```{python}
+#| eval: true
+# Method chaining example
+result = (df_cities
+    .query("cost_of_living < 3")
+    [["city", "cost_of_living"]]
+    .sort_values("cost_of_living"))
+
+print(result)
+```
+
+### Creating new columns with `assign()`
+
+```{python}
+#| eval: true
+# Load murders dataset (simulating the R dslabs dataset)
+murders = pd.DataFrame({
+    "state": ["Alabama", "Alaska", "Arizona", "Arkansas", "California",
+              "Colorado", "Connecticut", "Delaware", "Florida", "Georgia"],
+    "abb": ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA"],
+    "region": ["South", "West", "West", "South", "West", 
+               "West", "Northeast", "South", "South", "South"],
+    "population": [4779736, 710231, 6392017, 2915918, 37253956,
+                   5029196, 3574097, 897934, 18801310, 9687653],
+    "total": [135, 19, 232, 93, 1257, 65, 97, 38, 669, 376]
+})
+
+# Add ratio column
+murders = murders.assign(
+    ratio=lambda df: df["total"] / df["population"] * 100000
+)
+
+print(murders.head())
+```
+
+### Filtering data with `query()`
+
+```{python}
+#| eval: true
+# Filter states with ratio < 1
+print(murders.query("ratio < 1"))
+```
+
+```{python}
+#| eval: true
+# Filter with multiple conditions
+print(murders.query("ratio < 3 and region == 'West'"))
+```
+
+### Sorting data with `sort_values()`
+
+```{python}
+#| eval: true
+# Sort by ratio (ascending)
+print(murders.sort_values("ratio").head())
+```
+
+```{python}
+#| eval: true
+# Sort by ratio (descending)
+print(murders.sort_values("ratio", ascending=False).head())
+```
+
+### Aggregating with `groupby()`
+
+```{python}
+#| eval: true
+# Group by region and calculate mean population
+print(murders.groupby("region")["population"].mean())
+```
+
+```{python}
+#| eval: true
+# Multiple aggregations
+print(murders.groupby("region").agg({
+    "population": "mean",
+    "total": "sum",
+    "ratio": "mean"
+}))
+```
+
+### Joining DataFrames with `merge()`
+
+```{python}
+#| eval: true
+# Create sample DataFrames
+df_cities = pd.DataFrame({
+    "city": ["New York", "Los Angeles", "Chicago", "Houston"],
+    "state": ["New York", "California", "Illinois", "Texas"]
+})
+
+df_states = pd.DataFrame({
+    "state": ["California", "Texas", "Florida"],
+    "governor": ["Gavin Newsom", "Greg Abbott", "Ron DeSantis"]
+})
+
+# Left join
+df_merged = pd.merge(df_cities, df_states, on="state", how="left")
+print(df_merged)
+```
+
+## Data Visualization with DataFrames
+
+### Scatter plots
+
+```{python}
+#| eval: true
+import matplotlib.pyplot as plt
+
+x_axis = murders["population"] / 1e6  # Population in millions
+y_axis = murders["total"]
+
+plt.figure(figsize=(5, 3.5))
+plt.scatter(x_axis, y_axis)
+plt.xlabel("Population (millions)")
+plt.ylabel("Total Murders")
+plt.title("Population vs Total Murders")
+plt.show()
+```
+
+### Histograms
+
+```{python}
+#| eval: true
+plt.figure(figsize=(5, 3.5))
+plt.hist(murders["ratio"], bins=10, edgecolor="black")
+plt.xlabel("Murder Rate (per 100,000)")
+plt.ylabel("Frequency")
+plt.title("Distribution of Murder Rates")
+plt.show()
+```
+
+### Box plots
+
+```{python}
+#| eval: true
+plt.figure(figsize=(5, 3.5))
+plt.boxplot(murders["ratio"])
+plt.ylabel("Murder Rate (per 100,000)")
+plt.title("Box Plot of Murder Rates")
+plt.show()
+```
+
+## Data Interpretation
+
+### Understanding `describe()`
+
+```{python}
+#| eval: true
+print(murders["total"].describe())
+```
+
+The summary provides key insights:
+- **count**: number of non-null values
+- **mean**: arithmetic average
+- **std**: standard deviation
+- **min/max**: range of data
+- **25%/50%/75%**: quartiles (50% is the median)
+
+### Quartiles and percentiles
+
+```{python}
+#| eval: true
+# Calculate specific percentiles
+print(murders["total"].quantile([0.25, 0.5, 0.75]))
+```
+
+## Exercises
+
+1. Create a DataFrame called `my_expenses` with columns for category (Housing, Transport, Food, Entertainment) and expenses for January, February, and March.
+
+<details>
+  <summary>Solution</summary>
+```python
+my_expenses = pd.DataFrame({
+    "category": ["Housing", "Transport", "Food", "Entertainment"],
+    "january": [1500, 300, 500, 200],
+    "february": [1500, 250, 400, 150],
+    "march": [1500, 350, 550, 250]
+})
+```
+</details>
+
+2. Use `head()`, `tail()`, `info()` and `describe()` to explore the `my_expenses` DataFrame.
+
+<details>
+  <summary>Solution</summary>
+```python
+print(my_expenses.head())
+print(my_expenses.tail())
+print(my_expenses.info())
+print(my_expenses.describe())
+```
+</details>
+
+3. Filter `my_expenses` to get only rows where expenses in January are greater than 400.
+
+<details>
+  <summary>Solution</summary>
+```python
+my_expenses.query("january > 400")
+```
+</details>
+
+4. Add a column called `total` containing the sum of January, February, and March expenses.
+
+<details>
+  <summary>Solution</summary>
+```python
+my_expenses = my_expenses.assign(
+    total=lambda df: df["january"] + df["february"] + df["march"]
+)
+```
+</details>
+
+5. Sort the DataFrame by total expenses in descending order.
+
+<details>
+  <summary>Solution</summary>
+```python
+my_expenses.sort_values("total", ascending=False)
+```
+</details>

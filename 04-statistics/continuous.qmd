@@ -1,0 +1,147 @@
+---
+jupyter: python3
+execute:
+  echo: true
+  warning: false
+---
+
+# Continuous Probability
+
+## Introduction
+
+In this chapter, we'll explore continuous probability distributions, which are essential for statistical inference and machine learning.
+
+```{python}
+#| eval: true
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from scipy import stats
+import seaborn as sns
+```
+
+## Continuous Distributions
+
+### Normal (Gaussian) Distribution
+
+The most important continuous distribution in statistics.
+
+```{python}
+#| eval: true
+# Normal distribution
+mu = 0      # mean
+sigma = 1   # standard deviation
+
+x = np.linspace(-4, 4, 1000)
+pdf = stats.norm.pdf(x, mu, sigma)
+
+plt.figure(figsize=(10, 6))
+plt.plot(x, pdf, 'b-', linewidth=2)
+plt.fill_between(x, pdf, alpha=0.3)
+plt.xlabel('x')
+plt.ylabel('Probability Density')
+plt.title('Standard Normal Distribution')
+plt.grid(True, alpha=0.3)
+plt.show()
+```
+
+### Probability calculations
+
+```{python}
+#| eval: true
+# P(X < 1.96) for standard normal
+prob_less_than = stats.norm.cdf(1.96)
+print(f"P(X < 1.96) = {prob_less_than:.4f}")
+
+# P(X > 1.96)
+prob_greater_than = 1 - stats.norm.cdf(1.96)
+print(f"P(X > 1.96) = {prob_greater_than:.4f}")
+
+# P(-1.96 < X < 1.96)
+prob_between = stats.norm.cdf(1.96) - stats.norm.cdf(-1.96)
+print(f"P(-1.96 < X < 1.96) = {prob_between:.4f}")
+```
+
+### Quantiles (Inverse CDF)
+
+```{python}
+#| eval: true
+# Find z-score for given probability
+z_95 = stats.norm.ppf(0.95)
+print(f"95th percentile: {z_95:.4f}")
+
+z_975 = stats.norm.ppf(0.975)
+print(f"97.5th percentile: {z_975:.4f}")
+```
+
+## Other Continuous Distributions
+
+### t-Distribution
+
+Used when estimating the mean of a normally distributed population with unknown variance.
+
+```{python}
+#| eval: true
+x = np.linspace(-4, 4, 1000)
+
+plt.figure(figsize=(10, 6))
+plt.plot(x, stats.norm.pdf(x), 'b-', label='Normal', linewidth=2)
+for df in [1, 5, 30]:
+    plt.plot(x, stats.t.pdf(x, df), label=f't (df={df})')
+
+plt.xlabel('x')
+plt.ylabel('Probability Density')
+plt.title('t-Distribution vs Normal Distribution')
+plt.legend()
+plt.grid(True, alpha=0.3)
+plt.show()
+```
+
+### Chi-Square Distribution
+
+```{python}
+#| eval: true
+x = np.linspace(0, 30, 1000)
+
+plt.figure(figsize=(10, 6))
+for df in [2, 5, 10, 15]:
+    plt.plot(x, stats.chi2.pdf(x, df), label=f'df={df}')
+
+plt.xlabel('x')
+plt.ylabel('Probability Density')
+plt.title('Chi-Square Distribution')
+plt.legend()
+plt.grid(True, alpha=0.3)
+plt.show()
+```
+
+## Central Limit Theorem
+
+The CLT states that the sampling distribution of the mean approaches a normal distribution.
+
+```{python}
+#| eval: true
+# Demonstrate CLT with exponential distribution
+np.random.seed(42)
+
+sample_sizes = [1, 5, 30, 100]
+fig, axes = plt.subplots(2, 2, figsize=(12, 10))
+
+for ax, n in zip(axes.flatten(), sample_sizes):
+    means = [np.mean(np.random.exponential(1, n)) for _ in range(1000)]
+    ax.hist(means, bins=30, density=True, alpha=0.7, edgecolor='black')
+    ax.set_title(f'Sample Size = {n}')
+    ax.set_xlabel('Sample Mean')
+    ax.set_ylabel('Density')
+
+plt.tight_layout()
+plt.show()
+```
+
+## Exercises
+
+1. Calculate P(X > 2) for a normal distribution with mean 1 and standard deviation 0.5.
+
+2. Find the 95% confidence interval for a standard normal distribution.
+
+3. Generate 1000 samples from a normal distribution and plot the histogram with the theoretical PDF overlay.

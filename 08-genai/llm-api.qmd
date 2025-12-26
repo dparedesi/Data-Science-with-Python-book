@@ -1,0 +1,130 @@
+---
+jupyter: python3
+execute:
+  echo: true
+  warning: false
+---
+
+# Working with LLM APIs
+
+## Introduction
+
+In this chapter, we'll learn how to interact with LLM APIs using Python.
+
+## Setting Up API Access
+
+```{python}
+#| eval: false
+import os
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
+
+# API keys should be stored securely, never in code
+api_key = os.getenv("OPENAI_API_KEY")
+```
+
+## Using the OpenAI API
+
+```{python}
+#| eval: false
+from openai import OpenAI
+
+client = OpenAI()
+
+# Basic completion
+response = client.chat.completions.create(
+    model="gpt-4",
+    messages=[
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": "What is data science?"}
+    ]
+)
+
+print(response.choices[0].message.content)
+```
+
+## Practical Example: Text Analysis
+
+```{python}
+#| eval: false
+def analyze_sentiment(text):
+    """Analyze sentiment of text using GPT."""
+    response = client.chat.completions.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "system", "content": "You are a sentiment analyst. Respond with only: POSITIVE, NEGATIVE, or NEUTRAL."},
+            {"role": "user", "content": f"Analyze the sentiment: {text}"}
+        ]
+    )
+    return response.choices[0].message.content
+
+# Example usage
+texts = [
+    "I love this product, it's amazing!",
+    "This is the worst experience ever.",
+    "The weather is cloudy today."
+]
+
+for text in texts:
+    sentiment = analyze_sentiment(text)
+    print(f"'{text}' -> {sentiment}")
+```
+
+## Using Anthropic's Claude
+
+```{python}
+#| eval: false
+import anthropic
+
+client = anthropic.Anthropic()
+
+message = client.messages.create(
+    model="claude-3-sonnet-20240229",
+    max_tokens=1024,
+    messages=[
+        {"role": "user", "content": "Explain machine learning in simple terms."}
+    ]
+)
+
+print(message.content[0].text)
+```
+
+## Structured Outputs
+
+```{python}
+#| eval: false
+import json
+
+def extract_entities(text):
+    """Extract named entities from text."""
+    response = client.chat.completions.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "system", "content": """Extract entities and return as JSON:
+            {"people": [], "organizations": [], "locations": []}"""},
+            {"role": "user", "content": text}
+        ]
+    )
+    return json.loads(response.choices[0].message.content)
+
+# Example
+text = "Apple CEO Tim Cook announced new products at their Cupertino headquarters."
+entities = extract_entities(text)
+print(entities)
+```
+
+## Best Practices
+
+1. **Use system prompts** to set context and behavior
+2. **Handle errors** gracefully with try/except
+3. **Set temperature** based on use case (0 for factual, higher for creative)
+4. **Monitor costs** and set usage limits
+5. **Cache responses** when possible
+
+## Exercises
+
+1. Build a function that summarizes long texts using an LLM.
+2. Create a question-answering system for a specific domain.
+3. Implement a text classifier using LLM prompts.
